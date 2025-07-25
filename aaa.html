@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Careers | MSL Recruitment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #f9fbfd;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(to right, #0052D4, #4364F7);
+      color: white;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .nav-links, .login-buttons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .nav-links a, .login-btn {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .login-btn {
+      background: white;
+      color: #0052D4;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      transition: 0.3s;
+    }
+    .login-btn:hover {
+      background: #e4e4e4;
+    }
+    .header-banner {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    .header-banner h1 {
+      font-size: 2.5rem;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .job-card {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .job-card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 0.5rem;
+    }
+    .job-card h3 {
+      color: #0052D4;
+    }
+    .more-btn {
+      margin-top: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+      color: #0052D4;
+      background: #f0f0f0;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+    }
+    .main-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .main-content h2 {
+      margin-bottom: 1rem;
+      color: #0052D4;
+      text-align: center;
+    }
+    .main-content p {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .main-content form input, .main-content form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .main-content form button {
+      background: #0052D4;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .callout {
+      text-align: center;
+      padding: 2rem;
+      background: white;
+      margin: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    footer {
+      text-align: center;
+      background: #222;
+      color: #ccc;
+      padding: 1rem;
+    }
+    @media (max-width: 768px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .navbar, .nav-links, .login-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">MSL Careers</div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Jobs</a>
+        <a href="#">Employers</a>
+        <a href="#">Job Seekers</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="login-buttons">
+        <a href="#" class="login-btn">MSL Login</a>
+        <a href="#" class="login-btn">Client Login</a>
+        <a href="#" class="login-btn">Job Seeker Login</a>
+      </div>
+    </div>
+    <div class="header-banner">
+      <h1>Welcome to MSL Recruitment Portal</h1>
+      <p>Your future starts here. Find your match. Empower careers.</p>
+    </div>
+  </header>
+
+  <div class="layout">
+    <div class="sidebar">
+      <div class="job-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/source-code.png" alt="">
+        <h3>Software Engineer</h3>
+        <p>Build scalable apps with modern tech.</p>
+        <button class="more-btn">More</button>
+      </div>
+      <div class="job-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/bug.png" alt="">
+        <h3>QA Analyst</h3>
+        <p>Ensure quality through test automation.</p>
+        <button class="more-btn">More</button>
+      </div>
+      <div class="job-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/server.png" alt="">
+        <h3>DevOps Engineer</h3>
+        <p>Manage infrastructure and deployments.</p>
+        <button class="more-btn">More</button>
+      </div>
+    </div>
+    <div class="main-content">
+      <h2>Why Work With Us?</h2>
+      <p>🚀 Innovative teams | 🌍 Inclusive culture | 📚 Growth mindset | 🏡 Remote-friendly</p>
+      <h2>Who We Are</h2>
+      <p>We are passionate professionals uniting talent and opportunity. MSL connects dreamers with doers to build great futures.</p>
+      <h2>About Us</h2>
+      <p>MSL is a leading recruitment firm dedicated to shaping careers and building world-class teams through meaningful partnerships.</p>
+      <h2>Apply Now</h2>
+      <form>
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <textarea placeholder="Tell us about yourself..." rows="4"></textarea>
+        <button type="submit">Submit Application</button>
+      </form>
+    </div>
+    <div class="sidebar">
+      <div class="job-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/conference.png" alt="">
+        <h3>HR Coordinator</h3>
+        <p>Manage onboarding and employee lifecycle.</p>
+        <button class="more-btn">More</button>
+      </div>
+      <div class="job-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/marketing.png" alt="">
+        <h3>Marketing Lead</h3>
+        <p>Drive campaigns and brand awareness.</p>
+        <button class="more-btn">More</button>
+      </div>
+      <div class="job-card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/finance.png" alt="">
+        <h3>Finance Analyst</h3>
+        <p>Analyze budgets and financial performance.</p>
+        <button class="more-btn">More</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h2>We Bring Together Talent, Opportunity, and Support</h2>
+    <p>Job Seekers | Employers | Coordinators – Let’s grow together!</p>
+  </div>
+
+  <footer>
+    &copy; 2025 MSL Careers. All rights reserved.
+  </footer>
+</body>
+</html>

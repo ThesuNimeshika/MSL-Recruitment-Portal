@@ -1,0 +1,376 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(135deg, #f9fbfd 0%, #e3e9f6 100%);
+  color: #222;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Header and Navbar */
+header {
+  background: linear-gradient(90deg, #0052D4 0%, #4364F7 100%);
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(67, 100, 247, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  animation: fadeInDown 1s cubic-bezier(.77,0,.18,1) 0.1s both;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.logo {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  animation: popIn 1.2s cubic-bezier(.77,0,.18,1) 0.2s both;
+}
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.nav-links, .login-buttons {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+.nav-links a, .login-btn {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+  position: relative;
+  transition: color 0.2s;
+}
+.nav-links a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+.nav-links a:hover {
+  color: #e0eaff;
+}
+.login-btn {
+  background: #fff;
+  color: #0052D4;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(67, 100, 247, 0.08);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.login-btn:hover {
+  background: #e4eaff;
+  color: #003a9b;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.header-banner {
+  text-align: center;
+  padding: 3.5rem 1rem 2.5rem 1rem;
+  animation: fadeIn 1.2s cubic-bezier(.77,0,.18,1) 0.3s both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.header-banner h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 0.7rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.header-banner p {
+  font-size: 1.25rem;
+  color: #e0eaff;
+  font-weight: 600;
+}
+
+/* Layout */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 2.2fr 1fr;
+  gap: 2.5rem;
+  padding: 2.5rem 2rem 1.5rem 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1) 0.4s both;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.job-card {
+  background: linear-gradient(120deg, #fff 80%, #e3e9f6 100%);
+  padding: 1.3rem 1rem 1.1rem 1rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(67, 100, 247, 0.07);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+  animation: cardAppear 0.8s cubic-bezier(.77,0,.18,1) both;
+}
+.job-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(67, 100, 247, 0.13);
+}
+@keyframes cardAppear {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.job-card img {
+  width: 62px;
+  height: 62px;
+  margin-bottom: 0.7rem;
+  filter: drop-shadow(0 2px 8px #e3e9f6);
+  transition: transform 0.3s;
+}
+.job-card:hover img {
+  transform: rotate(-8deg) scale(1.08);
+}
+.job-card h3 {
+  color: #0052D4;
+  font-size: 1.18rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+}
+.job-card p {
+  color: #555;
+  font-size: 0.98rem;
+  margin-bottom: 0.7rem;
+}
+.more-btn {
+  margin-top: 0.5rem;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.93rem;
+  color: #0052D4;
+  background: #f0f4ff;
+  border-radius: 7px;
+  cursor: pointer;
+  border: none;
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(67, 100, 247, 0.07);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.more-btn:hover {
+  background: #dbe7ff;
+  color: #003a9b;
+  transform: scale(1.07);
+}
+
+/* Main Content */
+.main-content {
+  background: linear-gradient(120deg, #fff 80%, #e3e9f6 100%);
+  padding: 2.5rem 2.2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 32px rgba(67, 100, 247, 0.09);
+  animation: fadeIn 1.2s cubic-bezier(.77,0,.18,1) 0.5s both;
+}
+.main-content h2 {
+  margin-bottom: 1.1rem;
+  color: #0052D4;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+.main-content p {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #444;
+  font-size: 1.08rem;
+}
+.main-content form {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+.main-content form input, .main-content form textarea {
+  width: 100%;
+  max-width: 420px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.2rem;
+  border: 1.5px solid #c7d2ee;
+  border-radius: 7px;
+  font-size: 1rem;
+  background: #f7faff;
+  transition: border 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+  resize: none;
+}
+.main-content form input:focus, .main-content form textarea:focus {
+  border: 1.5px solid #0052D4;
+  box-shadow: 0 2px 8px #e3e9f6;
+  outline: none;
+}
+.main-content form button {
+  background: linear-gradient(90deg, #0052D4 0%, #4364F7 100%);
+  color: #fff;
+  padding: 0.85rem 2.2rem;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.08rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(67, 100, 247, 0.08);
+  transition: background 0.2s, transform 0.2s;
+}
+.main-content form button:hover {
+  background: linear-gradient(90deg, #4364F7 0%, #0052D4 100%);
+  transform: scale(1.05);
+}
+
+/* Callout Section */
+.callout {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(120deg, #fff 80%, #e3e9f6 100%);
+  margin: 2.5rem auto 2rem auto;
+  border-radius: 16px;
+  box-shadow: 0 6px 32px rgba(67, 100, 247, 0.09);
+  max-width: 900px;
+  animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1) 0.6s both;
+}
+.callout h2 {
+  color: #0052D4;
+  font-size: 1.45rem;
+  font-weight: 900;
+  margin-bottom: 0.7rem;
+}
+.callout p {
+  color: #444;
+  font-size: 1.08rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background: #222;
+  color: #ccc;
+  padding: 1.2rem 0;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 -2px 12px rgba(67, 100, 247, 0.04);
+  animation: fadeIn 1.2s cubic-bezier(.77,0,.18,1) 0.7s both;
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr 2.5fr;
+  }
+  .sidebar:last-child {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.2rem 0.5rem;
+  }
+  .sidebar {
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .sidebar .job-card {
+    min-width: 180px;
+    flex: 1 1 0;
+  }
+}
+@media (max-width: 700px) {
+  .navbar, .nav-links, .login-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+  .header-banner h1 {
+    font-size: 2rem;
+  }
+  .main-content {
+    padding: 1.2rem 0.5rem;
+  }
+  .callout {
+    padding: 1.2rem 0.5rem;
+  }
+}
+@media (max-width: 500px) {
+  .logo {
+    font-size: 1.2rem;
+  }
+  .main-content h2, .callout h2 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Subtle scroll animation for job cards */
+.job-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: cardScrollIn 0.7s cubic-bezier(.77,0,.18,1) both;
+  animation-delay: 0.2s;
+}
+.job-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.job-card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+@keyframes cardScrollIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background: #e3e9f6;
+}
+::-webkit-scrollbar-thumb {
+  background: #b3c6f7;
+  border-radius: 8px;
+}
