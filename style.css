@@ -13,9 +13,14 @@ body {
   overflow-x: hidden;
 }
 
+/* 1. System text as Times New Roman */
+body, input, textarea, button {
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
 /* Header and Navbar */
 header {
-  background: linear-gradient(90deg, #0052D4 0%, #4364F7 100%);
+  background: linear-gradient(90deg, #5fa8e9 0%, #a18cd1 48%, #5fa8e9 80%, #ffffff 100%);
   color: #fff;
   box-shadow: 0 4px 24px rgba(67, 100, 247, 0.08);
   position: sticky;
@@ -33,7 +38,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 2.5rem;
+  padding: 0.2rem 0.7rem;
   flex-wrap: wrap;
   gap: 1rem;
 }
@@ -54,13 +59,17 @@ header {
   gap: 1.2rem;
   align-items: center;
 }
-.nav-links a, .login-btn {
-  color: #fff;
+.nav-links a {
+  color: #0a174e;
   text-decoration: none;
   font-weight: 700;
   font-size: 1.05rem;
   position: relative;
   transition: color 0.2s;
+}
+.nav-links a:hover {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(25, 118, 210, 0.10);
 }
 .nav-links a::after {
   content: '';
@@ -79,8 +88,8 @@ header {
 .nav-links a:hover {
   color: #e0eaff;
 }
-.login-btn {
-  background: #fff;
+.login-btn, .more-btn {
+  background: #eaf3fb;
   color: #0052D4;
   padding: 0.5rem 1.2rem;
   border-radius: 999px;
@@ -90,16 +99,45 @@ header {
   border: none;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  text-decoration: none !important;
 }
-.login-btn:hover {
-  background: #e4eaff;
-  color: #003a9b;
-  transform: translateY(-2px) scale(1.05);
+.login-btn::before, .more-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  background: linear-gradient(270deg, #0052D4, #4364F7, #00c3ff, #0052D4);
+  background-size: 600% 600%;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 999px;
+  animation: btnColorCycle 3s linear infinite;
+}
+.login-btn:hover::before, .more-btn:hover::before {
+  opacity: 1;
+}
+.login-btn:hover, .more-btn:hover {
+  color: #fff;
+  background: transparent;
+  box-shadow: 0 4px 16px 0 rgba(67, 100, 247, 0.18);
+}
+@keyframes btnColorCycle {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Remove underline from login-btn */
+.login-btn {
+  text-decoration: none !important;
 }
 
 .header-banner {
   text-align: center;
-  padding: 3.5rem 1rem 2.5rem 1rem;
+  padding: 0.4rem 1rem 0.4rem 1rem;
   animation: fadeIn 1.2s cubic-bezier(.77,0,.18,1) 0.3s both;
 }
 @keyframes fadeIn {
@@ -109,13 +147,14 @@ header {
 .header-banner h1 {
   font-size: 2.8rem;
   font-weight: 900;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.3rem;
+  margin-top: 0.1rem;
   letter-spacing: 1px;
   text-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 .header-banner p {
   font-size: 1.25rem;
-  color: #e0eaff;
+  color: #0a174e;
   font-weight: 600;
 }
 
@@ -127,6 +166,7 @@ header {
   padding: 2.5rem 2rem 1.5rem 2rem;
   max-width: 1300px;
   margin: 0 auto;
+  margin-top: 24px;
   animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1) 0.4s both;
 }
 @keyframes fadeInUp {
@@ -140,25 +180,37 @@ header {
   gap: 1.5rem;
 }
 
+/* 2. Job cards: color blur/glow and padding color */
 .job-card {
-  background: linear-gradient(120deg, #fff 80%, #e3e9f6 100%);
-  padding: 1.3rem 1rem 1.1rem 1rem;
-  border-radius: 14px;
-  box-shadow: 0 4px 18px rgba(67, 100, 247, 0.07);
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 4px 18px 4px rgba(67, 100, 247, 0.13), 0 0 32px 8px rgba(67, 100, 247, 0.10);
+  backdrop-filter: blur(6px);
+  border: 1.5px solid #e3e9f6;
+  padding: 1.7rem 1.2rem 1.5rem 1.2rem;
+  transition: box-shadow 0.25s, transform 0.25s, background 0.25s;
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
   position: relative;
   overflow: hidden;
   animation: cardAppear 0.8s cubic-bezier(.77,0,.18,1) both;
 }
-.job-card:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 8px 32px rgba(67, 100, 247, 0.13);
+
+/* 3. Job cards pop up on mouse move (using :hover and :active for fallback) */
+.job-card:hover, .job-card:active, .job-card.mousemove {
+  transform: translateY(-12px) scale(1.08);
+  box-shadow: 0 12px 36px 8px rgba(67, 100, 247, 0.18), 0 0 48px 12px rgba(67, 100, 247, 0.13);
+  background: rgba(255,255,255,0.95);
 }
-@keyframes cardAppear {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+
+/* 3b. JS helper class for mousemove pop effect (optional, for more advanced effect) */
+/*
+.job-card.mousemove {
+  transform: translateY(-12px) scale(1.08) !important;
+  box-shadow: 0 12px 36px 8px rgba(67, 100, 247, 0.18), 0 0 48px 12px rgba(67, 100, 247, 0.13) !important;
+  background: rgba(255,255,255,0.95) !important;
 }
+*/
+
 .job-card img {
   width: 62px;
   height: 62px;
@@ -191,17 +243,19 @@ header {
   border: none;
   font-weight: 700;
   box-shadow: 0 1px 4px rgba(67, 100, 247, 0.07);
-  transition: background 0.2s, color 0.2s, transform 0.2s;
+  transition: background 0.2s, color 0.2s, transform 0.2s, border-radius 0.2s;
 }
 .more-btn:hover {
   background: #dbe7ff;
   color: #003a9b;
   transform: scale(1.07);
+  border-radius: 999px;
 }
 
 /* Main Content */
 .main-content {
-  background: linear-gradient(120deg, #fff 80%, #e3e9f6 100%);
+  background: linear-gradient(120deg, #e3e9f6 60%, #e0e0ff 100%, #d1d8f7 0%);
+  border: 2px solid #8e9be6;
   padding: 2.5rem 2.2rem;
   border-radius: 16px;
   box-shadow: 0 6px 32px rgba(67, 100, 247, 0.09);
@@ -247,8 +301,8 @@ header {
   outline: none;
 }
 .main-content form button {
-  background: linear-gradient(90deg, #0052D4 0%, #4364F7 100%);
-  color: #fff;
+  background: #eaf3fb;
+  color: #0052D4;
   padding: 0.85rem 2.2rem;
   border: none;
   border-radius: 7px;
@@ -256,21 +310,40 @@ header {
   font-weight: 800;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(67, 100, 247, 0.08);
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.main-content form button::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  background: linear-gradient(270deg, #0052D4, #4364F7, #00c3ff, #0052D4);
+  background-size: 600% 600%;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 7px;
+  animation: btnColorCycle 3s linear infinite;
+}
+.main-content form button:hover::before {
+  opacity: 1;
 }
 .main-content form button:hover {
-  background: linear-gradient(90deg, #4364F7 0%, #0052D4 100%);
-  transform: scale(1.05);
+  color: #fff;
+  background: transparent;
+  box-shadow: 0 4px 16px 0 rgba(67, 100, 247, 0.18);
 }
 
 /* Callout Section */
 .callout {
   text-align: center;
   padding: 2.5rem 1.5rem;
-  background: linear-gradient(120deg, #fff 80%, #e3e9f6 100%);
+  background: linear-gradient(120deg, #ede7f6 70%, #e0e0ff 100%);
   margin: 2.5rem auto 2rem auto;
   border-radius: 16px;
-  box-shadow: 0 6px 32px rgba(67, 100, 247, 0.09);
+  box-shadow: 0 6px 32px rgba(67, 100, 247, 0.09), 0 0 24px 2px #c7b6f7;
   max-width: 900px;
   animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1) 0.6s both;
 }
@@ -288,7 +361,7 @@ header {
 /* Footer */
 footer {
   text-align: center;
-  background: #222;
+  background: linear-gradient(90deg, #0a174e 0%, #3a3f4e 100%);
   color: #ccc;
   padding: 1.2rem 0;
   font-size: 1rem;
@@ -373,4 +446,22 @@ footer {
 ::-webkit-scrollbar-thumb {
   background: #b3c6f7;
   border-radius: 8px;
+}
+
+.login-btn, .more-btn, .main-content form button {
+  background: linear-gradient(90deg, #3a1c71 0%, #283e51 100%);
+  color: #fff;
+  border: 1.5px solid #0a174e;
+}
+.login-btn::before, .more-btn::before, .main-content form button::before {
+  background: linear-gradient(270deg, #3a1c71, #283e51, #3a1c71, #283e51);
+}
+.login-btn:hover, .more-btn:hover, .main-content form button:hover {
+  color: #fff;
+  background: linear-gradient(90deg, #5f2c82 0%, #49a09d 100%);
+  box-shadow: 0 4px 16px 0 rgba(67, 100, 247, 0.18);
+}
+.login-btn:hover::before, .more-btn:hover::before, .main-content form button:hover::before {
+  background: linear-gradient(270deg, #00c6fb, #1976d2, #00c6fb, #1976d2);
+  opacity: 1;
 }
