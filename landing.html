@@ -18,10 +18,13 @@
         <a href="#">Job Seekers</a>
         <a href="#">Contact</a>
       </div>
-      <div class="login-buttons">
-        <a href="#" class="login-btn">MSL Login</a>
-        <a href="#" class="login-btn">Client Login</a>
-        <a href="#" class="login-btn">Job Seeker Login</a>
+      <div class="login-dropdown">
+        <button class="login-dropdown-btn" onclick="toggleLoginDropdown(event)">Login</button>
+        <div class="login-dropdown-content" id="loginDropdownMenu">
+          <a href="#">MSL Login</a>
+          <a href="#">Client Login</a>
+          <a href="jobseekerReg.html">Job Seeker Login</a>
+        </div>
       </div>
     </div>
     <div class="header-banner">
@@ -74,13 +77,13 @@
         <button class="more-btn">More</button>
       </div>
       <div class="job-card">
-        <img src="https://img.icons8.com/ios-filled/100/000000/megaphone.png" alt="">
+        <img src="https://img.icons8.com/ios-filled/100/1976d2/marketing.png" alt="">
         <h3>Marketing Lead</h3>
         <p>Drive campaigns and brand awareness.</p>
         <button class="more-btn">More</button>
       </div>
       <div class="job-card">
-        <img src="https://img.icons8.com/ios-filled/100/000000/calculator.png" alt="">
+        <img src="https://img.icons8.com/ios-filled/100/000000/money-bag.png" alt="">
         <h3>Finance Analyst</h3>
         <p>Analyze budgets and financial performance.</p>
         <button class="more-btn">More</button>
@@ -96,5 +99,29 @@
   <footer>
     &copy; 2025 MSL Careers. All rights reserved.
   </footer>
+
+  <script>
+    // Dropdown login functionality
+    function toggleLoginDropdown(e) {
+      e.preventDefault();
+      var dd = document.querySelector('.login-dropdown');
+      dd.classList.toggle('show');
+    }
+    document.addEventListener('click', function(event) {
+      var dd = document.querySelector('.login-dropdown');
+      if (!dd.contains(event.target)) {
+        dd.classList.remove('show');
+      }
+    });
+    // Job card pop effect
+    document.querySelectorAll('.job-card').forEach(card => {
+      card.addEventListener('mousemove', () => {
+        card.classList.add('mousemove');
+      });
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('mousemove');
+      });
+    });
+  </script>
 </body>
-</html>
+</html> 

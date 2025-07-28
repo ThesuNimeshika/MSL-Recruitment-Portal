@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Job Seeker Registration | MSL Recruitment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">MSL Careers</div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Jobs</a>
+        <a href="#">Employers</a>
+        <a href="#">Job Seekers</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="login-dropdown">
+        <button class="login-dropdown-btn" onclick="toggleLoginDropdown(event)">Login</button>
+        <div class="login-dropdown-content" id="loginDropdownMenu">
+          <a href="#">MSL Login</a>
+          <a href="#">Client Login</a>
+          <a href="jobseekerReg.html">Job Seeker Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="header-banner">
+      <h1>Job Seeker Form</h1>
+      <p>Start your journey to a better career. Complete your profile step by step.</p>
+    </div>
+  </header>
+
+  <div class="layout" style="margin-top: 32px;">
+    <div style="grid-column: 2 / 3; display: flex; justify-content: center; align-items: flex-start;">
+      <div class="main-content">
+        <form id="regForm">
+          <!-- Step indicators -->
+          <div style="display: flex; justify-content: center; margin-bottom: 1.5rem; gap: 0.5rem;">
+            <span class="step-indicator" id="step-ind-0">1</span>
+            <span class="step-indicator" id="step-ind-1">2</span>
+            <span class="step-indicator" id="step-ind-2">3</span>
+            <span class="step-indicator" id="step-ind-3">4</span>
+            <span class="step-indicator" id="step-ind-4">5</span>
+            <span class="step-indicator" id="step-ind-5">6</span>
+            <span class="step-indicator" id="step-ind-6">7</span>
+            <span class="step-indicator" id="step-ind-7">8</span>
+          </div>
+          <!-- Step 1: Personal Information -->
+          <div class="tab">
+            <h2>Personal Information</h2>
+            <div style="display: flex; gap: 1rem;">
+              <input type="text" placeholder="First Name *" required style="flex:1;">
+              <input type="text" placeholder="Last Name *" required style="flex:1;">
+            </div>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+              <input type="email" placeholder="Email Address *" required style="flex:1;">
+              <input type="tel" placeholder="Phone Number *" required style="flex:1;">
+            </div>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+              <input type="tel" placeholder="Alternate Phone" style="flex:1;">
+              <select required style="flex:1;">
+                <option value="">Preferred Contact Method</option>
+                <option>Email</option>
+                <option>Phone</option>
+                <option>Alternate Phone</option>
+              </select>
+            </div>
+            <input type="url" placeholder="LinkedIn Profile URL" style="margin-top: 1rem;">
+            <input type="text" placeholder="Current Address" style="margin-top: 1rem;">
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+              <input type="text" placeholder="Nationality" style="flex:1;">
+              <select required style="flex:1;">
+                <option value="">Work Authorization Status</option>
+                <option>Citizen</option>
+                <option>Permanent Resident</option>
+                <option>Work Permit</option>
+                <option>Student Visa</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <!-- Step 2: Contact Details -->
+          <div class="tab">
+            <h2>Contact Details</h2>
+            <input type="email" placeholder="Email Address" required>
+            <input type="tel" placeholder="Phone Number" required>
+            <input type="text" placeholder="Address" required>
+            <input type="text" placeholder="City" required>
+            <input type="text" placeholder="State" required>
+            <input type="text" placeholder="Zip Code" required>
+          </div>
+          <!-- Step 3: Education -->
+          <div class="tab">
+            <h2>Education</h2>
+            <input type="text" placeholder="Highest Qualification" required>
+            <input type="text" placeholder="University/College" required>
+            <input type="text" placeholder="Year of Graduation" required>
+          </div>
+          <!-- Step 4: Work Experience -->
+          <div class="tab">
+            <h2>Work Experience</h2>
+            <input type="text" placeholder="Most Recent Job Title" required>
+            <input type="text" placeholder="Company Name" required>
+            <input type="text" placeholder="Years of Experience" required>
+            <textarea placeholder="Brief Description of Responsibilities" rows="3"></textarea>
+          </div>
+          <!-- Step 5: Skills -->
+          <div class="tab">
+            <h2>Skills</h2>
+            <input type="text" placeholder="Primary Skills (comma separated)" required>
+            <input type="text" placeholder="Secondary Skills (comma separated)">
+            <textarea placeholder="Certifications, Awards, etc." rows="2"></textarea>
+          </div>
+          <!-- Step 6: Job Preferences -->
+          <div class="tab">
+            <h2>Job Preferences</h2>
+            <input type="text" placeholder="Preferred Job Role" required>
+            <input type="text" placeholder="Preferred Location" required>
+            <select required>
+              <option value="">Employment Type</option>
+              <option>Full Time</option>
+              <option>Part Time</option>
+              <option>Contract</option>
+              <option>Internship</option>
+            </select>
+          </div>
+          <!-- Step 7: Uploads -->
+          <div class="tab">
+            <h2>Uploads</h2>
+            <label>Resume (PDF/DOC):</label>
+            <input type="file" accept=".pdf,.doc,.docx" required>
+            <label>Profile Photo (optional):</label>
+            <input type="file" accept="image/*">
+          </div>
+          <!-- Step 8: Review & Submit -->
+          <div class="tab">
+            <h2>Review & Submit</h2>
+            <p>Please review your details before submitting your registration.</p>
+            <!-- In a real app, show a summary here -->
+          </div>
+          <!-- Navigation Buttons -->
+          <div style="display: flex; justify-content: space-between; margin-top: 1.5rem;">
+            <button type="button" id="prevBtn" class="more-btn" onclick="nextPrev(-1)" title="Previous">
+              <span aria-label="Previous" style="font-size:1.5rem;">&#x2039;</span>
+            </button>
+            <button type="button" id="nextBtn" class="more-btn" onclick="nextPrev(1)" title="Next">
+              <span aria-label="Next" style="font-size:1.5rem;">&#x203A;</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 MSL Careers. All rights reserved.
+  </footer>
+
+  <script>
+    let currentTab = 0;
+    showTab(currentTab);
+    function showTab(n) {
+      let x = document.getElementsByClassName("tab");
+      x[n].style.display = "block";
+      // Step indicators
+      for (let i = 0; i < 8; i++) {
+        document.getElementById('step-ind-' + i).classList.remove('active-step');
+      }
+      document.getElementById('step-ind-' + n).classList.add('active-step');
+      // Prev/Next
+      document.getElementById("prevBtn").style.display = n == 0 ? "none" : "inline-block";
+      document.getElementById("prevBtn").title = "Previous";
+      document.getElementById("nextBtn").innerHTML = n == (x.length - 1) ? '<span aria-label="Submit" style="font-size:1.5rem;">&#x203A;</span>' : '<span aria-label="Next" style="font-size:1.5rem;">&#x203A;</span>';
+      document.getElementById("nextBtn").title = n == (x.length - 1) ? "Submit" : "Next";
+    }
+    function nextPrev(n) {
+      let x = document.getElementsByClassName("tab");
+      if (n == 1 && !validateForm()) return false;
+      x[currentTab].style.display = "none";
+      currentTab = currentTab + n;
+      if (currentTab >= x.length) {
+        document.getElementById("regForm").submit();
+        return false;
+      }
+      showTab(currentTab);
+    }
+    function validateForm() {
+      let x, y, i, valid = true;
+      x = document.getElementsByClassName("tab");
+      y = x[currentTab].querySelectorAll("input, select, textarea");
+      for (i = 0; i < y.length; i++) {
+        if (y[i].hasAttribute('required') && y[i].value == "") {
+          y[i].classList.add("invalid");
+          valid = false;
+        } else {
+          y[i].classList.remove("invalid");
+        }
+      }
+      return valid;
+    }
+    function toggleLoginDropdown(e) {
+      e.preventDefault();
+      var dd = document.querySelector('.login-dropdown');
+      dd.classList.toggle('show');
+    }
+    document.addEventListener('click', function(event) {
+      var dd = document.querySelector('.login-dropdown');
+      if (!dd.contains(event.target)) {
+        dd.classList.remove('show');
+      }
+    });
+  </script>
+  <style>
+    .tab { display: none; }
+    .step-indicator {
+      width: 28px; height: 28px; border-radius: 50%; background: #eaf3fb; color: #3a1c71;
+      display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem;
+      border: 2px solid #a18cd1; transition: background 0.2s, color 0.2s, border 0.2s;
+    }
+    .active-step {
+      background: linear-gradient(90deg, #a18cd1 0%, #5fa8e9 100%);
+      color: #fff;
+      border: 2px solid #3a1c71;
+    }
+    input.invalid, select.invalid, textarea.invalid {
+      border: 2px solid #e57373 !important;
+      background: #fff0f0 !important;
+    }
+  </style>
+</body>
+</html>
