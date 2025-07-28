@@ -38,6 +38,14 @@
   <div class="layout" style="margin-top: 32px;">
     <div style="grid-column: 2 / 3; display: flex; justify-content: center; align-items: flex-start;">
       <div class="main-content">
+        <div class="position-relative">
+          <div id="form-toast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true" style="position:absolute; top:0.5rem; left:50%; transform:translateX(-50%); min-width:320px; max-width:90vw; z-index:1055;">
+            <div class="d-flex">
+              <div class="toast-body" id="form-toast-body"></div>
+              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
         <form id="regForm">
           <!-- Step indicators -->
           <div style="display: flex; justify-content: center; margin-bottom: 1.5rem; gap: 0.5rem;">
@@ -52,7 +60,7 @@
           </div>
           <!-- Step 1: Personal Information -->
           <div class="tab personal-info-tab">
-            <h2>Personal Information</h2>
+            <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Personal Information</h2>
             <div class="form-row">
               <input type="text" id="firstName" placeholder="First Name *" required pattern="^[A-Za-z]+$" oninput="this.value=this.value.replace(/[^A-Za-z]/g,'')">
               <input type="text" id="lastName" placeholder="Last Name *" required pattern="^[A-Za-z]+$" oninput="this.value=this.value.replace(/[^A-Za-z]/g,'')">
@@ -85,7 +93,11 @@
                 <option>Other</option>
               </select>
             </div>
-            <div id="personal-info-errors" style="color:#e53935; font-size:1rem; margin-bottom:0.5rem;"></div>
+            <div id="personal-info-errors" style="display:none;"></div>
+
+            <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 2rem; margin-bottom: 2rem;">Executive Summary</h2>
+            <label for="professionalOverview" style="font-weight:600; color:#3a1c71; display:block; margin-bottom:0.5rem; font-size:1.1rem;">Professional Overview *</label>
+            <textarea id="professionalOverview" placeholder="Describe your professional experience, skills, and career objectives..." rows="4" required style="width: 100%; margin-bottom: 1rem; padding: 0.7rem 1.5rem; border-radius: 8px; border: 1.5px solid #c7d2ee; font-size: 1.28rem; resize: vertical;"></textarea>
           </div>
           <!-- Step 2: Contact Details -->
           <div class="tab">
@@ -198,6 +210,7 @@
       x = document.getElementsByClassName("tab");
       y = x[currentTab].querySelectorAll("input, select, textarea");
       // Custom validation for Personal Information tab
+      let allErrors = [];
       if (currentTab === 0) {
         let errors = [];
         const firstName = document.getElementById('firstName');
@@ -244,7 +257,8 @@
         } else {
           linkedin.classList.remove('invalid');
         }
-        document.getElementById('personal-info-errors').innerHTML = errors.join('<br>');
+        allErrors = errors;
+        document.getElementById('personal-info-errors').style.display = 'none';
       }
       // Default validation for all fields
       for (i = 0; i < y.length; i++) {
@@ -254,6 +268,17 @@
         } else if (currentTab !== 0) {
           y[i].classList.remove("invalid");
         }
+      }
+      // Show toast if errors
+      var toastEl = document.getElementById('form-toast');
+      var toastBody = document.getElementById('form-toast-body');
+      if (!valid && allErrors.length > 0) {
+        toastBody.innerHTML = allErrors.join('<br>');
+        var toast = new bootstrap.Toast(toastEl, { delay: 5000 });
+        toast.show();
+      } else {
+        var toast = bootstrap.Toast.getInstance(toastEl);
+        if (toast) toast.hide();
       }
       return valid;
     }
