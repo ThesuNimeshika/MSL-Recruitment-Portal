@@ -261,7 +261,7 @@ header {
   border: 2px solid #8e9be6;
   box-shadow: 0 6px 32px rgba(67, 100, 247, 0.09);
   border-radius: 16px;
-  padding: 2.5rem 2.2rem;
+  padding: 2.5rem 0.7rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -405,7 +405,7 @@ footer {
     max-width: 98vw !important;
     min-height: unset;
     aspect-ratio: unset;
-    padding: 1.2rem 0.5rem;
+    padding: 1.2rem 0.2rem;
   }
 }
 @media (max-width: 700px) {
@@ -551,4 +551,34 @@ footer {
     left: 0;
     right: 0;
   }
+}
+
+/* Custom tooltip styles */
+[title] {
+  position: relative;
+}
+[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+[title]:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  z-index: 1000;
 }
