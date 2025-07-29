@@ -228,12 +228,45 @@
         allErrors = errors;
         document.getElementById('personal-info-errors').style.display = 'none';
       }
+      
+      // Custom validation for Current Position tab
+      if (currentTab === 1) {
+        let errors = [];
+        const currentCompany = document.getElementById('currentCompany');
+        const currentTitle = document.getElementById('currentTitle');
+        const keyResponsibilities = document.getElementById('keyResponsibilities');
+        
+        // Required fields validation for 2nd tab
+        if (!currentCompany.value.trim()) {
+          errors.push('Current Company is required.');
+          currentCompany.classList.add('invalid');
+          valid = false;
+        } else {
+          currentCompany.classList.remove('invalid');
+        }
+        if (!currentTitle.value.trim()) {
+          errors.push('Current Title is required.');
+          currentTitle.classList.add('invalid');
+          valid = false;
+        } else {
+          currentTitle.classList.remove('invalid');
+        }
+        if (!keyResponsibilities.value.trim()) {
+          errors.push('Key Responsibilities is required.');
+          keyResponsibilities.classList.add('invalid');
+          valid = false;
+        } else {
+          keyResponsibilities.classList.remove('invalid');
+        }
+        allErrors = errors;
+      }
+      
       // Default validation for all fields
       for (i = 0; i < y.length; i++) {
         if (y[i].hasAttribute('required') && y[i].value == "") {
           y[i].classList.add("invalid");
           valid = false;
-        } else if (currentTab !== 0) {
+        } else if (currentTab !== 0 && currentTab !== 1) {
           y[i].classList.remove("invalid");
         }
       }
@@ -267,50 +300,5 @@
       // All dropdowns now use native Bootstrap styling
     });
   </script>
-  <style>
-    .tab { display: none; }
-    .step-indicator {
-      width: 28px; height: 28px; border-radius: 50%; background: #eaf3fb; color: #3a1c71;
-      display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem;
-      border: 2px solid #a18cd1; transition: background 0.2s, color 0.2s, border 0.2s;
-    }
-    .active-step {
-      background: linear-gradient(90deg, #a18cd1 0%, #5fa8e9 100%);
-      color: #fff;
-      border: 2px solid #3a1c71;
-    }
-    input.invalid, select.invalid, textarea.invalid {
-      border: 2px solid #e57373 !important;
-      background: #fff0f0 !important;
-    }
-    .personal-info-tab .form-row,
-    .tab .form-row {
-      display: flex;
-      gap: 0.7rem;
-      margin-bottom: 1.2rem;
-    }
-    .personal-info-tab .form-row input,
-    .personal-info-tab .form-row select,
-    .tab .form-row input,
-    .tab .form-row select {
-      flex: 1 1 0;
-      width: 100%;
-      max-width: 100%;
-      font-size: 1.28rem;
-      padding: 0.7rem 1.5rem;
-      border-radius: 8px;
-      margin: 0;
-      box-sizing: border-box;
-    }
-    .personal-info-tab .form-row select,
-    .tab .form-row select {
-      min-width: 0;
-    }
-    .personal-info-tab,
-    .tab {
-      padding: 0;
-      margin: 0;
-    }
-  </style>
 </body>
 </html>

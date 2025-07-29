@@ -571,6 +571,7 @@ footer {
   white-space: nowrap;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
 }
 [title]:hover::before {
   content: '';
@@ -581,4 +582,87 @@ footer {
   border: 5px solid transparent;
   border-top-color: #333;
   z-index: 1000;
+  pointer-events: none;
+}
+
+/* Navigation button hover colors - sky blue and white mix */
+.more-btn:hover {
+  background: linear-gradient(90deg, #87CEEB 0%, #E0F6FF 50%, #F0F8FF 100%) !important;
+  color: #1e3a8a !important;
+  box-shadow: 0 4px 16px 0 rgba(135, 206, 235, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ===== MULTI-STEP FORM STYLES ===== */
+
+/* Tab display control */
+.tab { 
+  display: none; 
+}
+
+/* Step indicator styling */
+.step-indicator {
+  width: 28px; 
+  height: 28px; 
+  border-radius: 50%; 
+  background: #eaf3fb; 
+  color: #3a1c71;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-weight: bold; 
+  font-size: 1rem;
+  border: 2px solid #a18cd1; 
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+/* Active step indicator */
+.active-step {
+  background: linear-gradient(90deg, #a18cd1 0%, #5fa8e9 100%);
+  color: #fff;
+  border: 2px solid #3a1c71;
+}
+
+/* Form validation error styling */
+input.invalid, 
+select.invalid, 
+textarea.invalid {
+  border: 2px solid #e57373 !important;
+  background: #fff0f0 !important;
+}
+
+/* Form row layout for 2-column inputs */
+.personal-info-tab .form-row,
+.tab .form-row {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Input and select field styling for form rows */
+.personal-info-tab .form-row input,
+.personal-info-tab .form-row select,
+.tab .form-row input,
+.tab .form-row select {
+  flex: 1 1 0;
+  width: 100%;
+  max-width: 100%;
+  font-size: 1.28rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Select field width optimization */
+.personal-info-tab .form-row select,
+.tab .form-row select {
+  min-width: 0;
+}
+
+/* Tab container spacing */
+.personal-info-tab,
+.tab {
+  padding: 0;
+  margin: 0;
 }
