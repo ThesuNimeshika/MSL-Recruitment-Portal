@@ -593,6 +593,28 @@ footer {
   transform: translateY(-2px) !important;
 }
 
+/* Navigation buttons specific styling */
+#prevBtn, #nextBtn {
+  padding: 0.25rem 3rem !important;
+  height: 1.8rem !important;
+  font-size: 0.85rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 1rem !important;
+}
+
+/* Remove tooltip margin for navigation buttons */
+#prevBtn[title]:hover::after,
+#nextBtn[title]:hover::after {
+  margin-bottom: 0 !important;
+}
+
+#prevBtn[title]:hover::before,
+#nextBtn[title]:hover::before {
+  margin-bottom: 0 !important;
+}
+
 /* ===== MULTI-STEP FORM STYLES ===== */
 
 /* Tab display control */
