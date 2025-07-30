@@ -10,6 +10,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Select CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+  <!-- Toastr CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
   <style>
     body {
       display: flex;
@@ -33,21 +35,23 @@
       flex: 1;
       width: 100%;
       max-width: none;
-      padding: 0.7rem 1.5rem;
+      padding: 0.5rem 1rem;
       border-radius: 8px;
       border: 1.5px solid #c7d2ee;
-      font-size: 1.28rem;
+      font-size: 14px;
       box-sizing: border-box;
+      height: 35px;
     }
     .form-row textarea {
       width: 100%;
       max-width: none;
-      padding: 0.7rem 1.5rem;
+      padding: 0.5rem 1rem;
       border-radius: 8px;
       border: 1.5px solid #c7d2ee;
-      font-size: 1.28rem;
+      font-size: 14px;
       resize: vertical;
       box-sizing: border-box;
+      min-height: 60px;
     }
     .section {
       margin-bottom: 3rem;
@@ -89,6 +93,31 @@
       text-align: center;
       padding: 1rem;
     }
+    .invalid-field {
+      border: 2px solid #dc3545 !important;
+      background-color: #fff5f5 !important;
+    }
+    .validation-message {
+      color: #dc3545;
+      font-size: 11px;
+      margin-top: 0.25rem;
+      display: none;
+    }
+    .form-row.has-error .validation-message {
+      display: block;
+    }
+    .bootstrap-select .dropdown-menu {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .bootstrap-select .dropdown-toggle {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .bootstrap-select {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
   </style>
 </head>
 <body>
@@ -118,239 +147,363 @@
   </header>
 
   <div class="form-container">
-    <form id="regForm">
+        <form id="regForm">
       <!-- Personal Information -->
       <div class="section">
-        <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Personal Information</h2>
+        <h2 style="text-align: center; color: #3a1c71; font-size: 18px; font-weight: bold; margin-top: 0; margin-bottom: 2rem;">Personal Information</h2>
         <div class="form-row">
-          <input type="text" id="firstName" placeholder="First Name *" required pattern="^[A-Za-z]+$" oninput="this.value=this.value.replace(/[^A-Za-z]/g,'')">
-          <input type="text" id="lastName" placeholder="Last Name *" required pattern="^[A-Za-z]+$" oninput="this.value=this.value.replace(/[^A-Za-z]/g,'')">
-        </div>
-        <div class="form-row">
-          <input type="email" id="email" placeholder="Email Address *" required>
-          <input type="tel" id="phone" placeholder="Phone Number *" required pattern="^\d{10}$" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-        </div>
-        <div class="form-row">
-          <input type="tel" id="altPhone" placeholder="Alternate Phone" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-          <select class="form-select" id="contactMethod" required>
-            <option value="">Preferred Contact Method</option>
-            <option>Email</option>
-            <option>Phone</option>
-            <option>Alternate Phone</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <input type="url" id="linkedin" placeholder="LinkedIn Profile URL">
-          <input type="text" id="currentAddress" placeholder="Current Address">
-        </div>
-        <div class="form-row">
-          <input type="text" id="nationality" placeholder="Nationality">
-          <select class="form-select" id="workAuthStatus" required>
-            <option value="">Work Authorization Status</option>
-            <option>Citizen</option>
-            <option>Permanent Resident</option>
-            <option>Work Permit</option>
-            <option>Student Visa</option>
-            <option>Other</option>
-          </select>
+          <div style="flex: 1;">
+            <input type="text" id="firstName" name="firstName" placeholder="First Name *" required pattern="^[A-Za-z]+$" oninput="this.value=this.value.replace(/[^A-Za-z]/g,'')">
+            <div class="validation-message">First Name is required</div>
+          </div>
+          <div style="flex: 1;">
+            <input type="text" id="lastName" name="lastName" placeholder="Last Name *" required pattern="^[A-Za-z]+$" oninput="this.value=this.value.replace(/[^A-Za-z]/g,'')">
+            <div class="validation-message">Last Name is required</div>
+          </div>
+            </div>
+            <div class="form-row">
+          <div style="flex: 1;">
+            <input type="email" id="email" name="email" placeholder="Email Address *" required>
+            <div class="validation-message">Email Address is required</div>
+          </div>
+          <div style="flex: 1;">
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number *" required pattern="^\d{10}$" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+            <div class="validation-message">Phone Number is required</div>
+          </div>
+            </div>
+            <div class="form-row">
+          <div style="flex: 1;">
+            <input type="tel" id="altPhone" name="altPhone" placeholder="Alternate Phone" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+          </div>
+          <div style="flex: 1;">
+            <select class="form-select" id="contactMethod" name="contactMethod" required>
+              <option value="">Preferred Contact Method *</option>
+                <option>Email</option>
+                <option>Phone</option>
+                <option>Alternate Phone</option>
+              </select>
+            <div class="validation-message">Contact Method is required</div>
+          </div>
+            </div>
+            <div class="form-row">
+          <div style="flex: 1;">
+            <input type="url" id="linkedin" name="linkedin" placeholder="LinkedIn Profile URL">
+          </div>
+          <div style="flex: 1;">
+            <input type="text" id="currentAddress" name="currentAddress" placeholder="Current Address">
+          </div>
+            </div>
+            <div class="form-row">
+          <div style="flex: 1;">
+            <input type="text" id="nationality" name="nationality" placeholder="Nationality">
+          </div>
+          <div style="flex: 1;">
+            <select class="form-select" id="workAuthStatus" name="workAuthStatus" required>
+              <option value="">Work Authorization Status *</option>
+                <option>Citizen</option>
+                <option>Permanent Resident</option>
+                <option>Work Permit</option>
+                <option>Student Visa</option>
+                <option>Other</option>
+              </select>
+            <div class="validation-message">Work Authorization Status is required</div>
+          </div>
         </div>
       </div>
 
       <!-- Current Position -->
       <div class="section">
-        <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Current Position</h2>
+        <h2 style="text-align: center; color: #3a1c71; font-size: 18px; font-weight: bold; margin-top: 0; margin-bottom: 2rem;">Current Position</h2>
         <div class="form-row">
-          <input type="text" id="currentCompany" placeholder="Current Company *" required>
-          <input type="text" id="currentTitle" placeholder="Current Title *" required>
+          <div style="flex: 1;">
+            <input type="text" id="currentCompany" name="currentCompany" placeholder="Current Company *" required>
+            <div class="validation-message">Current Company is required</div>
+            </div>
+          <div style="flex: 1;">
+            <input type="text" id="currentTitle" name="currentTitle" placeholder="Current Title *" required>
+            <div class="validation-message">Current Title is required</div>
+          </div>
+            </div>
+            <div class="form-row">
+          <div style="flex: 1;">
+            <input type="text" id="industry" name="industry" placeholder="Industry">
+          </div>
+          <div style="flex: 1;">
+            <select class="form-select" id="companySize" name="companySize">
+                <option value="">Company Size</option>
+                <option>1-10 employees</option>
+                <option>11-50 employees</option>
+                <option>51-200 employees</option>
+                <option>201-500 employees</option>
+                <option>501-1000 employees</option>
+                <option>1000+ employees</option>
+              </select>
+          </div>
         </div>
         <div class="form-row">
-          <input type="text" id="industry" placeholder="Industry">
-          <select class="form-select" id="companySize">
-            <option value="">Company Size</option>
-            <option>1-10 employees</option>
-            <option>11-50 employees</option>
-            <option>51-200 employees</option>
-            <option>201-500 employees</option>
-            <option>501-1000 employees</option>
-            <option>1000+ employees</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <input type="date" id="startDate" placeholder="Start Date">
-          <input type="text" id="totalCompensation" placeholder="Current Total Compensation">
-        </div>
-        <div class="form-row">
-          <textarea id="keyResponsibilities" placeholder="Describe your key responsibilities and achievements..." rows="4" required></textarea>
-        </div>
-        <div class="form-row">
-          <input type="number" id="teamSize" placeholder="Team Size Managed" min="0">
-          <input type="text" id="budgetResponsibility" placeholder="Budget Responsibility">
-        </div>
-      </div>
-      
+          <div style="flex: 1;">
+            <input type="date" id="startDate" name="startDate" placeholder="Start Date">
+          </div>
+          <div style="flex: 1;">
+            <input type="text" id="totalCompensation" name="totalCompensation" placeholder="Current Total Compensation">
+          </div>
+            </div>
+            <div class="form-row">
+          <div style="width: 100%;">
+            <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Key Responsibilities</label>
+            <textarea id="keyResponsibilities" name="keyResponsibilities" placeholder="Describe your key responsibilities and achievements..." rows="4" required></textarea>
+            <div class="validation-message">Key Responsibilities is required</div>
+            </div>
+            </div>
+            <div class="form-row">
+          <div style="flex: 1;">
+            <input type="number" id="teamSize" name="teamSize" placeholder="Team Size Managed" min="0">
+          </div>
+          <div style="flex: 1;">
+            <input type="text" id="budgetResponsibility" name="budgetResponsibility" placeholder="Budget Responsibility">
+          </div>
+            </div>
+          </div>
+          
       <!-- Experience and Skills -->
       <div class="section">
-        <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Experience and Skills</h2>
+        <h2 style="text-align: center; color: #3a1c71; font-size: 18px; font-weight: bold; margin-top: 0; margin-bottom: 2rem;">Experience and Skills</h2>
         <div class="form-row">
-          <input type="number" id="totalYearsExperience" placeholder="Total Years of Experience" min="0" required>
-          <input type="number" id="yearsExecutiveRoles" placeholder="Years in Executive Roles" min="0" required>
+          <div style="flex: 1;">
+            <input type="number" id="totalYearsExperience" name="totalYearsExperience" placeholder="Total Years of Experience" min="0" required>
+            <div class="validation-message">Total Years of Experience is required</div>
+          </div>
+          <div style="flex: 1;">
+            <input type="number" id="yearsExecutiveRoles" name="yearsExecutiveRoles" placeholder="Years in Executive Roles" min="0" required>
+            <div class="validation-message">Years in Executive Roles is required</div>
+          </div>
         </div>
         <div class="form-row">
-          <textarea id="coreCompetencies" placeholder="List your core competencies and key skills..." rows="4" required></textarea>
+          <div style="width: 100%;">
+            <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Core Competencies</label>
+            <textarea id="coreCompetencies" name="coreCompetencies" placeholder="List your core competencies and key skills..." rows="4" required></textarea>
+            <div class="validation-message">Core Competencies is required</div>
+          </div>
         </div>
+            <div class="form-row">
+          <div style="width: 100%;">
+            <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Industry Experience</label>
+            <textarea id="industryExperience" name="industryExperience" placeholder="Describe your industry experience and expertise..." rows="3"></textarea>
+            </div>
+            </div>
         <div class="form-row">
-          <textarea id="industryExperience" placeholder="Describe your industry experience and expertise..." rows="3"></textarea>
-        </div>
+          <div style="width: 100%;">
+            <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Functional Experience</label>
+            <textarea id="functionalExperience" name="functionalExperience" placeholder="Describe your functional experience and specializations..." rows="3"></textarea>
+            </div>
+            </div>
         <div class="form-row">
-          <textarea id="functionalExperience" placeholder="Describe your functional experience and specializations..." rows="3"></textarea>
-        </div>
-        <div class="form-row">
-          <select class="" id="languages" multiple data-live-search="true" style="min-height: 6rem;">
-            <option value="JavaScript">JavaScript</option>
-            <option value="Python">Python</option>
-            <option value="Java">Java</option>
-            <option value="C++">C++</option>
-            <option value="C#">C#</option>
-            <option value="TypeScript">TypeScript</option>
-            <option value="HTML/CSS">HTML/CSS</option>
-            <option value="SQL">SQL</option>
-            <option value="React">React</option>
-            <option value="Angular">Angular</option>
-            <option value="Node.js">Node.js</option>
-            <option value="Django">Django</option>
-            <option value="Spring">Spring</option>
-            <option value="MongoDB">MongoDB</option>
-            <option value="PostgreSQL">PostgreSQL</option>
-            <option value="MySQL">MySQL</option>
-            <option value="Docker">Docker</option>
-            <option value="AWS">AWS</option>
-            <option value="Git">Git</option>
-          </select>
-        </div>
+          <div style="width: 100%;">
+            <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Programming Languages & Technologies</label>
+            <select class="form-select" id="languages" name="languages" multiple data-live-search="true" style="width: 100%; max-width: none; padding: 0.5rem 1rem; border-radius: 8px; border: 1.5px solid #c7d2ee; font-size: 14px; box-sizing: border-box; min-height: 6rem;">
+                  <option value="JavaScript">JavaScript</option>
+                  <option value="Python">Python</option>
+                  <option value="Java">Java</option>
+                  <option value="C++">C++</option>
+                  <option value="C#">C#</option>
+                  <option value="TypeScript">TypeScript</option>
+                  <option value="HTML/CSS">HTML/CSS</option>
+                  <option value="SQL">SQL</option>
+                  <option value="React">React</option>
+                  <option value="Angular">Angular</option>
+                  <option value="Node.js">Node.js</option>
+                  <option value="Django">Django</option>
+                  <option value="Spring">Spring</option>
+                  <option value="MongoDB">MongoDB</option>
+                  <option value="PostgreSQL">PostgreSQL</option>
+                  <option value="MySQL">MySQL</option>
+                  <option value="Docker">Docker</option>
+                  <option value="AWS">AWS</option>
+                  <option value="Git">Git</option>
+                </select>
+          </div>
+          </div>
       </div>
 
       <!-- Education -->
       <div class="section">
-        <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Education</h2>
+        <h2 style="text-align: center; color: #3a1c71; font-size: 18px; font-weight: bold; margin-top: 0; margin-bottom: 2rem;">Education</h2>
         <div class="form-row">
-          <input type="text" id="highestDegree" placeholder="Highest Degree *" required>
-          <input type="text" id="fieldOfStudy" placeholder="Field of Study *" required>
+          <div style="flex: 1;">
+            <input type="text" id="highestDegree" name="highestDegree" placeholder="Highest Degree *" required>
+            <div class="validation-message">Highest Degree is required</div>
+          </div>
+          <div style="flex: 1;">
+            <input type="text" id="fieldOfStudy" name="fieldOfStudy" placeholder="Field of Study *" required>
+            <div class="validation-message">Field of Study is required</div>
+          </div>
         </div>
         <div class="form-row">
-          <input type="text" id="university" placeholder="University/Institution">
-          <input type="text" id="graduationYear" placeholder="Graduation Year" pattern="^(19|20)\\d{2}$" maxlength="4">
+          <div style="flex: 1;">
+            <input type="text" id="university" name="university" placeholder="University/Institution">
+          </div>
+          <div style="flex: 1;">
+            <input type="text" id="graduationYear" name="graduationYear" placeholder="Graduation Year" pattern="^(19|20)\\d{2}$" maxlength="4">
+          </div>
         </div>
         <div class="form-row">
-          <textarea id="additionalEducation" placeholder="List any additional education or certifications..." rows="3"></textarea>
+          <div style="width: 100%;">
+            <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Additional Education/Certifications</label>
+            <textarea id="additionalEducation" name="additionalEducation" placeholder="List any additional education or certifications..." rows="3"></textarea>
+          </div>
         </div>
       </div>
 
       <!-- Location and Mobility -->
       <div class="section">
-        <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Location and Mobility</h2>
+        <h2 style="text-align: center; color: #3a1c71; font-size: 18px; font-weight: bold; margin-top: 0; margin-bottom: 2rem;">Location and Mobility</h2>
         <div class="form-row">
-          <textarea id="preferredLocations" placeholder="List your preferred work locations..." rows="3" required></textarea>
+          <div style="width: 100%;">
+            <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Preferred Work Locations</label>
+            <textarea id="preferredLocations" name="preferredLocations" placeholder="List your preferred work locations..." rows="3" required></textarea>
+            <div class="validation-message">Preferred Work Locations is required</div>
+          </div>
         </div>
         <div class="form-row">
-          <select id="willingToRelocate" class="form-select" required>
-            <option value="">Willingness to Relocate</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-          <select id="travelWillingness" class="form-select" required>
-            <option value="">Travel Willingness</option>
-            <option value="None">None</option>
-            <option value="Occasional">Occasional</option>
-            <option value="Frequent">Frequent</option>
-            <option value="Extensive">Extensive</option>
-          </select>
+          <div style="flex: 1;">
+            <select id="willingToRelocate" name="willingToRelocate" class="form-select" required>
+              <option value="">Willingness to Relocate *</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+            <div class="validation-message">Willingness to Relocate is required</div>
+          </div>
+          <div style="flex: 1;">
+            <select id="travelWillingness" name="travelWillingness" class="form-select" required>
+              <option value="">Travel Willingness *</option>
+              <option value="None">None</option>
+              <option value="Occasional">Occasional</option>
+              <option value="Frequent">Frequent</option>
+              <option value="Extensive">Extensive</option>
+            </select>
+            <div class="validation-message">Travel Willingness is required</div>
+          </div>
         </div>
         <div class="form-row">
-          <select id="remotePreference" class="form-select" required>
-            <option value="">Remote Work Preferences</option>
-            <option value="On-site">On-site</option>
-            <option value="Hybrid">Hybrid</option>
-            <option value="Remote">Remote</option>
-            <option value="Flexible">Flexible</option>
-          </select>
+          <div style="flex: 1;">
+            <select id="remotePreference" name="remotePreference" class="form-select" required>
+              <option value="">Remote Work Preferences *</option>
+              <option value="On-site">On-site</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="Remote">Remote</option>
+              <option value="Flexible">Flexible</option>
+            </select>
+            <div class="validation-message">Remote Work Preferences is required</div>
+          </div>
         </div>
-      </div>
-
+              </div>
+          
       <!-- Compensation Expectations -->
       <div class="section">
-        <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Compensation Expectations</h2>
+        <h2 style="text-align: center; color: #3a1c71; font-size: 20px; font-weight: bold; margin-top: 0; margin-bottom: 2rem;">Compensation Expectations</h2>
         <div class="form-row">
-          <input type="number" id="targetBaseMin" placeholder="Target Base Salary - Minimum">
-          <input type="number" id="targetBaseMax" placeholder="Target Base Salary - Maximum">
+          <div style="flex: 1;">
+            <input type="number" id="targetBaseMin" name="targetBaseMin" placeholder="Target Base Salary - Minimum">
+          </div>
+          <div style="flex: 1;">
+            <input type="number" id="targetBaseMax" name="targetBaseMax" placeholder="Target Base Salary - Maximum">
+          </div>
         </div>
         <div class="form-row">
-          <select id="compDegree" class="form-select">
-            <option value="">Select Degree</option>
-            <option value="Bachelors">Bachelors</option>
-            <option value="Masters">Masters</option>
-            <option value="PhD">PhD</option>
-            <option value="Other">Other</option>
-          </select>
-          <select id="compOption" class="form-select">
-            <option value="">Select Option</option>
-            <option value="Option1">Option 1</option>
-            <option value="Option2">Option 2</option>
-          </select>
+          <div style="flex: 1;">
+            <select id="compDegree" name="compDegree" class="form-select">
+              <option value="">Select Degree</option>
+              <option value="Bachelors">Bachelors</option>
+              <option value="Masters">Masters</option>
+              <option value="PhD">PhD</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div style="flex: 1;">
+            <select id="compOption" name="compOption" class="form-select">
+              <option value="">Select Option</option>
+              <option value="Option1">Option 1</option>
+              <option value="Option2">Option 2</option>
+            </select>
+          </div>
         </div>
         <div class="form-row">
-          <select id="compLevel" class="form-select">
-            <option value="">Select Level</option>
-            <option value="Entry">Entry</option>
-            <option value="Mid">Mid</option>
-            <option value="Senior">Senior</option>
-            <option value="Executive">Executive</option>
-          </select>
-          <select id="compPreference" class="form-select">
-            <option value="">Select Preference</option>
-            <option value="Preference1">Preference 1</option>
-            <option value="Preference2">Preference 2</option>
-          </select>
+          <div style="flex: 1;">
+            <select id="compLevel" name="compLevel" class="form-select">
+              <option value="">Select Level</option>
+              <option value="Entry">Entry</option>
+              <option value="Mid">Mid</option>
+              <option value="Senior">Senior</option>
+              <option value="Executive">Executive</option>
+            </select>
+          </div>
+          <div style="flex: 1;">
+            <select id="compPreference" name="compPreference" class="form-select">
+              <option value="">Select Preference</option>
+              <option value="Preference1">Preference 1</option>
+              <option value="Preference2">Preference 2</option>
+            </select>
+          </div>
         </div>
         <div class="form-row">
-          <input type="number" id="targetTotalComp" placeholder="Target Total Compensation">
-          <select id="equityImportance" class="form-select">
-            <option value="">Select Importance</option>
-            <option value="Not Important">Not Important</option>
-            <option value="Somewhat Important">Somewhat Important</option>
-            <option value="Important">Important</option>
-            <option value="Very Important">Very Important</option>
-          </select>
+          <div style="flex: 1;">
+            <input type="number" id="targetTotalComp" name="targetTotalComp" placeholder="Target Total Compensation">
+          </div>
+          <div style="flex: 1;">
+            <select id="equityImportance" name="equityImportance" class="form-select">
+              <option value="">Select Importance</option>
+              <option value="Not Important">Not Important</option>
+              <option value="Somewhat Important">Somewhat Important</option>
+              <option value="Important">Important</option>
+              <option value="Very Important">Very Important</option>
+            </select>
+          </div>
         </div>
         <div class="form-row">
-          <textarea id="additionalCompNotes" placeholder="Add any additional compensation notes..." rows="3"></textarea>
-        </div>
-      </div>
-
+          <div style="width: 100%;">
+            <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Additional Compensation Notes</label>
+            <textarea id="additionalCompNotes" name="additionalCompNotes" placeholder="Add any additional compensation notes..." rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+          
       <!-- Availability -->
       <div class="section">
-        <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Availability</h2>
+        <h2 style="text-align: center; color: #3a1c71; font-size: 18px; font-weight: bold; margin-top: 0; margin-bottom: 2rem;">Availability</h2>
         <div class="form-row">
-          <select id="employmentStatus" class="form-select" required>
-            <option value="">Current Employment Status *</option>
-            <option value="Employed">Employed</option>
-            <option value="Unemployed">Unemployed</option>
-            <option value="Self-Employed">Self-Employed</option>
-            <option value="Student">Student</option>
-            <option value="Other">Other</option>
-          </select>
-          <select id="searchStatus" class="form-select">
-            <option value="">Search Status</option>
-            <option value="Active">Active</option>
-            <option value="Passive">Passive</option>
-            <option value="Not Searching">Not Searching</option>
-          </select>
+          <div style="flex: 1;">
+            <select id="employmentStatus" name="employmentStatus" class="form-select" required>
+              <option value="">Current Employment Status *</option>
+              <option value="Employed">Employed</option>
+              <option value="Unemployed">Unemployed</option>
+              <option value="Self-Employed">Self-Employed</option>
+              <option value="Student">Student</option>
+              <option value="Other">Other</option>
+            </select>
+            <div class="validation-message">Current Employment Status is required</div>
+          </div>
+          <div style="flex: 1;">
+            <select id="searchStatus" name="searchStatus" class="form-select">
+              <option value="">Search Status</option>
+              <option value="Active">Active</option>
+              <option value="Passive">Passive</option>
+              <option value="Not Searching">Not Searching</option>
+            </select>
+          </div>
         </div>
         <div class="form-row">
-          <input type="text" id="noticePeriod" placeholder="Notice Period Required">
-          <input type="date" id="earliestStartDate" placeholder="Earliest Available Start Date">
+          <div style="flex: 1;">
+            <input type="text" id="noticePeriod" name="noticePeriod" placeholder="Notice Period Required">
+          </div>
+          <div style="flex: 1;">
+            <input type="date" id="earliestStartDate" name="earliestStartDate" placeholder="Earliest Available Start Date">
+          </div>
         </div>
         <div class="form-row">
-          <textarea id="availabilityNotes" placeholder="Add any notes about your availability..." rows="3"></textarea>
+          <div style="width: 100%;">
+            <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Availability Notes</label>
+            <textarea id="availabilityNotes" name="availabilityNotes" placeholder="Add any notes about your availability..." rows="3"></textarea>
+          </div>
         </div>
       </div>
 
@@ -358,19 +511,27 @@
       <div style="text-align: center; margin-top: 3rem;">
         <button type="submit" style="background: linear-gradient(90deg, #a18cd1 0%, #5fa8e9 100%); color: white; border: none; padding: 1rem 3rem; border-radius: 8px; font-size: 1.2rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 16px rgba(135, 206, 235, 0.3); transition: all 0.3s ease;">
           Submit Application
-        </button>
+            </button>
+          </div>
+        </form>
+
+    <!-- Preview Section -->
+    <div class="preview-section">
+      <h3 style="text-align: center; color: #3a1c71; margin-bottom: 2rem;">Candidate Details Preview</h3>
+      <div class="preview-grid" id="previewGrid">
+        <!-- Preview content will be populated by JavaScript -->
       </div>
-    </form>
-
-
+    </div>
+  </div>
 
   <footer>
     &copy; 2025 MSL Careers. All rights reserved.
   </footer>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script>
     // Initialize Bootstrap Select for languages field
     $(document).ready(function() {
@@ -379,6 +540,25 @@
         liveSearch: true,
         actionsBox: false
       });
+      
+      // Configure toastr
+      toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      };
     });
 
     function toggleLoginDropdown(e) {
@@ -473,10 +653,92 @@
     // Initial preview update
     updatePreview();
     
+    // Form validation function
+    function validateForm() {
+      const requiredFields = document.querySelectorAll('[required]');
+      let isValid = true;
+      let emptyFields = [];
+      
+      // Clear previous validation states
+      document.querySelectorAll('.invalid-field').forEach(field => {
+        field.classList.remove('invalid-field');
+      });
+      document.querySelectorAll('.validation-message').forEach(msg => {
+        msg.style.display = 'none';
+      });
+      
+      // Check each required field
+      requiredFields.forEach(field => {
+        const value = field.value.trim();
+        const fieldName = field.placeholder || field.name || 'Field';
+        
+        if (!value) {
+          field.classList.add('invalid-field');
+          const validationMsg = field.parentNode.querySelector('.validation-message');
+          if (validationMsg) {
+            validationMsg.style.display = 'block';
+          }
+          emptyFields.push(fieldName.replace(' *', ''));
+          isValid = false;
+        }
+      });
+      
+      return { isValid, emptyFields };
+    }
+    
     // Form submission
     document.getElementById('regForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      
+      const validation = validateForm();
+      
+      if (!validation.isValid) {
+        const emptyFieldsList = validation.emptyFields.join(', ');
+        toastr.error(`Please fill all required fields: ${emptyFieldsList}`, 'Validation Error');
+        
+        // Scroll to first empty field
+        const firstEmptyField = document.querySelector('.invalid-field');
+        if (firstEmptyField) {
+          firstEmptyField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        return false;
+      }
+      
+      // If validation passes
+      toastr.success('Form submitted successfully!', 'Success');
       alert('Form submitted successfully!');
+    });
+    
+    // Real-time validation on input
+    document.querySelectorAll('[required]').forEach(field => {
+      field.addEventListener('blur', function() {
+        const value = this.value.trim();
+        if (!value) {
+          this.classList.add('invalid-field');
+          const validationMsg = this.parentNode.querySelector('.validation-message');
+          if (validationMsg) {
+            validationMsg.style.display = 'block';
+          }
+        } else {
+          this.classList.remove('invalid-field');
+          const validationMsg = this.parentNode.querySelector('.validation-message');
+          if (validationMsg) {
+            validationMsg.style.display = 'none';
+          }
+        }
+      });
+      
+      field.addEventListener('input', function() {
+        const value = this.value.trim();
+        if (value) {
+          this.classList.remove('invalid-field');
+          const validationMsg = this.parentNode.querySelector('.validation-message');
+          if (validationMsg) {
+            validationMsg.style.display = 'none';
+          }
+        }
+      });
     });
   </script>
 </body>
