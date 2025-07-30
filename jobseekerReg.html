@@ -10,6 +10,86 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Select CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .form-container {
+      flex: 1;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-row input,
+    .form-row select {
+      flex: 1;
+      width: 100%;
+      max-width: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      border: 1.5px solid #c7d2ee;
+      font-size: 1.28rem;
+      box-sizing: border-box;
+    }
+    .form-row textarea {
+      width: 100%;
+      max-width: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      border: 1.5px solid #c7d2ee;
+      font-size: 1.28rem;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    .section {
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .preview-section {
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    .preview-item {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #dee2e6;
+    }
+    .preview-label {
+      font-weight: 600;
+      color: #3a1c71;
+      margin-bottom: 0.5rem;
+    }
+    .preview-value {
+      color: #495057;
+    }
+    footer {
+      margin-top: auto;
+      background: #343a40;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -37,188 +117,261 @@
     </div>
   </header>
 
-  <div class="layout" style="margin-top: 32px;">
-    <div style="grid-column: 2 / 3; display: flex; justify-content: center; align-items: flex-start;">
-      <div class="main-content">
-
-        <form id="regForm">
-          <!-- Step indicators -->
-          <div style="display: flex; justify-content: center; margin-bottom: 1.5rem; gap: 0.5rem;">
-            <span class="step-indicator" id="step-ind-0">1</span>
-            <span class="step-indicator" id="step-ind-1">2</span>
-            <span class="step-indicator" id="step-ind-2">3</span>
-          </div>
-          <!-- Step 1: Personal Information -->
-          <div class="tab personal-info-tab">
-            <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Personal Information</h2>
-            <div class="form-row">
-              <input type="text" id="firstName" placeholder="First Name *" required pattern="^[A-Za-z]+$" oninput="this.value=this.value.replace(/[^A-Za-z]/g,'')">
-              <input type="text" id="lastName" placeholder="Last Name *" required pattern="^[A-Za-z]+$" oninput="this.value=this.value.replace(/[^A-Za-z]/g,'')">
-            </div>
-            <div class="form-row">
-              <input type="email" id="email" placeholder="Email Address *" required>
-              <input type="tel" id="phone" placeholder="Phone Number *" required pattern="^\d{10}$" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-            </div>
-            <div class="form-row">
-              <input type="tel" id="altPhone" placeholder="Alternate Phone" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-              <select class="form-select" id="contactMethod" required>
-                <option value="">Preferred Contact Method</option>
-                <option>Email</option>
-                <option>Phone</option>
-                <option>Alternate Phone</option>
-              </select>
-            </div>
-            <div class="form-row">
-              <input type="url" id="linkedin" placeholder="LinkedIn Profile URL">
-              <input type="text" id="currentAddress" placeholder="Current Address">
-            </div>
-            <div class="form-row">
-              <input type="text" id="nationality" placeholder="Nationality">
-              <select class="form-select" id="workAuthStatus" required>
-                <option value="">Work Authorization Status</option>
-                <option>Citizen</option>
-                <option>Permanent Resident</option>
-                <option>Work Permit</option>
-                <option>Student Visa</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div id="personal-info-errors" style="display:none;"></div>
-          </div>
-          <!-- Step 2: Current Position -->
-          <div class="tab">
-            <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Current Position</h2>
-            <div class="form-row">
-              <input type="text" id="currentCompany" placeholder="Current Company *" required>
-              <input type="text" id="currentTitle" placeholder="Current Title *" required>
-            </div>
-            <div class="form-row">
-              <input type="text" id="industry" placeholder="Industry">
-              <select class="form-select" id="companySize">
-                <option value="">Company Size</option>
-                <option>1-10 employees</option>
-                <option>11-50 employees</option>
-                <option>51-200 employees</option>
-                <option>201-500 employees</option>
-                <option>501-1000 employees</option>
-                <option>1000+ employees</option>
-              </select>
-            </div>
-            <div class="form-row">
-              <input type="date" id="startDate" placeholder="Start Date">
-              <input type="text" id="totalCompensation" placeholder="Current Total Compensation">
-            </div>
-            <div class="form-row" style="flex-direction: column;">
-              <label for="keyResponsibilities" style="font-weight:600; color:#3a1c71; display:block; margin-bottom:0.5rem; font-size:1.1rem;">Key Responsibilities *</label>
-              <textarea id="keyResponsibilities" placeholder="Describe your key responsibilities and achievements..." rows="4" required style="width: 100%; max-width: none; margin-bottom: 1rem; padding: 0.7rem 1.5rem; border-radius: 8px; border: 1.5px solid #c7d2ee; font-size: 1.28rem; resize: vertical; box-sizing: border-box;"></textarea>
-            </div>
-            <div class="form-row">
-              <input type="number" id="teamSize" placeholder="Team Size Managed" min="0">
-              <input type="text" id="budgetResponsibility" placeholder="Budget Responsibility">
-            </div>
-          </div>
-          
-          <!-- Step 3: Experience and Skills -->
-          <div class="tab">
-            <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Experience and Skills</h2>
-            <div class="form-row">
-              <input type="number" id="totalYearsExperience" placeholder="Total Years of Experience" min="0" required>
-              <input type="number" id="yearsExecutiveRoles" placeholder="Years in Executive Roles" min="0" required>
-            </div>
-            <div class="form-row" style="flex-direction: column;">
-              <label for="coreCompetencies" style="font-weight:600; color:#3a1c71; display:block; margin-bottom:0.5rem; font-size:1.1rem;">Core Competencies *</label>
-              <textarea id="coreCompetencies" placeholder="List your core competencies and key skills..." rows="4" required style="width: 100%; max-width: none; margin-bottom: 1rem; padding: 0.7rem 1.5rem; border-radius: 8px; border: 1.5px solid #c7d2ee; font-size: 1.28rem; resize: vertical; box-sizing: border-box;"></textarea>
-            </div>
-            <div class="form-row" style="flex-direction: column;">
-              <label for="industryExperience" style="font-weight:600; color:#3a1c71; display:block; margin-bottom:0.5rem; font-size:1.1rem;">Industry Experience</label>
-              <textarea id="industryExperience" placeholder="Describe your industry experience and expertise..." rows="3" style="width: 100%; max-width: none; margin-bottom: 1rem; padding: 0.7rem 1.5rem; border-radius: 8px; border: 1.5px solid #c7d2ee; font-size: 1.28rem; resize: vertical; box-sizing: border-box;"></textarea>
-            </div>
-            <div class="form-row" style="flex-direction: column;">
-              <label for="functionalExperience" style="font-weight:600; color:#3a1c71; display:block; margin-bottom:0.5rem; font-size:1.1rem;">Functional Experience</label>
-              <textarea id="functionalExperience" placeholder="Describe your functional experience and specializations..." rows="3" style="width: 100%; max-width: none; margin-bottom: 1rem; padding: 0.7rem 1.5rem; border-radius: 8px; border: 1.5px solid #c7d2ee; font-size: 1.28rem; resize: vertical; box-sizing: border-box;"></textarea>
-            </div>
-                <div class="form-row" style="flex-direction: column;">
-                <label for="languages" style="font-weight:600; color:#3a1c71; display:block; margin-bottom:0.5rem; font-size:1.1rem;">Programming Languages & Technologies</label>
-                <select class="form-select" id="languages" multiple data-live-search="true" style="width: 100%; max-width: none; margin-bottom: 1rem; padding: 0.7rem 1.5rem; border-radius: 8px; border: 1.5px solid #c7d2ee; font-size: 1.28rem; min-height: 6rem; box-sizing: border-box;">
-                  <option value="JavaScript">JavaScript</option>
-                  <option value="Python">Python</option>
-                  <option value="Java">Java</option>
-                  <option value="C++">C++</option>
-                  <option value="C#">C#</option>
-                  <option value="PHP">PHP</option>
-                  <option value="Ruby">Ruby</option>
-                  <option value="Go">Go</option>
-                  <option value="Swift">Swift</option>
-                  <option value="Kotlin">Kotlin</option>
-                  <option value="TypeScript">TypeScript</option>
-                  <option value="Rust">Rust</option>
-                  <option value="Scala">Scala</option>
-                  <option value="Perl">Perl</option>
-                  <option value="HTML/CSS">HTML/CSS</option>
-                  <option value="SQL">SQL</option>
-                  <option value="React">React</option>
-                  <option value="Angular">Angular</option>
-                  <option value="Vue.js">Vue.js</option>
-                  <option value="Node.js">Node.js</option>
-                  <option value="Django">Django</option>
-                  <option value="Flask">Flask</option>
-                  <option value="Spring">Spring</option>
-                  <option value="Laravel">Laravel</option>
-                  <option value="ASP.NET">ASP.NET</option>
-                  <option value="Express.js">Express.js</option>
-                  <option value="MongoDB">MongoDB</option>
-                  <option value="PostgreSQL">PostgreSQL</option>
-                  <option value="MySQL">MySQL</option>
-                  <option value="Redis">Redis</option>
-                  <option value="Docker">Docker</option>
-                  <option value="Kubernetes">Kubernetes</option>
-                  <option value="AWS">AWS</option>
-                  <option value="Azure">Azure</option>
-                  <option value="Google Cloud">Google Cloud</option>
-                  <option value="Git">Git</option>
-                  <option value="Linux">Linux</option>
-                  <option value="Windows">Windows</option>
-                  <option value="macOS">macOS</option>
-                </select>
-              </div>
-          </div>
-          
-          <!-- Toast Alert above navigation buttons -->
-          <div class="position-relative" style="margin-bottom: 1rem;">
-            <div id="form-toast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true" style="position:relative; min-width:320px; max-width:90vw; z-index:1055;">
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="toast-body" id="form-toast-body"></div>
-                <span class="text-white" style="cursor:pointer; font-size:1.2rem; margin-right:0.5rem;" onclick="document.getElementById('form-toast').style.display='none';">&times;</span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Navigation Buttons -->
-          <div style="display: flex; justify-content: space-between; margin-top: 1.5rem; gap: 2rem;">
-            <button type="button" id="prevBtn" onclick="nextPrev(-1)" title="Previous">
-              <span aria-label="Previous" style="font-size:1.2rem;">&#x2039;</span>
-            </button>
-            <button type="button" id="nextBtn" onclick="nextPrev(1)" title="Next">
-              <span aria-label="Next" style="font-size:1.2rem;">&#x203A;</span>
-            </button>
-          </div>
-        </form>
+  <div class="form-container">
+    <form id="regForm">
+      <!-- Personal Information -->
+      <div class="section">
+        <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Personal Information</h2>
+        <div class="form-row">
+          <input type="text" id="firstName" placeholder="First Name *" required pattern="^[A-Za-z]+$" oninput="this.value=this.value.replace(/[^A-Za-z]/g,'')">
+          <input type="text" id="lastName" placeholder="Last Name *" required pattern="^[A-Za-z]+$" oninput="this.value=this.value.replace(/[^A-Za-z]/g,'')">
+        </div>
+        <div class="form-row">
+          <input type="email" id="email" placeholder="Email Address *" required>
+          <input type="tel" id="phone" placeholder="Phone Number *" required pattern="^\d{10}$" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+        </div>
+        <div class="form-row">
+          <input type="tel" id="altPhone" placeholder="Alternate Phone" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+          <select class="form-select" id="contactMethod" required>
+            <option value="">Preferred Contact Method</option>
+            <option>Email</option>
+            <option>Phone</option>
+            <option>Alternate Phone</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <input type="url" id="linkedin" placeholder="LinkedIn Profile URL">
+          <input type="text" id="currentAddress" placeholder="Current Address">
+        </div>
+        <div class="form-row">
+          <input type="text" id="nationality" placeholder="Nationality">
+          <select class="form-select" id="workAuthStatus" required>
+            <option value="">Work Authorization Status</option>
+            <option>Citizen</option>
+            <option>Permanent Resident</option>
+            <option>Work Permit</option>
+            <option>Student Visa</option>
+            <option>Other</option>
+          </select>
+        </div>
       </div>
-    </div>
-  </div>
+
+      <!-- Current Position -->
+      <div class="section">
+        <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Current Position</h2>
+        <div class="form-row">
+          <input type="text" id="currentCompany" placeholder="Current Company *" required>
+          <input type="text" id="currentTitle" placeholder="Current Title *" required>
+        </div>
+        <div class="form-row">
+          <input type="text" id="industry" placeholder="Industry">
+          <select class="form-select" id="companySize">
+            <option value="">Company Size</option>
+            <option>1-10 employees</option>
+            <option>11-50 employees</option>
+            <option>51-200 employees</option>
+            <option>201-500 employees</option>
+            <option>501-1000 employees</option>
+            <option>1000+ employees</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <input type="date" id="startDate" placeholder="Start Date">
+          <input type="text" id="totalCompensation" placeholder="Current Total Compensation">
+        </div>
+        <div class="form-row">
+          <textarea id="keyResponsibilities" placeholder="Describe your key responsibilities and achievements..." rows="4" required></textarea>
+        </div>
+        <div class="form-row">
+          <input type="number" id="teamSize" placeholder="Team Size Managed" min="0">
+          <input type="text" id="budgetResponsibility" placeholder="Budget Responsibility">
+        </div>
+      </div>
+      
+      <!-- Experience and Skills -->
+      <div class="section">
+        <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Experience and Skills</h2>
+        <div class="form-row">
+          <input type="number" id="totalYearsExperience" placeholder="Total Years of Experience" min="0" required>
+          <input type="number" id="yearsExecutiveRoles" placeholder="Years in Executive Roles" min="0" required>
+        </div>
+        <div class="form-row">
+          <textarea id="coreCompetencies" placeholder="List your core competencies and key skills..." rows="4" required></textarea>
+        </div>
+        <div class="form-row">
+          <textarea id="industryExperience" placeholder="Describe your industry experience and expertise..." rows="3"></textarea>
+        </div>
+        <div class="form-row">
+          <textarea id="functionalExperience" placeholder="Describe your functional experience and specializations..." rows="3"></textarea>
+        </div>
+        <div class="form-row">
+          <select class="" id="languages" multiple data-live-search="true" style="min-height: 6rem;">
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+            <option value="Java">Java</option>
+            <option value="C++">C++</option>
+            <option value="C#">C#</option>
+            <option value="TypeScript">TypeScript</option>
+            <option value="HTML/CSS">HTML/CSS</option>
+            <option value="SQL">SQL</option>
+            <option value="React">React</option>
+            <option value="Angular">Angular</option>
+            <option value="Node.js">Node.js</option>
+            <option value="Django">Django</option>
+            <option value="Spring">Spring</option>
+            <option value="MongoDB">MongoDB</option>
+            <option value="PostgreSQL">PostgreSQL</option>
+            <option value="MySQL">MySQL</option>
+            <option value="Docker">Docker</option>
+            <option value="AWS">AWS</option>
+            <option value="Git">Git</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="section">
+        <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Education</h2>
+        <div class="form-row">
+          <input type="text" id="highestDegree" placeholder="Highest Degree *" required>
+          <input type="text" id="fieldOfStudy" placeholder="Field of Study *" required>
+        </div>
+        <div class="form-row">
+          <input type="text" id="university" placeholder="University/Institution">
+          <input type="text" id="graduationYear" placeholder="Graduation Year" pattern="^(19|20)\\d{2}$" maxlength="4">
+        </div>
+        <div class="form-row">
+          <textarea id="additionalEducation" placeholder="List any additional education or certifications..." rows="3"></textarea>
+        </div>
+      </div>
+
+      <!-- Location and Mobility -->
+      <div class="section">
+        <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Location and Mobility</h2>
+        <div class="form-row">
+          <textarea id="preferredLocations" placeholder="List your preferred work locations..." rows="3" required></textarea>
+        </div>
+        <div class="form-row">
+          <select id="willingToRelocate" class="form-select" required>
+            <option value="">Willingness to Relocate</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+          <select id="travelWillingness" class="form-select" required>
+            <option value="">Travel Willingness</option>
+            <option value="None">None</option>
+            <option value="Occasional">Occasional</option>
+            <option value="Frequent">Frequent</option>
+            <option value="Extensive">Extensive</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <select id="remotePreference" class="form-select" required>
+            <option value="">Remote Work Preferences</option>
+            <option value="On-site">On-site</option>
+            <option value="Hybrid">Hybrid</option>
+            <option value="Remote">Remote</option>
+            <option value="Flexible">Flexible</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Compensation Expectations -->
+      <div class="section">
+        <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Compensation Expectations</h2>
+        <div class="form-row">
+          <input type="number" id="targetBaseMin" placeholder="Target Base Salary - Minimum">
+          <input type="number" id="targetBaseMax" placeholder="Target Base Salary - Maximum">
+        </div>
+        <div class="form-row">
+          <select id="compDegree" class="form-select">
+            <option value="">Select Degree</option>
+            <option value="Bachelors">Bachelors</option>
+            <option value="Masters">Masters</option>
+            <option value="PhD">PhD</option>
+            <option value="Other">Other</option>
+          </select>
+          <select id="compOption" class="form-select">
+            <option value="">Select Option</option>
+            <option value="Option1">Option 1</option>
+            <option value="Option2">Option 2</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <select id="compLevel" class="form-select">
+            <option value="">Select Level</option>
+            <option value="Entry">Entry</option>
+            <option value="Mid">Mid</option>
+            <option value="Senior">Senior</option>
+            <option value="Executive">Executive</option>
+          </select>
+          <select id="compPreference" class="form-select">
+            <option value="">Select Preference</option>
+            <option value="Preference1">Preference 1</option>
+            <option value="Preference2">Preference 2</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <input type="number" id="targetTotalComp" placeholder="Target Total Compensation">
+          <select id="equityImportance" class="form-select">
+            <option value="">Select Importance</option>
+            <option value="Not Important">Not Important</option>
+            <option value="Somewhat Important">Somewhat Important</option>
+            <option value="Important">Important</option>
+            <option value="Very Important">Very Important</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <textarea id="additionalCompNotes" placeholder="Add any additional compensation notes..." rows="3"></textarea>
+        </div>
+      </div>
+
+      <!-- Availability -->
+      <div class="section">
+        <h2 style="text-align: center; color: #3a1c71; font-size: 2rem; margin-top: 0; margin-bottom: 2rem;">Availability</h2>
+        <div class="form-row">
+          <select id="employmentStatus" class="form-select" required>
+            <option value="">Current Employment Status *</option>
+            <option value="Employed">Employed</option>
+            <option value="Unemployed">Unemployed</option>
+            <option value="Self-Employed">Self-Employed</option>
+            <option value="Student">Student</option>
+            <option value="Other">Other</option>
+          </select>
+          <select id="searchStatus" class="form-select">
+            <option value="">Search Status</option>
+            <option value="Active">Active</option>
+            <option value="Passive">Passive</option>
+            <option value="Not Searching">Not Searching</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <input type="text" id="noticePeriod" placeholder="Notice Period Required">
+          <input type="date" id="earliestStartDate" placeholder="Earliest Available Start Date">
+        </div>
+        <div class="form-row">
+          <textarea id="availabilityNotes" placeholder="Add any notes about your availability..." rows="3"></textarea>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div style="text-align: center; margin-top: 3rem;">
+        <button type="submit" style="background: linear-gradient(90deg, #a18cd1 0%, #5fa8e9 100%); color: white; border: none; padding: 1rem 3rem; border-radius: 8px; font-size: 1.2rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 16px rgba(135, 206, 235, 0.3); transition: all 0.3s ease;">
+          Submit Application
+        </button>
+      </div>
+    </form>
+
+
 
   <footer>
     &copy; 2025 MSL Careers. All rights reserved.
   </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Bootstrap Select JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
   <script>
-    let currentTab = 0;
-    showTab(currentTab);
-    
     // Initialize Bootstrap Select for languages field
     $(document).ready(function() {
       $('#languages').selectpicker({
@@ -228,178 +381,12 @@
       });
     });
 
-    function showTab(n) {
-      let x = document.getElementsByClassName("tab");
-      x[n].style.display = "block";
-      // Step indicators
-      for (let i = 0; i < 3; i++) {
-        document.getElementById('step-ind-' + i).classList.remove('active-step');
-      }
-      document.getElementById('step-ind-' + n).classList.add('active-step');
-      // Prev/Next
-      document.getElementById("prevBtn").style.display = n == 0 ? "none" : "inline-block";
-      document.getElementById("prevBtn").title = "Previous";
-      document.getElementById("nextBtn").innerHTML = n == (x.length - 1) ? '<span aria-label="Submit" style="font-size:1.2rem;">&#x203A;</span>' : '<span aria-label="Next" style="font-size:1.2rem;">&#x203A;</span>';
-      document.getElementById("nextBtn").title = n == (x.length - 1) ? "Submit" : "Next";
-    }
-    function nextPrev(n) {
-      let x = document.getElementsByClassName("tab");
-      if (n == 1 && !validateForm()) return false;
-      x[currentTab].style.display = "none";
-      currentTab = currentTab + n;
-      if (currentTab >= x.length) {
-        document.getElementById("regForm").submit();
-        return false;
-      }
-      showTab(currentTab);
-    }
-    function validateForm() {
-      let x, y, i, valid = true;
-      x = document.getElementsByClassName("tab");
-      y = x[currentTab].querySelectorAll("input, select, textarea");
-      // Custom validation for Personal Information tab
-      let allErrors = [];
-      if (currentTab === 0) {
-        let errors = [];
-        const firstName = document.getElementById('firstName');
-        const lastName = document.getElementById('lastName');
-        const email = document.getElementById('email');
-        const phone = document.getElementById('phone');
-        const linkedin = document.getElementById('linkedin');
-        // First/Last Name: letters only
-        if (!/^[A-Za-z]+$/.test(firstName.value)) {
-          errors.push('First Name must contain letters only.');
-          firstName.classList.add('invalid');
-          valid = false;
-        } else {
-          firstName.classList.remove('invalid');
-        }
-        if (!/^[A-Za-z]+$/.test(lastName.value)) {
-          errors.push('Last Name must contain letters only.');
-          lastName.classList.add('invalid');
-          valid = false;
-        } else {
-          lastName.classList.remove('invalid');
-        }
-        // Email: valid email
-        if (!/^\S+@\S+\.\S+$/.test(email.value)) {
-          errors.push('Please enter a valid email address.');
-          email.classList.add('invalid');
-          valid = false;
-        } else {
-          email.classList.remove('invalid');
-        }
-        // Phone: exactly 10 digits
-        if (!/^\d{10}$/.test(phone.value)) {
-          errors.push('Phone Number must be exactly 10 digits.');
-          phone.classList.add('invalid');
-          valid = false;
-        } else {
-          phone.classList.remove('invalid');
-        }
-        // LinkedIn: must start with linkedin.com/
-        if (linkedin.value && !/^https?:\/\/(www\.)?linkedin\.com\//.test(linkedin.value) && !/^linkedin\.com\//.test(linkedin.value)) {
-          errors.push('LinkedIn Profile URL must start with linkedin.com/');
-          linkedin.classList.add('invalid');
-          valid = false;
-        } else {
-          linkedin.classList.remove('invalid');
-        }
-        allErrors = errors;
-        document.getElementById('personal-info-errors').style.display = 'none';
-      }
-      
-      // Custom validation for Current Position tab
-      if (currentTab === 1) {
-        let errors = [];
-        const currentCompany = document.getElementById('currentCompany');
-        const currentTitle = document.getElementById('currentTitle');
-        const keyResponsibilities = document.getElementById('keyResponsibilities');
-        
-        // Required fields validation for 2nd tab
-        if (!currentCompany.value.trim()) {
-          errors.push('Current Company is required.');
-          currentCompany.classList.add('invalid');
-          valid = false;
-        } else {
-          currentCompany.classList.remove('invalid');
-        }
-        if (!currentTitle.value.trim()) {
-          errors.push('Current Title is required.');
-          currentTitle.classList.add('invalid');
-          valid = false;
-        } else {
-          currentTitle.classList.remove('invalid');
-        }
-        if (!keyResponsibilities.value.trim()) {
-          errors.push('Key Responsibilities is required.');
-          keyResponsibilities.classList.add('invalid');
-          valid = false;
-        } else {
-          keyResponsibilities.classList.remove('invalid');
-        }
-        allErrors = errors;
-      }
-      
-      // Custom validation for Experience and Skills tab
-      if (currentTab === 2) {
-        let errors = [];
-        const totalYearsExperience = document.getElementById('totalYearsExperience');
-        const yearsExecutiveRoles = document.getElementById('yearsExecutiveRoles');
-        const coreCompetencies = document.getElementById('coreCompetencies');
-        
-        // Required fields validation for 3rd tab
-        if (!totalYearsExperience.value.trim()) {
-          errors.push('Total Years of Experience is required.');
-          totalYearsExperience.classList.add('invalid');
-          valid = false;
-        } else {
-          totalYearsExperience.classList.remove('invalid');
-        }
-        if (!yearsExecutiveRoles.value.trim()) {
-          errors.push('Years in Executive Roles is required.');
-          yearsExecutiveRoles.classList.add('invalid');
-          valid = false;
-        } else {
-          yearsExecutiveRoles.classList.remove('invalid');
-        }
-        if (!coreCompetencies.value.trim()) {
-          errors.push('Core Competencies is required.');
-          coreCompetencies.classList.add('invalid');
-          valid = false;
-        } else {
-          coreCompetencies.classList.remove('invalid');
-        }
-        allErrors = errors;
-      }
-      
-      // Default validation for all fields
-      for (i = 0; i < y.length; i++) {
-        if (y[i].hasAttribute('required') && y[i].value == "") {
-          y[i].classList.add("invalid");
-          valid = false;
-        } else if (currentTab !== 0 && currentTab !== 1 && currentTab !== 2) {
-          y[i].classList.remove("invalid");
-        }
-      }
-      // Show toast if errors
-      var toastEl = document.getElementById('form-toast');
-      var toastBody = document.getElementById('form-toast-body');
-      if (!valid && allErrors.length > 0) {
-        toastBody.innerHTML = 'Please fill all required fields correctly.';
-        var toast = new bootstrap.Toast(toastEl, { delay: 5000 });
-        toast.show();
-      } else {
-        var toast = bootstrap.Toast.getInstance(toastEl);
-        if (toast) toast.hide();
-      }
-      return valid;
-    }
     function toggleLoginDropdown(e) {
       e.preventDefault();
       var dd = document.querySelector('.login-dropdown');
       dd.classList.toggle('show');
     }
+    
     document.addEventListener('click', function(event) {
       var dd = document.querySelector('.login-dropdown');
       if (!dd.contains(event.target)) {
@@ -407,9 +394,89 @@
       }
     });
     
-    // No Bootstrap Select needed - using native multiple selection
-    $(document).ready(function() {
-      // All dropdowns now use native Bootstrap styling
+    // Form validation and preview update
+    document.getElementById('regForm').addEventListener('input', updatePreview);
+    document.getElementById('regForm').addEventListener('change', updatePreview);
+    
+    function updatePreview() {
+      const previewGrid = document.getElementById('previewGrid');
+      const formData = new FormData(document.getElementById('regForm'));
+      let previewHTML = '';
+      
+      // Personal Information
+      previewHTML += `
+        <div class="preview-item">
+          <div class="preview-label">Personal Information</div>
+          <div class="preview-value">${formData.get('firstName') || ''} ${formData.get('lastName') || ''}</div>
+          <div class="preview-value">${formData.get('email') || ''}</div>
+          <div class="preview-value">${formData.get('phone') || ''}</div>
+        </div>
+      `;
+      
+      // Current Position
+      previewHTML += `
+        <div class="preview-item">
+          <div class="preview-label">Current Position</div>
+          <div class="preview-value">${formData.get('currentCompany') || ''}</div>
+          <div class="preview-value">${formData.get('currentTitle') || ''}</div>
+        </div>
+      `;
+      
+      // Education
+      previewHTML += `
+        <div class="preview-item">
+          <div class="preview-label">Education</div>
+          <div class="preview-value">${formData.get('highestDegree') || ''}</div>
+          <div class="preview-value">${formData.get('fieldOfStudy') || ''}</div>
+        </div>
+      `;
+      
+      // Experience
+      previewHTML += `
+        <div class="preview-item">
+          <div class="preview-label">Experience</div>
+          <div class="preview-value">${formData.get('totalYearsExperience') || ''} years</div>
+          <div class="preview-value">${formData.get('yearsExecutiveRoles') || ''} executive years</div>
+        </div>
+      `;
+      
+      // Location
+      previewHTML += `
+        <div class="preview-item">
+          <div class="preview-label">Location & Mobility</div>
+          <div class="preview-value">${formData.get('willingToRelocate') || ''}</div>
+          <div class="preview-value">${formData.get('remotePreference') || ''}</div>
+        </div>
+      `;
+      
+      // Compensation
+      previewHTML += `
+        <div class="preview-item">
+          <div class="preview-label">Compensation</div>
+          <div class="preview-value">$${formData.get('targetBaseMin') || ''} - $${formData.get('targetBaseMax') || ''}</div>
+          <div class="preview-value">${formData.get('equityImportance') || ''}</div>
+        </div>
+      `;
+      
+      // Availability
+      previewHTML += `
+        <div class="preview-item">
+          <div class="preview-label">Availability</div>
+          <div class="preview-value">${formData.get('employmentStatus') || ''}</div>
+          <div class="preview-value">${formData.get('searchStatus') || ''}</div>
+        </div>
+      `;
+      
+      previewGrid.innerHTML = previewHTML;
+    }
+    
+    // Initial preview update
+    updatePreview();
+    
+    // Form submission
+    document.getElementById('regForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Form submitted successfully!');
     });
   </script>
 </body>

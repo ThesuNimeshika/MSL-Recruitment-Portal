@@ -561,6 +561,44 @@ footer {
 
 /* ===== MULTI-STEP FORM STYLES ===== */
 
+/* Navigation buttons - custom green-blue gradient styling */
+#prevBtn, #nextBtn {
+  background: linear-gradient(135deg, #4CAF50 0%, #2196F3 100%);
+  color: #fff;
+  padding: 0.6rem 3rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(76, 175, 80, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  min-width: 140px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#prevBtn:hover, #nextBtn:hover {
+  background: linear-gradient(135deg, #87CEEB 0%, #E0F6FF 50%, #F0F8FF 100%);
+  color: #1e3a8a;
+  box-shadow: 0 4px 16px rgba(135, 206, 235, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Navigation buttons container spacing */
+#prevBtn {
+  margin-right: 1rem;
+}
+
+#nextBtn {
+  margin-left: 1rem;
+}
+
 /* Tab display control */
 .tab { 
   display: none; 
@@ -631,6 +669,13 @@ textarea.invalid {
 .tab {
   padding: 0;
   margin: 0;
+}
+
+/* Languages select field - full width like textarea */
+#languages {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 100% !important;
 }
 
 
