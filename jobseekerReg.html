@@ -507,6 +507,50 @@
         </div>
       </div>
 
+      <!-- Confidentiality and Disclosure -->
+      <div class="section">
+        <h2 style="text-align: center; color: #3a1c71; font-size: 18px; font-weight: bold; margin-top: 0; margin-bottom: 2rem;">Confidentiality and Disclosure</h2>
+        <div class="form-row">
+          <div style="flex: 1;">
+            <select id="confidentialityLevel" name="confidentialityLevel" class="form-select" required>
+              <option value="">Confidentiality Level *</option>
+              <option value="Standard">Standard</option>
+              <option value="High">High</option>
+              <option value="Very High">Very High</option>
+              <option value="Maximum">Maximum</option>
+            </select>
+            <div class="validation-message">Confidentiality Level is required</div>
+          </div>
+          <div style="flex: 1;">
+            <select id="referenceCheckPermission" name="referenceCheckPermission" class="form-select" required>
+              <option value="">Reference Check Permission *</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="With Notice">With Notice</option>
+            </select>
+            <div class="validation-message">Reference Check Permission is required</div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div style="width: 100%;">
+            <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Additional Information</label>
+            <textarea id="additionalInfo" name="additionalInfo" placeholder="Any additional information you'd like to share..." rows="3"></textarea>
+          </div>
+        </div>
+        <div class="form-row">
+          <div style="width: 100%;">
+            <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">How did you hear about us?</label>
+            <textarea id="hearAboutUs" name="hearAboutUs" placeholder="How did you hear about MSL Recruitment?" rows="2"></textarea>
+          </div>
+        </div>
+        <div class="form-row">
+          <div style="width: 100%;">
+            <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Special Requests or Requirements</label>
+            <textarea id="specialRequests" name="specialRequests" placeholder="Any special requests or requirements for your job search..." rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+
       <!-- Submit Button -->
       <div style="text-align: center; margin-top: 3rem;">
         <button type="submit" style="background: linear-gradient(90deg, #a18cd1 0%, #5fa8e9 100%); color: white; border: none; padding: 1rem 3rem; border-radius: 8px; font-size: 1.2rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 16px rgba(135, 206, 235, 0.3); transition: all 0.3s ease;">
