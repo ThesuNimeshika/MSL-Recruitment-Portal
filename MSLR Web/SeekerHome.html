@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobSeeker Home- MSL Recruitment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=person" />
+</head>
+<body class="bg-gray-50">
+    <!-- Header - Full Width -->
+    <header class="bg-white shadow-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-14">
+                <!-- Left side - Logo and Search -->
+                <div class="flex items-center space-x-4">
+                    <img src="img/logo.png" alt="Logo" class="h-8 w-auto">
+                    
+                                        <!-- Search Bar -->
+                    <div class="relative">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" placeholder="Title, skill or company"
+                               class="pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-48 md:w-64 lg:w-96">
+                    </div>
+                </div>
+                
+                <!-- Right side - Navigation and Profile -->
+                <div class="flex items-center space-x-2 md:space-x-4 lg:space-x-6">
+                                                             <a href="SeekerHome.html" class="text-blue-600 font-semibold flex items-center space-x-1">
+                        <i class="fas fa-home"></i>
+                        <span class="hidden md:inline">Home</span>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 flex items-center space-x-1">
+                        <i class="fas fa-briefcase"></i>
+                        <span class="hidden md:inline">Jobs</span>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 flex items-center space-x-1 relative">
+                        <i class="fas fa-bell"></i>
+                        <span class="hidden md:inline">Notifications</span>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                    </a>
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="relative">
+                        <button id="profile-dropdown-btn" class="flex items-center space-x-1 cursor-pointer hover:bg-gray-50 p-2 rounded-md transition-colors">
+                            <img src="img/user.png" alt="Profile" class="w-8 h-8 rounded-full">
+                            <i class="fas fa-chevron-down text-gray-600 text-sm"></i>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="profile-dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50 hidden">
+                            <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-user text-gray-500 mr-3"></i>
+                                <span>Profile</span>
+                            </a>
+                            <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-cog text-gray-500 mr-3"></i>
+                                <span>Settings</span>
+                            </a>
+                            <div class="border-t border-gray-200 my-1"></div>
+                            <a href="#" class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors">
+                                <i class="fas fa-sign-out-alt text-red-500 mr-3"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="flex flex-col lg:flex-row pt-14 min-h-screen">
+        <!-- Left Sidebar - 30% width, fixed -->
+        <div class="w-full lg:w-1/3 bg-gray-50 p-4 lg:p-6 lg:fixed lg:left-0 lg:top-14 lg:h-full lg:overflow-y-auto">
+            <!-- User Profile Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+                <!-- Blue-Purple Banner Bar -->
+                <div class="relative h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-t-lg">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 rounded-t-lg"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <div class="text-sm opacity-90">Zero-cost Degrees</div>
+                    </div>
+                </div>
+                
+                <!-- Profile Picture -->
+                <div class="relative px-4">
+                    <div class="w-16 h-16 rounded-full border-4 border-white -mt-8 overflow-hidden">
+                        <img src="img/user.png" 
+                             alt="Thesara Kariyawasam" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- Profile Info -->
+                <div class="p-4 pt-2">
+                    <h2 class="text-lg font-bold text-gray-900">Thesara Kariyawasam</h2>
+                    <p class="text-sm text-gray-600">Software Engineer at Cardiff Metropolitan University</p>
+                    <p class="text-sm text-gray-600">Matara, Southern Province</p>
+                    <div class="flex items-center mt-2">
+                        <img src="https://via.placeholder.com/16x16/0077b5/ffffff?text=MSL" alt="MSL" class="w-4 h-4 rounded">
+                        <span class="text-sm text-gray-600 ml-1">Management Systems (Pvt) Ltd</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Side Menu Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-900 mb-4">Quick Actions</h3>
+                                         <nav class="space-y-3">
+                        <a href="SeekerHome.html" class="flex items-center space-x-3 text-blue-600 bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-home text-blue-600"></i>
+                            <span>Home</span>
+                        </a>
+                         <a href="SeekerDocument.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                             <i class="fas fa-file-alt text-gray-500"></i>
+                             <span>Documents</span>
+                         </a>
+                                                 <a href="SeekerProfile.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-user text-gray-500"></i>
+                            <span>Profile</span>
+                        </a>
+                                                <a href="SeekerApplications.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-clipboard-list text-gray-500"></i>
+                            <span>My applications</span>
+                        </a>
+                     </nav>
+                    
+
+                </div>
+            </div>
+            
+            <!-- Footer Links -->
+            <div class="mt-6 text-xs text-gray-500 space-y-2">
+                <div class="flex flex-wrap gap-2">
+                    <a href="#" class="hover:underline">About</a>
+                    <a href="#" class="hover:underline">Accessibility</a>
+                    <a href="#" class="hover:underline">Help Center</a>
+                    <a href="#" class="hover:underline">Privacy & Terms</a>
+                    <a href="#" class="hover:underline">Ad Choices</a>
+                    <a href="#" class="hover:underline">Advertising</a>
+                    <a href="#" class="hover:underline">Business Services</a>
+                    <a href="#" class="hover:underline">Get the LinkedIn app</a>
+                    <a href="#" class="hover:underline">More</a>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <img src="img/logo.png" alt="Logo" class="h-4 w-auto">
+                    <span>LinkedIn Corporation © 2025</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Content Area - 70% width, scrollable -->
+        <div class="w-full lg:w-2/3 lg:ml-auto p-4 lg:p-6">
+            <div id="content-area">
+                <!-- Default Landing Page Content -->
+                <div id="landing-page" class="space-y-6">
+                    <!-- Top Job Picks Section -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h2 class="text-xl font-bold text-gray-900">Top job picks for you</h2>
+                                <p class="text-sm text-gray-600">Based on your profile, preferences, and activity like applies, searches, and saves</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <!-- Job 1 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start sm:space-x-4 p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-blue-600 hover:underline cursor-pointer">Software Engineer - React</h3>
+                                    <p class="text-sm text-gray-600">Colombo, Western Province, Sri Lanka</p>
+                                    <p class="text-sm text-gray-500">On-site</p>
+                                </div>
+                                <div class="flex flex-row sm:flex-col sm:items-end sm:space-y-2 mt-2 sm:mt-0 justify-between sm:justify-start">
+                                    <span class="text-xs text-gray-500">Viewed</span>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Job 2 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start sm:space-x-4 p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-blue-600 hover:underline cursor-pointer">Full Stack Web Developer</h3>
+                                    <p class="text-sm text-gray-600">Colombo, Western Province, Sri Lanka</p>
+                                    <p class="text-sm text-gray-500">On-site</p>
+                                </div>
+                                <div class="flex flex-row sm:flex-col sm:items-end sm:space-y-2 mt-2 sm:mt-0 justify-between sm:justify-start">
+                                    <span class="text-xs text-gray-500">2 weeks ago</span>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Job 3 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start sm:space-x-4 p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-blue-600 hover:underline cursor-pointer">Associate Software Engineer</h3>
+                                    <p class="text-sm text-gray-600">Colombo, Western Province, Sri Lanka</p>
+                                    <p class="text-sm text-gray-500">Hybrid</p>
+                                </div>
+                                <div class="flex flex-row sm:flex-col sm:items-end sm:space-y-2 mt-2 sm:mt-0 justify-between sm:justify-start">
+                                    <span class="text-xs text-gray-500">1 month ago</span>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Job 4 -->
+                            <div class="flex flex-col sm:flex-row sm:items-start sm:space-x-4 p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-blue-600 hover:underline cursor-pointer">Mobile Application Developer</h3>
+                                    <p class="text-sm text-gray-600">Matara, Southern Province, Sri Lanka</p>
+                                    <p class="text-sm text-gray-500">Remote</p>
+                                </div>
+                                <div class="flex flex-row sm:flex-col sm:items-end sm:space-y-2 mt-2 sm:mt-0 justify-between sm:justify-start">
+                                    <span class="text-xs text-gray-500">3 days ago</span>
+                                    <button class="text-gray-400 hover:text-gray-600">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <a href="#" class="text-blue-600 hover:underline flex items-center space-x-1">
+                                <span>Show all</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Suggested Job Searches -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-xl font-bold text-gray-900">Suggested job searches</h2>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 justify-center sm:justify-start">
+                            <button class="bg-blue-50 text-blue-600 px-3 py-2 rounded-full text-sm hover:bg-blue-100 transition-colors flex items-center space-x-2">
+                                <i class="fas fa-search"></i>
+                                <span>Junior Software Engineer</span>
+                            </button>
+                            <button class="bg-blue-50 text-blue-600 px-3 py-2 rounded-full text-sm hover:bg-blue-100 transition-colors flex items-center space-x-2">
+                                <i class="fas fa-search"></i>
+                                <span>Junior Developer</span>
+                            </button>
+                            <button class="bg-blue-50 text-blue-600 px-3 py-2 rounded-full text-sm hover:bg-blue-100 transition-colors flex items-center space-x-2">
+                                <i class="fas fa-search"></i>
+                                <span>Software Engineer</span>
+                            </button>
+                            <button class="bg-blue-50 text-blue-600 px-3 py-2 rounded-full text-sm hover:bg-blue-100 transition-colors flex items-center space-x-2">
+                                <i class="fas fa-search"></i>
+                                <span>Associate Software Engineer</span>
+                            </button>
+                            <button class="bg-blue-50 text-blue-600 px-3 py-2 rounded-full text-sm hover:bg-blue-100 transition-colors flex items-center space-x-2">
+                                <i class="fas fa-search"></i>
+                                <span>Full Stack Engineer</span>
+                            </button>
+                            <button class="bg-blue-50 text-blue-600 px-3 py-2 rounded-full text-sm hover:bg-blue-100 transition-colors flex items-center space-x-2">
+                                <i class="fas fa-search"></i>
+                                <span>Mobile Application Developer</span>
+                            </button>
+                            <button class="bg-blue-50 text-blue-600 px-3 py-2 rounded-full text-sm hover:bg-blue-100 transition-colors flex items-center space-x-2">
+                                <i class="fas fa-search"></i>
+                                <span>Software Engineer Team Lead</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Premium Section -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 text-yellow-900 px-3 py-1 rounded-full text-xs font-semibold inline-block mb-3">
+                            PREMIUM
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-900 mb-2">Jobs where you'd be a top applicant</h2>
+                        <p class="text-sm text-gray-600 mb-4">Based on your chances of hearing back</p>
+                        
+                        <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 text-center">
+                            <div class="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <i class="fas fa-user text-white text-3xl"></i>
+                            </div>
+                            <p class="text-gray-700 font-medium">Job search smarter with Premium.</p>
+                            <p class="text-gray-600 text-sm">Your future is worth the investment.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other content sections (hidden by default) -->
+                <div id="preferences" class="hidden">
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Job Preferences</h2>
+                        <p class="text-gray-600">Configure your job search preferences here.</p>
+                    </div>
+                </div>
+                
+                <div id="my-jobs" class="hidden">
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">My Saved Jobs</h2>
+                        <p class="text-gray-600">View and manage your saved job applications.</p>
+                    </div>
+                </div>
+                
+                <div id="career-insights" class="hidden">
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Career Insights</h2>
+                        <p class="text-gray-600">Track your career progress and get personalized insights.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-8">
+        <div class="max-w-7xl mx-auto px-4 py-6">
+            <div class="text-center text-gray-600">
+                <p>&copy; 2025 LinkedIn Jobs Sample. This is a demonstration page.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="SeekerHome.js"></script>
+</body>
+</html>

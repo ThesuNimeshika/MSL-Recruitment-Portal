@@ -59,6 +59,9 @@
       background: white;
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
     .preview-section {
       background: #f8f9fa;
@@ -279,24 +282,25 @@
           </div>
         </div>
         <div class="form-row">
-          <div style="width: 100%;">
+          <div style="flex: 1;">
             <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Core Competencies</label>
             <textarea id="coreCompetencies" name="coreCompetencies" placeholder="List your core competencies and key skills..." rows="4" required></textarea>
             <div class="validation-message">Core Competencies is required</div>
           </div>
-        </div>
-            <div class="form-row">
-          <div style="width: 100%;">
+          <div style="flex: 1;">
             <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Industry Experience</label>
             <textarea id="industryExperience" name="industryExperience" placeholder="Describe your industry experience and expertise..." rows="3"></textarea>
-            </div>
-            </div>
+          </div>
+        </div>
         <div class="form-row">
-          <div style="width: 100%;">
+          <div style="flex: 1;">
             <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Functional Experience</label>
             <textarea id="functionalExperience" name="functionalExperience" placeholder="Describe your functional experience and specializations..." rows="3"></textarea>
-            </div>
-            </div>
+          </div>
+          <div style="flex: 1;">
+            <!-- Empty div to maintain equal spacing -->
+          </div>
+        </div>
         <div class="form-row">
           <div style="width: 100%;">
             <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Programming Languages & Technologies</label>
@@ -531,22 +535,70 @@
             <div class="validation-message">Reference Check Permission is required</div>
           </div>
         </div>
+        </div>
+
+      <!-- Additional Information -->
+      <div class="section">
+        <h2 style="text-align: center; color: #3a1c71; font-size: 18px; font-weight: bold; margin-top: 0; margin-bottom: 2rem;">Additional Information</h2>
         <div class="form-row">
-          <div style="width: 100%;">
+          <div style="flex: 1;">
             <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Additional Information</label>
             <textarea id="additionalInfo" name="additionalInfo" placeholder="Any additional information you'd like to share..." rows="3"></textarea>
           </div>
-        </div>
-        <div class="form-row">
-          <div style="width: 100%;">
+          <div style="flex: 1;">
             <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">How did you hear about us?</label>
-            <textarea id="hearAboutUs" name="hearAboutUs" placeholder="How did you hear about MSL Recruitment?" rows="2"></textarea>
+            <select id="hearAboutUs" name="hearAboutUs" class="form-select">
+              <option value="">Select option</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Indeed">Indeed</option>
+              <option value="Company Website">Company Website</option>
+              <option value="Referral">Referral</option>
+              <option value="Job Board">Job Board</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Google Search">Google Search</option>
+              <option value="Email Campaign">Email Campaign</option>
+              <option value="Event/Conference">Event/Conference</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
         </div>
         <div class="form-row">
-          <div style="width: 100%;">
+          <div style="flex: 1;">
             <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Special Requests or Requirements</label>
             <textarea id="specialRequests" name="specialRequests" placeholder="Any special requests or requirements for your job search..." rows="3"></textarea>
+          </div>
+          <div style="flex: 1;">
+            <!-- Empty div to maintain equal spacing -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Submission -->
+      <div class="section">
+        <h2 style="text-align: center; color: #3a1c71; font-size: 18px; font-weight: bold; margin-top: 0; margin-bottom: 2rem;">Submission</h2>
+        <div class="form-row">
+          <div style="flex: 1;">
+            <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Submission Date</label>
+            <input type="date" id="submissionDate" name="submissionDate" required>
+            <div class="validation-message">Submission Date is required</div>
+          </div>
+          <div style="flex: 1;">
+            <label style="display: block; font-size: 14px; color: #000; margin-bottom: 0.5rem; font-weight: 500;">Digital Signature *</label>
+            <div style="border: 2px dashed #c7d2ee; border-radius: 8px; padding: 1rem; background: #f8f9fa;">
+              <div style="margin-bottom: 1rem;">
+                <input type="file" id="signatureUpload" name="signatureUpload" accept="image/*" style="margin-bottom: 0.5rem;">
+                <div style="font-size: 12px; color: #666;">Upload signature image or draw below</div>
+              </div>
+              <div style="text-align: center;">
+                <canvas id="signatureCanvas" width="300" height="150" style="border: 1px solid #c7d2ee; border-radius: 4px; background: white; cursor: crosshair;"></canvas>
+                <div style="margin-top: 0.5rem;">
+                  <button type="button" id="clearSignature" style="background: #dc3545; color: white; border: none; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 12px; margin-right: 0.5rem;">Clear</button>
+                  <button type="button" id="saveSignature" style="background: #28a745; color: white; border: none; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 12px;">Save</button>
+                </div>
+              </div>
+              <input type="hidden" id="digitalSignature" name="digitalSignature" required>
+              <div class="validation-message">Digital Signature is required</div>
+            </div>
           </div>
         </div>
       </div>
@@ -567,6 +619,7 @@
       </div>
     </div>
   </div>
+</div>
 
   <footer>
     &copy; 2025 MSL Careers. All rights reserved.
@@ -696,6 +749,101 @@
     
     // Initial preview update
     updatePreview();
+    
+    // Digital Signature functionality
+    const canvas = document.getElementById('signatureCanvas');
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+    
+    // Set canvas drawing properties
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    
+    // Drawing functionality
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+    
+    // Touch support for mobile devices
+    canvas.addEventListener('touchstart', handleTouch);
+    canvas.addEventListener('touchmove', handleTouch);
+    canvas.addEventListener('touchend', stopDrawing);
+    
+    function startDrawing(e) {
+      isDrawing = true;
+      [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+    
+    function draw(e) {
+      if (!isDrawing) return;
+      e.preventDefault();
+      
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.stroke();
+      
+      [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+    
+    function handleTouch(e) {
+      e.preventDefault();
+      const touch = e.touches[0];
+      const rect = canvas.getBoundingClientRect();
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
+      
+      if (e.type === 'touchstart') {
+        isDrawing = true;
+        [lastX, lastY] = [x, y];
+      } else if (e.type === 'touchmove' && isDrawing) {
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        [lastX, lastY] = [x, y];
+      }
+    }
+    
+    function stopDrawing() {
+      isDrawing = false;
+    }
+    
+    // Clear signature
+    document.getElementById('clearSignature').addEventListener('click', function() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      document.getElementById('digitalSignature').value = '';
+    });
+    
+    // Save signature
+    document.getElementById('saveSignature').addEventListener('click', function() {
+      const signatureData = canvas.toDataURL();
+      document.getElementById('digitalSignature').value = signatureData;
+      toastr.success('Signature saved successfully!', 'Success');
+    });
+    
+    // File upload functionality
+    document.getElementById('signatureUpload').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          const img = new Image();
+          img.onload = function() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            document.getElementById('digitalSignature').value = canvas.toDataURL();
+            toastr.success('Signature image uploaded successfully!', 'Success');
+          };
+          img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
     
     // Form validation function
     function validateForm() {

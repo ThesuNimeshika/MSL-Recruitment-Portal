@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSL Home Dashboard - MSL Recruitment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=person" />
+    <link rel="stylesheet" href="MSLHome.css">
+    <style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header - Full Width -->
+    <header class="bg-white shadow-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-14">
+                <!-- Left side - Logo and Search -->
+                <div class="flex items-center space-x-4">
+                    <img src="img/logo.png" alt="Logo" class="h-8 w-auto">
+                    
+                    <!-- Search Bar -->
+                    <div class="relative">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" placeholder="Title, skill or company"
+                               class="pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-48 md:w-64 lg:w-96">
+                    </div>
+                </div>
+                
+                <!-- Right side - Navigation and Profile -->
+                <div class="flex items-center space-x-2 md:space-x-4 lg:space-x-6">
+                    <a href="MSLHome.html" class="text-blue-600 font-semibold flex items-center space-x-1">
+                        <i class="fas fa-home"></i>
+                        <span class="hidden md:inline">Home</span>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 flex items-center space-x-1 relative">
+                        <i class="fas fa-bell"></i>
+                        <span class="hidden md:inline">Notifications</span>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">5</span>
+                    </a>
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="relative">
+                        <button id="profile-dropdown-btn" class="flex items-center space-x-1 cursor-pointer hover:bg-gray-50 p-2 rounded-md transition-colors">
+                            <img src="img/user.png" alt="Profile" class="w-8 h-8 rounded-full">
+                            <i class="fas fa-chevron-down text-gray-600 text-sm"></i>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="profile-dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50 hidden">
+                            <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-user text-gray-500 mr-3"></i>
+                                <span>Profile</span>
+                            </a>
+                            <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-cog text-gray-500 mr-3"></i>
+                                <span>Settings</span>
+                            </a>
+                            <div class="border-t border-gray-200 my-1"></div>
+                            <a href="#" class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors">
+                                <i class="fas fa-sign-out-alt text-red-500 mr-3"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="flex flex-col lg:flex-row pt-14 min-h-screen">
+        <!-- Left Sidebar - 30% width, fixed -->
+        <div class="w-full lg:w-1/3 bg-gray-50 p-4 lg:p-6 lg:fixed lg:left-0 lg:top-14 lg:h-full lg:overflow-y-auto">
+            <!-- MSL Profile Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+                <!-- Logo Banner Bar -->
+                <div class="relative h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-t-lg">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 rounded-t-lg"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <img src="img/logo.png" alt="MSL Logo" class="h-12 w-auto opacity-90">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <div class="text-sm opacity-90">Admin Dashboard</div>
+                    </div>
+                </div>
+                
+                <!-- Profile Picture -->
+                <div class="relative px-4">
+                    <div class="w-16 h-16 rounded-full border-4 border-white -mt-8 overflow-hidden">
+                        <img src="img/user.png" 
+                             alt="MSL Admin" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- Profile Info -->
+                <div class="p-4 pt-2">
+                    <h2 class="text-lg font-bold text-gray-900">Management Systems (Pvt) Ltd</h2>
+                    <p class="text-xs text-gray-500 italic mt-1">Vision: Empowering businesses through innovative recruitment solutions.</p>
+                    <div class="flex items-center mt-2">
+                        <i class="fas fa-map-marker-alt text-gray-500 w-4"></i>
+                        <span class="text-sm text-gray-600 ml-1">No.10, Gothami Road, Colombo 08</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Calendar Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-semibold text-gray-900">Calendar</h3>
+                        <div class="flex items-center space-x-2">
+                            <button class="text-gray-600 hover:text-blue-600">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <span class="text-sm font-medium text-gray-700">January 2025</span>
+                            <button class="text-gray-600 hover:text-blue-600">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Calendar Days Header -->
+                    <div class="grid grid-cols-7 gap-1 mb-2">
+                        <div class="text-center text-xs font-medium text-gray-500 py-1">Sun</div>
+                        <div class="text-center text-xs font-medium text-gray-500 py-1">Mon</div>
+                        <div class="text-center text-xs font-medium text-gray-500 py-1">Tue</div>
+                        <div class="text-center text-xs font-medium text-gray-500 py-1">Wed</div>
+                        <div class="text-center text-xs font-medium text-gray-500 py-1">Thu</div>
+                        <div class="text-center text-xs font-medium text-gray-500 py-1">Fri</div>
+                        <div class="text-center text-xs font-medium text-gray-500 py-1">Sat</div>
+                    </div>
+                    
+                    <!-- Calendar Days -->
+                    <div class="grid grid-cols-7 gap-1">
+                        <div class="text-center text-sm py-2 text-gray-400">29</div>
+                        <div class="text-center text-sm py-2 text-gray-400">30</div>
+                        <div class="text-center text-sm py-2 text-gray-400">31</div>
+                        <div class="text-center text-sm py-2 calendar-day">1</div>
+                        <div class="text-center text-sm py-2 calendar-day">2</div>
+                        <div class="text-center text-sm py-2 calendar-day">3</div>
+                        <div class="text-center text-sm py-2 calendar-day">4</div>
+                        <div class="text-center text-sm py-2 calendar-day">5</div>
+                        <div class="text-center text-sm py-2 calendar-day">6</div>
+                        <div class="text-center text-sm py-2 calendar-day">7</div>
+                        <div class="text-center text-sm py-2 calendar-day">8</div>
+                        <div class="text-center text-sm py-2 calendar-day">9</div>
+                        <div class="text-center text-sm py-2 calendar-day">10</div>
+                        <div class="text-center text-sm py-2 calendar-day">11</div>
+                        <div class="text-center text-sm py-2 calendar-day">12</div>
+                        <div class="text-center text-sm py-2 calendar-day">13</div>
+                        <div class="text-center text-sm py-2 calendar-day">14</div>
+                        <div class="text-center text-sm py-2 calendar-day">15</div>
+                        <div class="text-center text-sm py-2 calendar-day">16</div>
+                        <div class="text-center text-sm py-2 calendar-day">17</div>
+                        <div class="text-center text-sm py-2 calendar-day">18</div>
+                        <div class="text-center text-sm py-2 calendar-day">19</div>
+                        <div class="text-center text-sm py-2 calendar-day">20</div>
+                        <div class="text-center text-sm py-2 calendar-day">21</div>
+                        <div class="text-center text-sm py-2 calendar-day">22</div>
+                        <div class="text-center text-sm py-2 calendar-day">23</div>
+                        <div class="text-center text-sm py-2 calendar-day">24</div>
+                        <div class="text-center text-sm py-2 calendar-day">25</div>
+                        <div class="text-center text-sm py-2 calendar-day">26</div>
+                        <div class="text-center text-sm py-2 calendar-day">27</div>
+                        <div class="text-center text-sm py-2 calendar-day">28</div>
+                        <div class="text-center text-sm py-2 calendar-day">29</div>
+                        <div class="text-center text-sm py-2 calendar-day">30</div>
+                        <div class="text-center text-sm py-2 calendar-day">31</div>
+                    </div>
+                    
+                    <!-- Today's Events -->
+                    <div class="border-t border-gray-200 pt-4 mt-4">
+                        <h4 class="text-sm font-semibold text-gray-900 mb-2">Today's Events</h4>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-3 p-2 bg-blue-50 rounded-md">
+                                <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-900">Senior Developer Interview</p>
+                                    <p class="text-xs text-gray-600">10:00 AM - Hayleys PLC</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3 p-2 bg-green-50 rounded-md">
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-900">Client Meeting</p>
+                                    <p class="text-xs text-gray-600">2:00 PM - Dialog</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3 p-2 bg-orange-50 rounded-md">
+                                <div class="w-3 h-3 bg-orange-500 rounded-full"></div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-900">Job Posting Review</p>
+                                    <p class="text-xs text-gray-600">4:00 PM - Internal</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Side Menu Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-900 mb-4">Quick Actions</h3>
+                    <nav class="space-y-2">
+                        <a href="MSLHome.html" class="flex items-center space-x-3 text-blue-600 bg-blue-50 p-2 rounded-md transition-colors" data-section="home">
+                            <i class="fas fa-home text-blue-600"></i>
+                            <span>Home</span>
+                        </a>
+                        
+                        <a href="MSLSeeker.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-users text-gray-500"></i>
+                            <span>Seekers</span>
+                        </a>
+                        
+                        <a href="MSLClient.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-building text-gray-500"></i>
+                            <span>Clients</span>
+                        </a>
+                        
+                        <a href="MSLPosted.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-briefcase text-gray-500"></i>
+                            <span>Posted</span>
+                        </a>
+                        
+                        <a href="MSLInvoice.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-file-invoice text-gray-500"></i>
+                            <span>Invoice</span>
+                        </a>
+                        
+                        <a href="MSLSchedule.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-calendar text-gray-500"></i>
+                            <span>Scheduled</span>
+                        </a>
+                        
+                        <a href="#" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors" data-section="analytics">
+                            <i class="fas fa-chart-bar text-gray-500"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Footer Links -->
+            <div class="mt-6 text-xs text-gray-500 space-y-2">
+                <div class="flex flex-wrap gap-2">
+                    <a href="#" class="hover:underline">About</a>
+                    <a href="#" class="hover:underline">Accessibility</a>
+                    <a href="#" class="hover:underline">Help Center</a>
+                    <a href="#" class="hover:underline">Privacy & Terms</a>
+                    <a href="#" class="hover:underline">Ad Choices</a>
+                    <a href="#" class="hover:underline">Advertising</a>
+                    <a href="#" class="hover:underline">Business Services</a>
+                    <a href="#" class="hover:underline">Get the LinkedIn app</a>
+                    <a href="#" class="hover:underline">More</a>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <img src="img/logo.png" alt="Logo" class="h-4 w-auto">
+                    <span>MSL Recruitment © 2025</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Content Area - 70% width, scrollable -->
+        <div class="w-full lg:w-2/3 lg:ml-auto p-4 lg:p-6">
+            <div id="content-area">
+                <!-- Dashboard Overview -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <!-- Stats Card 1 -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 dashboard-card">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600">Total Clients</p>
+                                <p class="text-2xl font-bold text-gray-900 mt-1">128</p>
+                                <p class="text-xs text-green-600 mt-1">
+                                    <i class="fas fa-arrow-up"></i> 12% from last month
+                                </p>
+                            </div>
+                            <div class="bg-blue-100 rounded-full p-3">
+                                <i class="fas fa-building text-blue-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Card 2 -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 dashboard-card">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600">Active Jobs</p>
+                                <p class="text-2xl font-bold text-gray-900 mt-1">45</p>
+                                <p class="text-xs text-green-600 mt-1">
+                                    <i class="fas fa-arrow-up"></i> 8% from last month
+                                </p>
+                            </div>
+                            <div class="bg-green-100 rounded-full p-3">
+                                <i class="fas fa-briefcase text-green-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Card 3 -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 dashboard-card">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600">Job Seekers</p>
+                                <p class="text-2xl font-bold text-gray-900 mt-1">1,234</p>
+                                <p class="text-xs text-green-600 mt-1">
+                                    <i class="fas fa-arrow-up"></i> 15% from last month
+                                </p>
+                            </div>
+                            <div class="bg-purple-100 rounded-full p-3">
+                                <i class="fas fa-users text-purple-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Card 4 -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 dashboard-card">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600">Interviews Scheduled</p>
+                                <p class="text-2xl font-bold text-gray-900 mt-1">23</p>
+                                <p class="text-xs text-orange-600 mt-1">
+                                    <i class="fas fa-arrow-down"></i> 3% from last month
+                                </p>
+                            </div>
+                            <div class="bg-orange-100 rounded-full p-3">
+                                <i class="fas fa-calendar-check text-orange-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity & Job Management -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <!-- Recent Activity -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-xl font-bold text-gray-900">Recent Activity</h2>
+                            <a href="#" class="text-sm text-blue-600 hover:underline">View All</a>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="bg-blue-100 rounded-full p-2">
+                                    <i class="fas fa-user-plus text-blue-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-900">New client registered</p>
+                                    <p class="text-xs text-gray-600">Dialog Axiata PLC joined the platform</p>
+                                    <p class="text-xs text-gray-500 mt-1">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="bg-green-100 rounded-full p-2">
+                                    <i class="fas fa-briefcase text-green-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-900">Job posted</p>
+                                    <p class="text-xs text-gray-600">Senior Software Engineer at Hayleys PLC</p>
+                                    <p class="text-xs text-gray-500 mt-1">5 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="bg-purple-100 rounded-full p-2">
+                                    <i class="fas fa-check-circle text-purple-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-900">Interview completed</p>
+                                    <p class="text-xs text-gray-600">Frontend Developer position at Dialog</p>
+                                    <p class="text-xs text-gray-500 mt-1">1 day ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Quick Actions</h2>
+                        <div class="grid grid-cols-2 gap-3">
+                            <a href="MSLClient.html" class="flex flex-col items-center justify-center p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-500 transition-colors">
+                                <i class="fas fa-building text-2xl text-blue-600 mb-2"></i>
+                                <span class="text-sm font-medium text-gray-700">Manage Clients</span>
+                            </a>
+                            <a href="MSLPosted.html" class="flex flex-col items-center justify-center p-4 border border-gray-200 rounded-lg hover:bg-green-50 hover:border-green-500 transition-colors">
+                                <i class="fas fa-briefcase text-2xl text-green-600 mb-2"></i>
+                                <span class="text-sm font-medium text-gray-700">Post Job</span>
+                            </a>
+                            <a href="MSLSchedule.html" class="flex flex-col items-center justify-center p-4 border border-gray-200 rounded-lg hover:bg-purple-50 hover:border-purple-500 transition-colors">
+                                <i class="fas fa-calendar text-2xl text-purple-600 mb-2"></i>
+                                <span class="text-sm font-medium text-gray-700">Schedule</span>
+                            </a>
+                            <a href="MSLInvoice.html" class="flex flex-col items-center justify-center p-4 border border-gray-200 rounded-lg hover:bg-orange-50 hover:border-orange-500 transition-colors">
+                                <i class="fas fa-file-invoice text-2xl text-orange-600 mb-2"></i>
+                                <span class="text-sm font-medium text-gray-700">Invoices</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job Management Section -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-xl font-bold text-gray-900">Recent Job Postings</h2>
+                            <p class="text-gray-600 text-sm">Manage and monitor active job listings</p>
+                        </div>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors flex items-center space-x-2">
+                            <i class="fas fa-plus"></i>
+                            <span>Post New Job</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Job Cards -->
+                    <div class="space-y-4">
+                        <!-- Job Card 1 -->
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow job-card cursor-pointer">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-3 mb-2">
+                                    <h3 class="text-lg font-semibold text-gray-900">Senior Software Engineer</h3>
+                                    <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full status-active">Active</span>
+                                </div>
+                                <div class="flex items-center space-x-4 text-sm text-gray-600">
+                                    <span class="flex items-center space-x-1">
+                                        <i class="fas fa-building"></i>
+                                        <span>Hayleys PLC</span>
+                                    </span>
+                                    <span class="flex items-center space-x-1">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Colombo</span>
+                                    </span>
+                                    <span class="flex items-center space-x-1">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Posted 2 days ago</span>
+                                    </span>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-2">Looking for an experienced software engineer with 5+ years in full-stack development...</p>
+                            </div>
+                            <div class="flex items-center space-x-2 mt-4 sm:mt-0 sm:ml-4">
+                                <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-md transition-colors" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="p-2 text-red-600 hover:bg-red-50 rounded-md transition-colors" title="Delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Job Card 2 -->
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow job-card cursor-pointer">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-3 mb-2">
+                                    <h3 class="text-lg font-semibold text-gray-900">Frontend Developer</h3>
+                                    <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full status-active">Active</span>
+                                </div>
+                                <div class="flex items-center space-x-4 text-sm text-gray-600">
+                                    <span class="flex items-center space-x-1">
+                                        <i class="fas fa-building"></i>
+                                        <span>Dialog Axiata</span>
+                                    </span>
+                                    <span class="flex items-center space-x-1">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Colombo</span>
+                                    </span>
+                                    <span class="flex items-center space-x-1">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Posted 5 days ago</span>
+                                    </span>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-2">Seeking a talented frontend developer proficient in React, Vue.js, and modern CSS frameworks...</p>
+                            </div>
+                            <div class="flex items-center space-x-2 mt-4 sm:mt-0 sm:ml-4">
+                                <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-md transition-colors" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="p-2 text-red-600 hover:bg-red-50 rounded-md transition-colors" title="Delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Job Card 3 -->
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow job-card cursor-pointer">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-3 mb-2">
+                                    <h3 class="text-lg font-semibold text-gray-900">Data Analyst</h3>
+                                    <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full status-pending">Pending</span>
+                                </div>
+                                <div class="flex items-center space-x-4 text-sm text-gray-600">
+                                    <span class="flex items-center space-x-1">
+                                        <i class="fas fa-building"></i>
+                                        <span>John Keells Holdings</span>
+                                    </span>
+                                    <span class="flex items-center space-x-1">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Colombo</span>
+                                    </span>
+                                    <span class="flex items-center space-x-1">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Posted 1 week ago</span>
+                                    </span>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-2">Looking for a data analyst with experience in Python, SQL, and data visualization tools...</p>
+                            </div>
+                            <div class="flex items-center space-x-2 mt-4 sm:mt-0 sm:ml-4">
+                                <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-md transition-colors" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="p-2 text-red-600 hover:bg-red-50 rounded-md transition-colors" title="Delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="MSLHome.js"></script>
+</body>
+</html>
+

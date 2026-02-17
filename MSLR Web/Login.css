@@ -1,0 +1,386 @@
+/* Login Pages Custom Styles */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.slide-in {
+    animation: slideIn 0.4s ease-in-out;
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Login form animations */
+.login-container {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.login-card {
+    animation: slideIn 0.6s ease-in-out;
+}
+
+/* Input field focus effects */
+.form-input:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+/* Button hover effects */
+.login-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.login-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.login-btn:hover::before {
+    left: 100%;
+}
+
+.login-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+/* Password toggle button */
+.password-toggle {
+    transition: all 0.2s ease-in-out;
+}
+
+.password-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Checkbox styling */
+.custom-checkbox {
+    position: relative;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.custom-checkbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: #fff;
+    border: 2px solid #d1d5db;
+    border-radius: 3px;
+    transition: all 0.2s ease-in-out;
+}
+
+.custom-checkbox:hover .checkmark {
+    border-color: #3b82f6;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+}
+
+.custom-checkbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 4px;
+    top: 1px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Link hover effects */
+.forgot-password-link {
+    position: relative;
+    transition: all 0.2s ease-in-out;
+}
+
+.forgot-password-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #3b82f6;
+    transition: width 0.3s ease-in-out;
+}
+
+.forgot-password-link:hover::after {
+    width: 100%;
+}
+
+.back-link {
+    position: relative;
+    transition: all 0.2s ease-in-out;
+}
+
+.back-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    right: 0;
+    background-color: #6b7280;
+    transition: width 0.3s ease-in-out;
+}
+
+.back-link:hover::after {
+    width: 100%;
+}
+
+/* Logo animation */
+.logo {
+    transition: all 0.3s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* Form validation styles */
+.form-input.error {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-input.success {
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+.success-message {
+    color: #10b981;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .login-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    .login-card {
+        padding: 1.5rem;
+    }
+    
+    .logo {
+        height: 3rem;
+    }
+    
+    .form-input {
+        padding: 0.75rem;
+    }
+    
+    .login-btn {
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
+    
+    .login-card {
+        padding: 1rem;
+    }
+    
+    .logo {
+        height: 2.5rem;
+    }
+    
+    .form-input {
+        padding: 0.625rem;
+    }
+    
+    .login-btn {
+        padding: 0.625rem;
+    }
+    
+    .text-2xl {
+        font-size: 1.5rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1f2937;
+    }
+    
+    .login-card {
+        background-color: #374151;
+        border-color: #4b5563;
+    }
+    
+    .form-input {
+        background-color: #4b5563;
+        border-color: #6b7280;
+        color: #f9fafb;
+    }
+    
+    .form-input::placeholder {
+        color: #9ca3af;
+    }
+    
+    .text-gray-900 {
+        color: #f9fafb;
+    }
+    
+    .text-gray-700 {
+        color: #d1d5db;
+    }
+    
+    .text-gray-600 {
+        color: #9ca3af;
+    }
+    
+    .text-gray-500 {
+        color: #6b7280;
+    }
+}
+
+/* Accessibility improvements */
+.form-input:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+.login-btn:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .form-input {
+        border-width: 2px;
+    }
+    
+    .login-btn {
+        border: 2px solid #1e40af;
+    }
+    
+    .forgot-password-link {
+        text-decoration: underline;
+    }
+    
+    .back-link {
+        text-decoration: underline;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+
+

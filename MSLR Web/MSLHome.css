@@ -1,0 +1,416 @@
+/* MSL Home Page Custom Styles */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Dashboard card hover effects */
+.dashboard-card {
+    transition: all 0.2s ease-in-out;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Calendar styles */
+.calendar-day {
+    transition: all 0.2s ease-in-out;
+}
+
+.calendar-day:hover {
+    background-color: #f3f4f6;
+    cursor: pointer;
+}
+
+.calendar-day.today {
+    background-color: #3b82f6;
+    color: white;
+    border-radius: 4px;
+}
+
+.calendar-day.has-event {
+    position: relative;
+}
+
+.calendar-day.has-event::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: #ef4444;
+    border-radius: 50%;
+}
+
+/* Client dropdown animation */
+.client-submenu {
+    transition: all 0.3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.client-submenu.show {
+    max-height: 200px;
+}
+
+/* Profile dropdown animation */
+#profile-dropdown {
+    transition: all 0.2s ease-in-out;
+    transform-origin: top right;
+}
+
+#profile-dropdown.show {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Job card hover effects */
+.job-card {
+    transition: all 0.2s ease-in-out;
+}
+
+.job-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Event indicator styles */
+.event-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.event-interview {
+    background-color: #3b82f6;
+}
+
+.event-meeting {
+    background-color: #10b981;
+}
+
+.event-review {
+    background-color: #f59e0b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    /* Tablet styles */
+    .max-w-7xl {
+        max-width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .w-1/3 {
+        width: 35%;
+    }
+    
+    .w-2/3 {
+        width: 65%;
+    }
+    
+    .w-96 {
+        width: 20rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile styles */
+    .flex {
+        flex-direction: column;
+    }
+    
+    .w-1/3, .w-2/3 {
+        width: 100%;
+    }
+    
+    .ml-auto {
+        margin-left: 0;
+    }
+    
+    .fixed {
+        position: relative;
+    }
+    
+    .top-14 {
+        top: 0;
+    }
+    
+    .h-full {
+        height: auto;
+    }
+    
+    .overflow-y-auto {
+        overflow-y: visible;
+    }
+    
+    /* Header responsive */
+    .h-14 {
+        height: auto;
+        min-height: 3.5rem;
+        padding: 0.5rem 0;
+    }
+    
+    .space-x-4 {
+        margin-right: 0.5rem;
+    }
+    
+    .space-x-6 {
+        margin-right: 0.75rem;
+    }
+    
+    .w-96 {
+        width: 12rem;
+    }
+    
+    /* Hide text labels on mobile */
+    .text-sm, .text-xs {
+        display: none;
+    }
+    
+    /* Profile card responsive */
+    .w-16.h-16 {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .-mt-8 {
+        margin-top: -1.5rem;
+    }
+    
+    /* Calendar responsive */
+    .grid.grid-cols-7 {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0.25rem;
+    }
+    
+    .p-2 {
+        padding: 0.25rem;
+    }
+    
+    /* Job cards responsive */
+    .p-6 {
+        padding: 1rem;
+    }
+    
+    .space-x-4 {
+        gap: 0.5rem;
+    }
+    
+    /* Footer responsive */
+    .text-xs {
+        font-size: 0.625rem;
+    }
+    
+    .gap-2 {
+        gap: 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Small mobile styles */
+    .px-4 {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    
+    .p-6 {
+        padding: 0.75rem;
+    }
+    
+    .w-96 {
+        width: 8rem;
+    }
+    
+    .text-lg {
+        font-size: 1rem;
+    }
+    
+    .text-2xl {
+        font-size: 1.25rem;
+    }
+    
+    /* Stack buttons vertically on very small screens */
+    .flex.space-x-3 {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .space-x-3 > * {
+        margin-right: 0;
+    }
+    
+    /* Calendar adjustments for very small screens */
+    .grid.grid-cols-7 {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0.125rem;
+    }
+    
+    .p-2 {
+        padding: 0.125rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Focus states for accessibility */
+button:focus,
+a:focus,
+input:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Custom button styles */
+.btn-primary {
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: white;
+    color: #374151;
+    border: 1px solid #d1d5db;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-secondary:hover {
+    background-color: #f9fafb;
+    border-color: #9ca3af;
+}
+
+/* Notification badge animation */
+.notification-badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* MSL specific styles */
+.msl-logo-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.msl-profile-card {
+    border-left: 4px solid #3b82f6;
+}
+
+/* Calendar event styles */
+.calendar-event {
+    transition: all 0.2s ease-in-out;
+}
+
+.calendar-event:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Job status indicators */
+.status-active {
+    color: #10b981;
+    background-color: #d1fae5;
+}
+
+.status-pending {
+    color: #f59e0b;
+    background-color: #fef3c7;
+}
+
+.status-closed {
+    color: #ef4444;
+    background-color: #fee2e2;
+}
+
+
+
+
+

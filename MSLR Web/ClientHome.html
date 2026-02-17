@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard - MSL Recruitment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=person" />
+    <link rel="stylesheet" href="clientHome.css">
+    <style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header - Full Width -->
+    <header class="bg-white shadow-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-14">
+                <!-- Left side - Logo and Search -->
+                <div class="flex items-center space-x-4">
+                    <img src="img/logo.png" alt="Logo" class="h-8 w-auto">
+                    
+                    <!-- Search Bar -->
+                    <div class="relative">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" placeholder="Title, skill or company"
+                               class="pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-48 md:w-64 lg:w-96">
+                    </div>
+                </div>
+                
+                <!-- Right side - Navigation and Profile -->
+                <div class="flex items-center space-x-2 md:space-x-4 lg:space-x-6">
+                    <a href="ClientHome.html" class="text-blue-600 font-semibold flex items-center space-x-1">
+                        <i class="fas fa-home"></i>
+                        <span class="hidden md:inline">Home</span>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 flex items-center space-x-1">
+                        <i class="fas fa-briefcase"></i>
+                        <span class="hidden md:inline">Jobs</span>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 flex items-center space-x-1 relative">
+                        <i class="fas fa-bell"></i>
+                        <span class="hidden md:inline">Notifications</span>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                    </a>
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="relative">
+                        <button id="profile-dropdown-btn" class="flex items-center space-x-1 cursor-pointer hover:bg-gray-50 p-2 rounded-md transition-colors">
+                            <img src="img/user.png" alt="Profile" class="w-8 h-8 rounded-full object-cover">
+                            <i class="fas fa-chevron-down text-gray-600 text-sm"></i>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="profile-dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50 hidden">
+                            <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-user text-gray-500 mr-3"></i>
+                                <span>Profile</span>
+                            </a>
+                            <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-cog text-gray-500 mr-3"></i>
+                                <span>Settings</span>
+                            </a>
+                            <div class="border-t border-gray-200 my-1"></div>
+                            <a href="#" class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors">
+                                <i class="fas fa-sign-out-alt text-red-500 mr-3"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="flex flex-col lg:flex-row pt-14 min-h-screen">
+        <!-- Left Sidebar - 30% width, fixed -->
+        <div class="w-full lg:w-1/3 bg-gray-50 p-4 lg:p-6 lg:fixed lg:left-0 lg:top-14 lg:h-full lg:overflow-y-auto">
+            <!-- User Profile Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+                <!-- Blue-Purple Banner Bar -->
+                <div class="relative h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-t-lg">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 rounded-t-lg"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <div class="text-sm opacity-90">Premium Client</div>
+                    </div>
+                </div>
+                
+                <!-- Profile Picture -->
+                <div class="relative px-4">
+                    <div class="w-16 h-16 rounded-full border-4 border-white -mt-8 overflow-hidden">
+                        <img src="img/user.png" 
+                             alt="Hemas" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- Profile Info -->
+                <div class="p-4 pt-2">
+                    <h2 class="text-lg font-bold text-gray-900">Hayleys PLC</h2>
+
+                    <p class="text-xs text-gray-500 italic mt-1">Vision: To be Sri Lanka's corporate inspiration at all times.</p>
+                </div>
+            </div>
+            
+            <!-- Side Menu Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-900 mb-4">Quick Actions</h3>
+                    <nav class="space-y-3">
+                        <a href="ClientHome.html" class="flex items-center space-x-3 text-blue-600 bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-briefcase text-blue-600"></i>
+                            <span>Current Jobs</span>
+                        </a>
+                        <a href="ClientPost.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-plus-circle text-gray-500"></i>
+                            <span>Request to post job</span>
+                            
+                        </a>
+                        <a href="ClientMSLAlerts.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-bell text-gray-500"></i>
+                            <span>MSL Alerts</span>
+                        </a>
+                        <a href="ClientInvoice.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-file-invoice text-gray-500"></i>
+                            <span>Invoice</span>
+                        </a>
+                        <a href="ClientAgreements.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-file-contract text-gray-500"></i>
+                            <span>Current Agreement</span>
+                        </a>
+                    </nav>
+                    
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <a href="ClientPost.html" class="w-full bg-transparent border border-blue-600 text-blue-600 py-2 px-4 rounded-md hover:bg-blue-50 transition-colors flex items-center justify-center space-x-2">
+                            <i class="fas fa-pencil-alt"></i>
+                            <span>Post a new job</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Links -->
+            <div class="mt-6 text-xs text-gray-500 space-y-2">
+                <div class="flex flex-wrap gap-2">
+                    <a href="#" class="hover:underline">About</a>
+                    <a href="#" class="hover:underline">Accessibility</a>
+                    <a href="#" class="hover:underline">Help Center</a>
+                    <a href="#" class="hover:underline">Privacy & Terms</a>
+                    <a href="#" class="hover:underline">Ad Choices</a>
+                    <a href="#" class="hover:underline">Advertising</a>
+                    <a href="#" class="hover:underline">Business Services</a>
+                    <a href="#" class="hover:underline">Get the LinkedIn app</a>
+                    <a href="#" class="hover:underline">More</a>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <img src="img/logo.png" alt="Logo" class="h-4 w-auto">
+                    <span>LinkedIn Corporation © 2025</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Content Area - 70% width, scrollable -->
+        <div class="w-full lg:w-2/3 lg:ml-auto p-4 lg:p-6">
+            <div id="content-area">
+                <!-- Dashboard Overview Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <!-- Active Jobs Card -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Active Jobs</h3>
+                                <p class="text-3xl font-bold text-blue-600">12</p>
+                                <p class="text-sm text-green-600">+2 this week</p>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-briefcase text-blue-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Applications Card -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Total Applications</h3>
+                                <p class="text-3xl font-bold text-green-600">234</p>
+                                <p class="text-sm text-green-600">+45 this week</p>
+                            </div>
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-users text-green-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scheduled Interviews Card -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Scheduled Interviews</h3>
+                                <p class="text-3xl font-bold text-orange-600">8</p>
+                                <p class="text-sm text-gray-600">Today: 2</p>
+                            </div>
+                            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-calendar-alt text-orange-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hired This Month Card -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Hired This Month</h3>
+                                <p class="text-3xl font-bold text-purple-600">5</p>
+                                <p class="text-sm text-gray-600">Target: 8</p>
+                            </div>
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-user-check text-purple-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Jobs Posted Section -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h2 class="text-xl font-bold text-gray-900">Current Jobs Posted</h2>
+                            <p class="text-sm text-gray-600">Manage your active job postings and applications</p>
+                        </div>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-plus mr-2"></i>Post New Job
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <!-- Job 1 -->
+                        <div class="flex flex-col sm:flex-row sm:items-start sm:space-x-4 p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                            <div class="flex-1">
+                                <div class="flex items-start justify-between mb-2">
+                                    <h3 class="font-semibold text-blue-600 hover:underline cursor-pointer">Senior Software Engineer - React</h3>
+                                    <div class="flex space-x-2">
+                                        <button class="text-gray-500 hover:text-blue-600" title="Edit">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </button>
+                                        <button class="text-gray-500 hover:text-red-600" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                                    <div>
+                                        <p class="text-gray-500">Posted Date</p>
+                                        <p class="text-gray-900">Dec 15, 2024</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500">Engagements</p>
+                                        <p class="text-gray-900">45 applications</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500">Salary Range</p>
+                                        <p class="text-gray-900">$80K - $120K</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500">Sector</p>
+                                        <p class="text-gray-900">IT</p>
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs mr-2">Remote</span>
+                                    <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">Full-time</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-2">About Role: We are looking for an experienced React developer to join our team...</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Job 2 -->
+                        <div class="flex flex-col sm:flex-row sm:items-start sm:space-x-4 p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                            <div class="flex-1">
+                                <div class="flex items-start justify-between mb-2">
+                                    <h3 class="font-semibold text-blue-600 hover:underline cursor-pointer">Financial Analyst</h3>
+                                    <div class="flex space-x-2">
+                                        <button class="text-gray-500 hover:text-blue-600" title="Edit">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </button>
+                                        <button class="text-gray-500 hover:text-red-600" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                                    <div>
+                                        <p class="text-gray-500">Posted Date</p>
+                                        <p class="text-gray-900">Dec 12, 2024</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500">Engagements</p>
+                                        <p class="text-gray-900">32 applications</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500">Salary Range</p>
+                                        <p class="text-gray-900">$60K - $85K</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500">Sector</p>
+                                        <p class="text-gray-900">Finance</p>
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs mr-2">Hybrid</span>
+                                    <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">Full-time</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-2">About Role: Join our finance team to analyze financial data and provide insights...</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Job 3 -->
+                        <div class="flex flex-col sm:flex-row sm:items-start sm:space-x-4 p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                            <div class="flex-1">
+                                <div class="flex items-start justify-between mb-2">
+                                    <h3 class="font-semibold text-blue-600 hover:underline cursor-pointer">UX/UI Designer</h3>
+                                    <div class="flex space-x-2">
+                                        <button class="text-gray-500 hover:text-blue-600" title="Edit">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </button>
+                                        <button class="text-gray-500 hover:text-red-600" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                                    <div>
+                                        <p class="text-gray-500">Posted Date</p>
+                                        <p class="text-gray-900">Dec 10, 2024</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500">Engagements</p>
+                                        <p class="text-gray-900">28 applications</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500">Salary Range</p>
+                                        <p class="text-gray-900">$70K - $95K</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500">Sector</p>
+                                        <p class="text-gray-900">Design</p>
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs mr-2">On-site</span>
+                                    <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">Full-time</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-2">About Role: Create beautiful and functional user interfaces for our products...</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="#" class="text-blue-600 hover:underline flex items-center space-x-1">
+                            <span>Show all jobs</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-8">
+        <div class="max-w-7xl mx-auto px-4 py-6">
+            <div class="text-center text-gray-600">
+                <p>&copy; 2025 MSL Recruitment Portal. This is a demonstration page.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="ClientHome.js"></script>
+</body>
+</html>

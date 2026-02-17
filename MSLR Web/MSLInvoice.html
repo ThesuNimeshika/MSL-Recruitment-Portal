@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSL Invoice Management - MSL Recruitment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="MSLInvoice.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header - Full Width -->
+    <header class="bg-white shadow-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-14">
+                <!-- Left side - Logo and Search -->
+                <div class="flex items-center space-x-4">
+                    <img src="img/logo.png" alt="Logo" class="h-8 w-auto">
+                    
+                    <!-- Search Bar -->
+                    <div class="relative">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" placeholder="Title, skill or company"
+                               class="pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-48 md:w-64 lg:w-96">
+                    </div>
+                </div>
+                
+                <!-- Right side - Navigation and Profile -->
+                <div class="flex items-center space-x-2 md:space-x-4 lg:space-x-6">
+                    <a href="SeekerHome.html" class="text-blue-600 font-semibold flex items-center space-x-1">
+                        <i class="fas fa-home"></i>
+                        <span class="hidden md:inline">Home</span>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 flex items-center space-x-1 relative">
+                        <i class="fas fa-bell"></i>
+                        <span class="hidden md:inline">Notifications</span>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">5</span>
+                    </a>
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="relative">
+                        <button id="profile-dropdown-btn" class="flex items-center space-x-1 cursor-pointer hover:bg-gray-50 p-2 rounded-md transition-colors">
+                            <img src="img/user.png" alt="Profile" class="w-8 h-8 rounded-full">
+                            <i class="fas fa-chevron-down text-gray-600 text-sm"></i>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="profile-dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50 hidden">
+                            <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-user text-gray-500 mr-3"></i>
+                                <span>Profile</span>
+                            </a>
+                            <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                                <i class="fas fa-cog text-gray-500 mr-3"></i>
+                                <span>Settings</span>
+                            </a>
+                            <div class="border-t border-gray-200 my-1"></div>
+                            <a href="#" class="flex items-center px-4 py-2 text-sm text-red-600 hover:text-red-50 transition-colors">
+                                <i class="fas fa-sign-out-alt text-red-500 mr-3"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="flex flex-col lg:flex-row pt-14 min-h-screen">
+        <!-- Left Sidebar - 30% width, fixed -->
+        <div class="w-full lg:w-1/3 bg-gray-50 p-4 lg:p-6 lg:fixed lg:left-0 lg:top-14 lg:h-full lg:overflow-y-auto">
+            <!-- MSL Profile Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+                <!-- Logo Banner Bar -->
+                <div class="relative h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-t-lg">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 rounded-t-lg"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <img src="img/logo.png" alt="MSL Logo" class="h-12 w-auto opacity-90">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                        <div class="text-sm opacity-90">Admin Dashboard</div>
+                    </div>
+                </div>
+                
+                <!-- Profile Picture -->
+                <div class="relative px-4">
+                    <div class="w-16 h-16 rounded-full border-4 border-white -mt-8 overflow-hidden">
+                        <img src="img/user.png" 
+                             alt="MSL Admin" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- Profile Info -->
+                <div class="p-4 pt-2">
+                    <h2 class="text-lg font-bold text-gray-900">Management Systems (Pvt) Ltd</h2>
+                    <p class="text-xs text-gray-500 italic mt-1">Vision: Empowering businesses through innovative recruitment solutions.</p>
+                    <div class="flex items-center mt-2">
+                        <i class="fas fa-map-marker-alt text-gray-500 w-4"></i>
+                        <span class="text-sm text-gray-600 ml-1">No.10, Gothami Road, Colombo 08</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Side Menu Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-900 mb-4">Quick Actions</h3>
+                    <nav class="space-y-3">
+                        <a href="MSLHome.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-home text-gray-500"></i>
+                            <span>Home</span>
+                        </a>
+                        
+                        <a href="MSLSeeker.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-users text-gray-500"></i>
+                            <span>Seekers</span>
+                        </a>
+                        
+                        <a href="MSLClient.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-building text-gray-500"></i>
+                            <span>Clients</span>
+                        </a>
+                        
+                        <a href="MSLPosted.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-plus-circle text-gray-500"></i>
+                            <span>Posted</span>
+                        </a>
+                        
+                        <a href="MSLInvoice.html" class="flex items-center space-x-3 text-blue-600 bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-file-invoice text-blue-600"></i>
+                            <span>Invoice</span>
+                        </a>
+                        
+                        <a href="MSLSchedule.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                            <i class="fas fa-calendar-alt text-gray-500"></i>
+                            <span>Scheduled</span>
+                        </a>
+                        
+                        <a href="#" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors" data-section="analytics">
+                            <i class="fas fa-chart-bar text-gray-500"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </nav>
+                    
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <button class="w-full bg-transparent border border-blue-600 text-blue-600 py-2 px-4 rounded-md hover:bg-blue-50 transition-colors flex items-center justify-center space-x-2">
+                            <i class="fas fa-plus"></i>
+                            <span>Create New Invoice</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Links -->
+            <div class="mt-6 text-xs text-gray-500 space-y-2">
+                <div class="flex flex-wrap gap-2">
+                    <a href="#" class="hover:underline">About</a>
+                    <a href="#" class="hover:underline">Accessibility</a>
+                    <a href="#" class="hover:underline">Help Center</a>
+                    <a href="#" class="hover:underline">Privacy & Terms</a>
+                    <a href="#" class="hover:underline">Ad Choices</a>
+                    <a href="#" class="hover:underline">Advertising</a>
+                    <a href="#" class="hover:underline">Business Services</a>
+                    <a href="#" class="hover:underline">Get the LinkedIn app</a>
+                    <a href="#" class="hover:underline">More</a>
+                </div>
+                <div class="flex items-center space-x-1">
+                    <img src="img/logo.png" alt="Logo" class="h-4 w-auto">
+                    <span>MSL Recruitment © 2025</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Content Area - 70% width, scrollable -->
+        <div class="w-full lg:w-2/3 lg:ml-auto p-4 lg:p-6">
+            <!-- Main Content Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">Current Posted Job Invoices</h1>
+                        <p class="text-gray-600 mt-1">Manage invoices and control resume access for posted jobs</p>
+                    </div>
+                    <button id="create-invoice-btn" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors flex items-center space-x-2">
+                        <i class="fas fa-plus"></i>
+                        <span>Create Invoice</span>
+                    </button>
+                </div>
+
+                <!-- Search and Filter Section -->
+                <div class="bg-gray-50 rounded-lg p-6 mb-6">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
+                        <!-- Search Bar -->
+                        <div class="relative flex-1 max-w-md">
+                            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" id="invoice-search" placeholder="Search jobs by title, company, or role"
+                                   class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+
+                        <!-- Company Filter -->
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center space-x-2">
+                                <label for="company-filter" class="text-sm font-medium text-gray-700">Company:</label>
+                                <select id="company-filter" class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option value="">All Companies</option>
+                                    <option value="Hayleys PLC">Hayleys PLC</option>
+                                    <option value="John Keells">John Keells</option>
+                                    <option value="Ceylon Tobacco">Ceylon Tobacco</option>
+                                    <option value="Dialog Axiata">Dialog Axiata</option>
+                                </select>
+                            </div>
+
+                            <!-- Invoice Status Filter -->
+                            <div class="flex items-center space-x-2">
+                                <label for="invoice-status-filter" class="text-sm font-medium text-gray-700">Invoice Status:</label>
+                                <select id="invoice-status-filter" class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option value="">All Status</option>
+                                    <option value="Complete">Complete</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Not Yet">Not Yet</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Invoices Table -->
+                <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
+                        <h3 class="text-lg font-semibold text-gray-900">Job Invoices List</h3>
+                        <p class="text-sm text-gray-600 mt-1">Showing <span id="invoice-count">0</span> invoices</p>
+                    </div>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Job & Company</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Posted Date</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Invoice Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Resume Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="invoices-table-body" class="bg-white divide-y divide-gray-200">
+                                <!-- Invoices will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job Details Modal -->
+    <div id="job-details-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+        <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white">
+            <div class="mt-3">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-medium text-gray-900">Job Details & Invoice Status</h3>
+                    <button id="close-job-modal" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <div id="job-modal-content">
+                    <!-- Job details will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Invoice Modal -->
+    <div id="create-invoice-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+        <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white">
+            <div class="mt-3">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-medium text-gray-900">Create New Invoice</h3>
+                    <button id="close-create-invoice-modal" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <form id="create-invoice-form" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Select Job</label>
+                            <select name="job" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Choose a job</option>
+                                <option value="1">Senior Software Engineer - Hayleys PLC</option>
+                                <option value="2">Marketing Manager - John Keells</option>
+                                <option value="3">Data Analyst - Ceylon Tobacco</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Invoice Amount</label>
+                            <input type="number" name="amount" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter amount">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Invoice Description</label>
+                        <textarea name="description" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter invoice description"></textarea>
+                    </div>
+                    
+                    <div class="flex justify-end space-x-3 pt-4">
+                        <button type="button" id="cancel-create-invoice" class="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors">
+                            Cancel
+                        </button>
+                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                            Create Invoice
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="MSLInvoice.js"></script>
+</body>
+</html>

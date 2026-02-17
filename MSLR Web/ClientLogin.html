@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Login - MSL Recruitment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="Login.css">
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center">
+    <!-- Login Container -->
+    <div class="max-w-md w-full mx-4">
+        <!-- Logo and Header -->
+        <div class="text-center mb-8">
+            <img src="img/logo.png" alt="MSL Logo" class="h-16 w-auto mx-auto mb-4">
+            <p class="text-gray-600 mt-2">Access your company dashboard</p>
+        </div>
+
+        <!-- Login Form Card -->
+        <div class="bg-white rounded-lg shadow-lg border border-gray-200 p-8">
+            <form id="client-login-form" class="space-y-6">
+                <!-- Email Field -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-envelope text-gray-500 mr-2"></i>Email
+                    </label>
+                    <input type="email" 
+                           id="email" 
+                           name="email" 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                           placeholder="Company@gmail.lk">
+                </div>
+
+                <!-- Password Field -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-lock text-gray-500 mr-2"></i>Password
+                    </label>
+                    <div class="relative">
+                        <input type="password" 
+                               id="password" 
+                               name="password" 
+                               required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors pr-12"
+                               placeholder="Enter your password">
+                        <button type="button" 
+                                id="toggle-password" 
+                                class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors">
+                            <i class="fas fa-eye" id="password-icon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" 
+                               id="remember-me" 
+                               name="remember-me" 
+                               class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-700">
+                            Remember me
+                        </label>
+                    </div>
+                    <a href="#" class="text-sm text-blue-600 hover:text-blue-800 transition-colors">
+                        Forgot password?
+                    </a>
+                </div>
+
+                <!-- Login Button -->
+                <a href="ClientHome.html" 
+                        class="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium flex items-center justify-center">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Login
+                </a>
+            </form>
+
+            <!-- Back Link -->
+            <div class="mt-6 text-right">
+                <a href="index.html" class="text-sm text-gray-500 hover:text-gray-700 transition-colors">
+                    <i class="fas fa-arrow-left mr-1"></i>Back to Home
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-6 text-xs text-gray-500">
+            <p>&copy; 2025 MSL Recruitment. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script src="Login.js"></script>
+</body>
+</html>
