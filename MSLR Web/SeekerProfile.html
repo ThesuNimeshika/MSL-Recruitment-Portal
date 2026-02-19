@@ -226,24 +226,27 @@
 
 
 
-            <!-- Current Position Card -->
+            <!-- Personal Details Card (formerly Current Position) -->
             <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-6 p-6">
                 <div class="flex justify-between items-start mb-4">
-                    <h3 class="font-semibold text-gray-900">Current position</h3>
-                    <button class="text-gray-500 hover:text-gray-700" id="edit-intro-btn">
-                        <i class="fas fa-pencil-alt"></i>
-                    </button>
+                    <h3 class="font-semibold text-gray-900">Indicates required *</h3>
                 </div>
 
-                <div class="flex items-start space-x-4">
-                    <img src="https://via.placeholder.com/48x48/0077b5/ffffff?text=MSL" alt="MSL"
-                        class="w-12 h-12 rounded">
-                    <div class="flex-1">
-                        <h4 class="font-semibold text-gray-900">Software Engineer</h4>
-                        <p class="text-sm text-gray-600">Management Systems (Pvt) Ltd</p>
-                        <p class="text-sm text-gray-500">Full-time</p>
-                        <p class="text-sm text-gray-500">Jan 2023 - Present</p>
-                        <p class="text-sm text-gray-500">Colombo, Western Province, Sri Lanka</p>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">First name*</label>
+                        <input type="text" value="Thesara"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Last name*</label>
+                        <input type="text" value="Kariyawasam"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Additional name</label>
+                        <input type="text"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
                 </div>
             </div>
@@ -288,11 +291,8 @@
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="font-semibold text-gray-900">Experience</h3>
                     <div class="flex space-x-2">
-                        <button class="text-gray-500 hover:text-gray-700">
+                        <button class="text-gray-500 hover:text-gray-700" id="add-experience-btn">
                             <i class="fas fa-plus"></i>
-                        </button>
-                        <button class="text-gray-500 hover:text-gray-700">
-                            <i class="fas fa-pencil-alt"></i>
                         </button>
                     </div>
                 </div>
@@ -668,6 +668,145 @@ Skilled in React, ASP.NET, Oracle and SQL Databases, Angular, Mobile developing,
                 <!-- Modal Footer -->
                 <div class="flex justify-end p-6 border-t border-gray-200">
                     <button id="save-bio"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Experience Modal -->
+    <div id="add-experience-modal"
+        class="fixed inset-0 z-50 hidden bg-gray-900/50 backdrop-blur-sm transition-opacity duration-300 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full my-8">
+                <!-- Header -->
+                <div class="flex justify-between items-center p-6 border-b border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-900">Add experience</h3>
+                    <button id="close-add-experience-modal" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <!-- Body -->
+                <div class="p-6 space-y-6">
+                    <!-- Title -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Title*</label>
+                        <input type="text"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Ex: Retail Sales Manager">
+                    </div>
+
+                    <!-- Employment Type -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Employment type</label>
+                        <select
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Please select</option>
+                            <option value="full-time">Full-time</option>
+                            <option value="part-time">Part-time</option>
+                            <option value="self-employed">Self-employed</option>
+                            <option value="freelance">Freelance</option>
+                            <option value="contract">Contract</option>
+                            <option value="internship">Internship</option>
+                            <option value="apprenticeship">Apprenticeship</option>
+                            <option value="seasonal">Seasonal</option>
+                        </select>
+                    </div>
+
+                    <!-- Company name -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Company name*</label>
+                        <input type="text"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Ex: Microsoft">
+                    </div>
+
+                    <!-- Active Role Checkbox -->
+                    <div class="flex items-center">
+                        <input type="checkbox" id="currently-working"
+                            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                        <label for="currently-working" class="ml-2 block text-sm text-gray-900">I am currently working
+                            in this role</label>
+                    </div>
+
+                    <!-- Dates -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Start date*</label>
+                            <input type="date"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div id="end-date-container">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">End date*</label>
+                            <input type="date"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- End Current Position Checkbox -->
+                    <div id="end-current-position-container" class="hidden flex items-start">
+                        <input type="checkbox" id="end-current-position"
+                            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-1">
+                        <label for="end-current-position" class="ml-2 block text-sm text-gray-900">End current pos
+                            as of now - <span class="font-medium">Software Engineer at Management Systems (Pvt)
+                                Ltd</span></label>
+                    </div>
+
+                    <!-- Location -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Location</label>
+                        <input type="text"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Ex: London, United Kingdom">
+                    </div>
+
+                    <!-- Location Type -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Location type</label>
+                        <select
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Please select</option>
+                            <option value="on-site">On-site</option>
+                            <option value="hybrid">Hybrid</option>
+                            <option value="remote">Remote</option>
+                        </select>
+                    </div>
+
+                    <!-- Description -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                        <textarea
+                            class="w-full h-32 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"></textarea>
+                    </div>
+
+                    <!-- Profile Headline -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Profile headline</label>
+                        <input type="text"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <!-- Source -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Where did you find this
+                            job?</label>
+                        <select
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Please select</option>
+                            <option value="linkedin">LinkedIn</option>
+                            <option value="company-website">From website</option>
+                            <option value="mslr">MSLR</option>
+                            <option value="other">Other job site</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="flex justify-end p-6 border-t border-gray-200">
+                    <button id="save-experience"
                         class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
                         Save
                     </button>

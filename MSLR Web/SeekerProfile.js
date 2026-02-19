@@ -1,18 +1,18 @@
 // Profile Page JavaScript
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Profile dropdown functionality
     const profileBtn = document.getElementById('profile-dropdown-btn');
     const profileDropdown = document.getElementById('profile-dropdown');
 
     if (profileBtn && profileDropdown) {
-        profileBtn.addEventListener('click', function(e) {
+        profileBtn.addEventListener('click', function (e) {
             e.stopPropagation();
             profileDropdown.classList.toggle('hidden');
         });
 
         // Close dropdown when clicking outside
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
                 profileDropdown.classList.add('hidden');
             }
@@ -26,20 +26,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const saveContact = document.getElementById('save-contact');
 
     if (contactInfoLink && contactModal) {
-        contactInfoLink.addEventListener('click', function(e) {
+        contactInfoLink.addEventListener('click', function (e) {
             e.preventDefault();
             openModal(contactModal);
         });
     }
 
     if (closeContactModal) {
-        closeContactModal.addEventListener('click', function() {
+        closeContactModal.addEventListener('click', function () {
             closeModal(contactModal);
         });
     }
 
     if (saveContact) {
-        saveContact.addEventListener('click', function() {
+        saveContact.addEventListener('click', function () {
             // Here you would typically save the contact info
             console.log('Contact info saved');
             closeModal(contactModal);
@@ -54,19 +54,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const saveIntro = document.getElementById('save-intro');
 
     if (editIntroBtn && editIntroModal) {
-        editIntroBtn.addEventListener('click', function() {
+        editIntroBtn.addEventListener('click', function () {
             openModal(editIntroModal);
         });
     }
 
     if (closeIntroModal) {
-        closeIntroModal.addEventListener('click', function() {
+        closeIntroModal.addEventListener('click', function () {
             closeModal(editIntroModal);
         });
     }
 
     if (saveIntro) {
-        saveIntro.addEventListener('click', function() {
+        saveIntro.addEventListener('click', function () {
             const positionInput = editIntroModal.querySelector('input[type="text"]');
             if (positionInput) {
                 // Update the current position in the UI
@@ -87,19 +87,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const saveAbout = document.getElementById('save-about');
 
     if (editAboutBtn && editAboutModal) {
-        editAboutBtn.addEventListener('click', function() {
+        editAboutBtn.addEventListener('click', function () {
             openModal(editAboutModal);
         });
     }
 
     if (closeAboutModal) {
-        closeAboutModal.addEventListener('click', function() {
+        closeAboutModal.addEventListener('click', function () {
             closeModal(editAboutModal);
         });
     }
 
     if (saveAbout) {
-        saveAbout.addEventListener('click', function() {
+        saveAbout.addEventListener('click', function () {
             const aboutTextarea = editAboutModal.querySelector('textarea');
             if (aboutTextarea) {
                 // Update the about section in the UI
@@ -120,38 +120,38 @@ document.addEventListener('DOMContentLoaded', function() {
     const saveBio = document.getElementById('save-bio');
 
     if (editBioBtn && editBioModal) {
-        editBioBtn.addEventListener('click', function() {
+        editBioBtn.addEventListener('click', function () {
             // Populate the modal with current values
             const positionInput = document.getElementById('bio-position-input');
             const locationInput = document.getElementById('bio-location-input');
             const currentPosition = document.getElementById('header-position').textContent;
             const currentLocation = document.getElementById('header-location').textContent;
-            
+
             if (positionInput) positionInput.value = currentPosition;
             if (locationInput) locationInput.value = currentLocation;
-            
+
             openModal(editBioModal);
         });
     }
 
     if (closeBioModal) {
-        closeBioModal.addEventListener('click', function() {
+        closeBioModal.addEventListener('click', function () {
             closeModal(editBioModal);
         });
     }
 
     if (saveBio) {
-        saveBio.addEventListener('click', function() {
+        saveBio.addEventListener('click', function () {
             const positionInput = document.getElementById('bio-position-input');
             const locationInput = document.getElementById('bio-location-input');
-            
+
             if (positionInput && locationInput) {
                 // Update the header
                 const headerPosition = document.getElementById('header-position');
                 const headerLocation = document.getElementById('header-location');
                 const bioPosition = document.getElementById('bio-position');
                 const bioLocation = document.getElementById('bio-location');
-                
+
                 if (headerPosition) headerPosition.textContent = positionInput.value;
                 if (headerLocation) headerLocation.textContent = locationInput.value;
                 if (bioPosition) bioPosition.textContent = positionInput.value;
@@ -165,14 +165,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Character count for about textarea
     const aboutTextarea = document.querySelector('#edit-about-modal textarea');
     if (aboutTextarea) {
-        aboutTextarea.addEventListener('input', function() {
+        aboutTextarea.addEventListener('input', function () {
             const maxLength = 2600;
             const currentLength = this.value.length;
             const characterCount = this.parentElement.querySelector('.text-right span');
-            
+
             if (characterCount) {
                 characterCount.textContent = `${currentLength}/${maxLength}`;
-                
+
                 // Update color based on character count
                 characterCount.classList.remove('warning', 'danger');
                 if (currentLength > maxLength * 0.8) {
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Suggested skills functionality
     const suggestedSkills = document.querySelectorAll('.suggested-skill');
     suggestedSkills.forEach(skill => {
-        skill.addEventListener('click', function() {
+        skill.addEventListener('click', function () {
             const skillText = this.querySelector('span').textContent;
             addSkillToProfile(skillText);
             this.style.display = 'none';
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // Close modals with Escape key
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             const openModals = document.querySelectorAll('.fixed:not(.hidden)');
             openModals.forEach(modal => {
@@ -208,6 +208,48 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+
+    // Add Experience Modal
+    const addExperienceBtn = document.getElementById('add-experience-btn');
+    const addExperienceModal = document.getElementById('add-experience-modal');
+    const closeAddExperienceModal = document.getElementById('close-add-experience-modal');
+    const saveExperience = document.getElementById('save-experience');
+    const currentlyWorkingCheckbox = document.getElementById('currently-working');
+    const endDateContainer = document.getElementById('end-date-container');
+    const endCurrentPositionContainer = document.getElementById('end-current-position-container');
+
+    if (addExperienceBtn && addExperienceModal) {
+        addExperienceBtn.addEventListener('click', function () {
+            openModal(addExperienceModal);
+        });
+    }
+
+    if (closeAddExperienceModal) {
+        closeAddExperienceModal.addEventListener('click', function () {
+            closeModal(addExperienceModal);
+        });
+    }
+
+    if (currentlyWorkingCheckbox) {
+        currentlyWorkingCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                if (endDateContainer) endDateContainer.classList.add('hidden');
+                if (endCurrentPositionContainer) endCurrentPositionContainer.classList.remove('hidden');
+            } else {
+                if (endDateContainer) endDateContainer.classList.remove('hidden');
+                if (endCurrentPositionContainer) endCurrentPositionContainer.classList.add('hidden');
+            }
+        });
+    }
+
+    if (saveExperience) {
+        saveExperience.addEventListener('click', function () {
+            // Here you would typically save the experience
+            console.log('Experience saved');
+            closeModal(addExperienceModal);
+            showNotification('Experience added successfully!');
+        });
+    }
 
     // Add hover effects to experience cards
     const experienceCards = document.querySelectorAll('.flex.items-start.space-x-4.mb-6, .flex.items-start.space-x-4');
@@ -249,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function openModal(modal) {
     if (modal) {
         modal.classList.remove('hidden');
-        
+
         // Prevent body scroll
         document.body.style.overflow = 'hidden';
     }
@@ -258,7 +300,7 @@ function openModal(modal) {
 function closeModal(modal) {
     if (modal) {
         modal.classList.add('hidden');
-        
+
         // Restore body scroll
         document.body.style.overflow = 'auto';
     }
@@ -269,15 +311,15 @@ function showNotification(message) {
     const notification = document.createElement('div');
     notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
     notification.textContent = message;
-    
+
     // Add to page
     document.body.appendChild(notification);
-    
+
     // Animate in
     setTimeout(() => {
         notification.classList.remove('translate-x-full');
     }, 100);
-    
+
     // Remove after 3 seconds
     setTimeout(() => {
         notification.classList.add('translate-x-full');
@@ -293,13 +335,13 @@ function addSkillToProfile(skillName) {
         const newSkill = document.createElement('span');
         newSkill.className = 'bg-blue-100 text-blue-700 px-3 py-2 rounded-full text-sm skill-tag';
         newSkill.textContent = skillName;
-        
+
         // Add animation
         newSkill.style.opacity = '0';
         newSkill.style.transform = 'scale(0.8)';
-        
+
         skillsContainer.appendChild(newSkill);
-        
+
         // Animate in
         setTimeout(() => {
             newSkill.style.transition = 'all 0.3s ease';
@@ -312,16 +354,16 @@ function addSkillToProfile(skillName) {
 // Form validation
 function validateForm(formData) {
     const errors = [];
-    
+
     // Example validation
     if (formData.get('position') && formData.get('position').trim().length < 2) {
         errors.push('Position must be at least 2 characters long');
     }
-    
+
     if (formData.get('about') && formData.get('about').trim().length > 2600) {
         errors.push('About section cannot exceed 2600 characters');
     }
-    
+
     return errors;
 }
 
@@ -329,7 +371,7 @@ function validateForm(formData) {
 function saveFormData(formData) {
     // Here you would typically send the data to a server
     console.log('Saving form data:', Object.fromEntries(formData));
-    
+
     // Simulate API call
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -339,12 +381,12 @@ function saveFormData(formData) {
 }
 
 // Handle form submissions
-document.addEventListener('submit', function(e) {
+document.addEventListener('submit', function (e) {
     e.preventDefault();
-    
+
     const form = e.target;
     const formData = new FormData(form);
-    
+
     // Validate form
     const errors = validateForm(formData);
     if (errors.length > 0) {
@@ -353,14 +395,14 @@ document.addEventListener('submit', function(e) {
         });
         return;
     }
-    
+
     // Show loading state
     const submitButton = form.querySelector('button[type="submit"]');
     if (submitButton) {
         submitButton.classList.add('loading');
         submitButton.disabled = true;
     }
-    
+
     // Save data
     saveFormData(formData).then(response => {
         if (response.success) {
@@ -393,17 +435,17 @@ function showNotification(message, type = 'success') {
         warning: 'bg-yellow-500',
         info: 'bg-blue-500'
     };
-    
+
     const notification = document.createElement('div');
     notification.className = `fixed top-4 right-4 ${colors[type]} text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
     notification.textContent = message;
-    
+
     document.body.appendChild(notification);
-    
+
     setTimeout(() => {
         notification.classList.remove('translate-x-full');
     }, 100);
-    
+
     setTimeout(() => {
         notification.classList.add('translate-x-full');
         setTimeout(() => {
