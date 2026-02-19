@@ -113,52 +113,41 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Edit Bio Modal
-    const editBioBtn = document.getElementById('edit-bio-btn');
-    const editBioModal = document.getElementById('edit-bio-modal');
-    const closeBioModal = document.getElementById('close-bio-modal');
-    const saveBio = document.getElementById('save-bio');
+    // Save Personal Details (including Bio)
+    const savePersonalDetailsBtn = document.getElementById('save-personal-details');
 
-    if (editBioBtn && editBioModal) {
-        editBioBtn.addEventListener('click', function () {
-            // Populate the modal with current values
-            const positionInput = document.getElementById('bio-position-input');
-            const locationInput = document.getElementById('bio-location-input');
-            const currentPosition = document.getElementById('header-position').textContent;
-            const currentLocation = document.getElementById('header-location').textContent;
+    if (savePersonalDetailsBtn) {
+        savePersonalDetailsBtn.addEventListener('click', function () {
+            // Get values
+            const firstName = document.querySelector('input[value="Thesara"]')?.value;
+            const lastName = document.querySelector('input[value="Kariyawasam"]')?.value;
+            const bio = document.querySelector('textarea[placeholder="Write about yourself..."]')?.value;
 
-            if (positionInput) positionInput.value = currentPosition;
-            if (locationInput) locationInput.value = currentLocation;
-
-            openModal(editBioModal);
-        });
-    }
-
-    if (closeBioModal) {
-        closeBioModal.addEventListener('click', function () {
-            closeModal(editBioModal);
-        });
-    }
-
-    if (saveBio) {
-        saveBio.addEventListener('click', function () {
-            const positionInput = document.getElementById('bio-position-input');
-            const locationInput = document.getElementById('bio-location-input');
-
-            if (positionInput && locationInput) {
-                // Update the header
-                const headerPosition = document.getElementById('header-position');
-                const headerLocation = document.getElementById('header-location');
-                const bioPosition = document.getElementById('bio-position');
-                const bioLocation = document.getElementById('bio-location');
-
-                if (headerPosition) headerPosition.textContent = positionInput.value;
-                if (headerLocation) headerLocation.textContent = locationInput.value;
-                if (bioPosition) bioPosition.textContent = positionInput.value;
-                if (bioLocation) bioLocation.textContent = locationInput.value;
+            // Update header info if needed
+            const headerName = document.querySelector('h1.text-2xl.font-bold.text-gray-900');
+            if (headerName && firstName && lastName) {
+                headerName.textContent = `${firstName} ${lastName}`;
             }
-            closeModal(editBioModal);
-            showNotification('Bio updated successfully!');
+
+            const headerPosition = document.getElementById('header-position');
+            if (headerPosition && bio) {
+                // Determine position from bio (first line)
+                const bioLines = bio.split('\n');
+                if (bioLines.length > 0) {
+                    headerPosition.textContent = bioLines[0];
+                }
+            }
+
+            const headerLocation = document.getElementById('header-location');
+            if (headerLocation && bio) {
+                // Determine location from bio (second line if exists)
+                const bioLines = bio.split('\n');
+                if (bioLines.length > 1) {
+                    headerLocation.textContent = bioLines[1];
+                }
+            }
+
+            showNotification('Personal details saved successfully!');
         });
     }
 
