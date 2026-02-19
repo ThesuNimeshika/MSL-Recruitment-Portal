@@ -113,6 +113,55 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Edit Bio Modal
+    const editBioBtn = document.getElementById('edit-bio-btn');
+    const editBioModal = document.getElementById('edit-bio-modal');
+    const closeBioModal = document.getElementById('close-bio-modal');
+    const saveBio = document.getElementById('save-bio');
+
+    if (editBioBtn && editBioModal) {
+        editBioBtn.addEventListener('click', function() {
+            // Populate the modal with current values
+            const positionInput = document.getElementById('bio-position-input');
+            const locationInput = document.getElementById('bio-location-input');
+            const currentPosition = document.getElementById('header-position').textContent;
+            const currentLocation = document.getElementById('header-location').textContent;
+            
+            if (positionInput) positionInput.value = currentPosition;
+            if (locationInput) locationInput.value = currentLocation;
+            
+            openModal(editBioModal);
+        });
+    }
+
+    if (closeBioModal) {
+        closeBioModal.addEventListener('click', function() {
+            closeModal(editBioModal);
+        });
+    }
+
+    if (saveBio) {
+        saveBio.addEventListener('click', function() {
+            const positionInput = document.getElementById('bio-position-input');
+            const locationInput = document.getElementById('bio-location-input');
+            
+            if (positionInput && locationInput) {
+                // Update the header
+                const headerPosition = document.getElementById('header-position');
+                const headerLocation = document.getElementById('header-location');
+                const bioPosition = document.getElementById('bio-position');
+                const bioLocation = document.getElementById('bio-location');
+                
+                if (headerPosition) headerPosition.textContent = positionInput.value;
+                if (headerLocation) headerLocation.textContent = locationInput.value;
+                if (bioPosition) bioPosition.textContent = positionInput.value;
+                if (bioLocation) bioLocation.textContent = locationInput.value;
+            }
+            closeModal(editBioModal);
+            showNotification('Bio updated successfully!');
+        });
+    }
+
     // Character count for about textarea
     const aboutTextarea = document.querySelector('#edit-about-modal textarea');
     if (aboutTextarea) {
