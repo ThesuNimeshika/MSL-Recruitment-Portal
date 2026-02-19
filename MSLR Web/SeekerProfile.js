@@ -119,11 +119,19 @@ document.addEventListener('DOMContentLoaded', function () {
     if (savePersonalDetailsBtn) {
         savePersonalDetailsBtn.addEventListener('click', function () {
             // Get values
-            const firstName = document.querySelector('input[value="Thesara"]')?.value;
-            const lastName = document.querySelector('input[value="Kariyawasam"]')?.value;
-            const bio = document.querySelector('textarea[placeholder="Write about yourself..."]')?.value;
+            const firstNameInput = document.querySelector('input[value="Thesara"]');
+            const lastNameInput = document.querySelector('input[value="Kariyawasam"]');
+            const bioInput = document.getElementById('personal-bio');
+            const countryInput = document.getElementById('personal-country');
+            const cityInput = document.getElementById('personal-city');
 
-            // Update header info if needed
+            const firstName = firstNameInput?.value;
+            const lastName = lastNameInput?.value;
+            const bio = bioInput?.value;
+            const country = countryInput?.value;
+            const city = cityInput?.value;
+
+            // Update header info
             const headerName = document.querySelector('h1.text-2xl.font-bold.text-gray-900');
             if (headerName && firstName && lastName) {
                 headerName.textContent = `${firstName} ${lastName}`;
@@ -139,12 +147,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const headerLocation = document.getElementById('header-location');
-            if (headerLocation && bio) {
-                // Determine location from bio (second line if exists)
-                const bioLines = bio.split('\n');
-                if (bioLines.length > 1) {
-                    headerLocation.textContent = bioLines[1];
-                }
+            if (headerLocation && city && country) {
+                headerLocation.textContent = `${city}, Southern Province, ${country}`;
             }
 
             showNotification('Personal details saved successfully!');
