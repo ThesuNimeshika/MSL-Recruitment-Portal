@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seeker Signup - MSL Recruitment Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="SeekerSignup.css">
+</head>
+
+<body class="bg-gray-50 text-gray-900 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <img src="img/logo.png" alt="Logo" class="h-10 w-auto">
+                <h1 class="text-xl font-bold text-blue-600 hidden md:block">MSL Recruitment Portal</h1>
+            </div>
+            <div class="text-sm text-gray-500">
+                Already have an account? <a href="SeekerLogin.html" class="text-blue-600 font-semibold hover:underline">Log in</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 pt-24 pb-12 flex flex-col lg:flex-row gap-8">
+        <!-- Sidebar Navigation (Desktop) -->
+        <aside class="hidden lg:block w-1/4 sticky top-24 h-fit">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="p-6 border-b border-gray-100">
+                    <h2 class="font-bold text-gray-900">Application Steps</h2>
+                    <p class="text-xs text-gray-500 mt-1">Complete all sections to submit</p>
+                </div>
+                <nav class="p-2">
+                    <ul class="space-y-1">
+                        <li><a href="#personal-details" class="flex items-center space-x-3 p-3 rounded-lg bg-blue-50 text-blue-600 font-medium transition-all hover:bg-blue-100"><i class="fas fa-user-circle"></i><span>Personal Details</span></a></li>
+                        <li><a href="#current-position" class="flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all"><i class="fas fa-briefcase"></i><span>Current Position</span></a></li>
+                        <li><a href="#career-objective" class="flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all"><i class="fas fa-bullseye"></i><span>Career Objective</span></a></li>
+                        <li><a href="#experience-skills" class="flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all"><i class="fas fa-tools"></i><span>Experience & Skills</span></a></li>
+                        <li><a href="#education" class="flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all"><i class="fas fa-graduation-cap"></i><span>Education</span></a></li>
+                        <li><a href="#location-mobility" class="flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all"><i class="fas fa-map-marked-alt"></i><span>Location & Mobility</span></a></li>
+                        <li><a href="#compensation" class="flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all"><i class="fas fa-money-bill-wave"></i><span>Compensation</span></a></li>
+                        <li><a href="#privacy-consent" class="flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all"><i class="fas fa-user-shield"></i><span>Privacy & Consent</span></a></li>
+                        <li><a href="#availability" class="flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all"><i class="fas fa-calendar-check"></i><span>Availability</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Form -->
+        <main class="w-full lg:w-3/4">
+            <form id="signup-form" class="space-y-8">
+                <!-- Section: Personal Details -->
+                <section id="personal-details" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 scroll-mt-24">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">Personal Details</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="form-label">First Name <span class="text-red-500">*</span></label>
+                            <input type="text" name="first_name" required class="form-input" placeholder="John">
+                        </div>
+                        <div>
+                            <label class="form-label">Last Name <span class="text-red-500">*</span></label>
+                            <input type="text" name="last_name" required class="form-input" placeholder="Doe">
+                        </div>
+                        <div>
+                            <label class="form-label">Full Name with Initials <span class="text-red-500">*</span></label>
+                            <input type="text" name="full_name" required class="form-input" placeholder="J. Doe">
+                        </div>
+                        <div>
+                            <label class="form-label">Email <span class="text-red-500">*</span></label>
+                            <input type="email" name="email" required class="form-input" placeholder="john.doe@example.com">
+                        </div>
+                        <div>
+                            <label class="form-label">Phone Number <span class="text-red-500">*</span></label>
+                            <input type="tel" name="phone_number" required class="form-input" placeholder="+94 7X XXX XXXX">
+                        </div>
+                        <div>
+                            <label class="form-label">Alternate Phone</label>
+                            <input type="tel" name="alternate_phone" class="form-input" placeholder="+94 7X XXX XXXX">
+                        </div>
+                        <div>
+                            <label class="form-label">Preferred Contact Method <span class="text-red-500">*</span></label>
+                            <select name="preferred_contact_method" required class="form-select">
+                                <option value="">Select Method</option>
+                                <option value="Email">Email</option>
+                                <option value="Phone">Phone Call</option>
+                                <option value="WhatsApp">WhatsApp</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">LinkedIn URL <span class="text-red-500">*</span></label>
+                            <input type="url" name="linkedin_url" required class="form-input" placeholder="https://linkedin.com/in/username">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="form-label">Current Address <span class="text-red-500">*</span></label>
+                            <textarea name="current_address" required class="form-textarea" rows="3" placeholder="Enter your full address"></textarea>
+                        </div>
+                        <div>
+                            <label class="form-label">Nationality <span class="text-red-500">*</span></label>
+                            <select name="nationality" required class="form-select">
+                                <option value="">Select Nationality</option>
+                                <option value="Sri Lankan">Sri Lankan</option>
+                                <option value="Indian">Indian</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Work Authorization Status <span class="text-red-500">*</span></label>
+                            <select name="work_authorization_status" required class="form-select">
+                                <option value="">Select Status</option>
+                                <option value="Citizen">Citizen</option>
+                                <option value="Work Permit">Work Permit</option>
+                                <option value="Visa Sponsored">Visa Sponsored</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Current Position -->
+                <section id="current-position" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 scroll-mt-24">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">Current Position</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="form-label">Current Company <span class="text-red-500">*</span></label>
+                            <input type="text" name="current_company" required class="form-input" placeholder="Company Name">
+                        </div>
+                        <div>
+                            <label class="form-label">Current Title <span class="text-red-500">*</span></label>
+                            <select name="current_title" required class="form-select">
+                                <option value="">Select Title</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Lead">Lead</option>
+                                <option value="Senior">Senior</option>
+                                <option value="Associate">Associate</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Company Size</label>
+                            <select name="company_size" class="form-select">
+                                <option value="">Select Size</option>
+                                <option value="1-10">1-10 employees</option>
+                                <option value="11-50">11-50 employees</option>
+                                <option value="51-200">51-200 employees</option>
+                                <option value="201-500">201-500 employees</option>
+                                <option value="501+">501+ employees</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Start Date <span class="text-red-500">*</span></label>
+                            <input type="date" name="start_date" required class="form-input">
+                        </div>
+                        <div>
+                            <label class="form-label">Current Total Compensation</label>
+                            <input type="number" name="current_total_compensation" class="form-input" placeholder="LKR / Annual">
+                        </div>
+                        <div>
+                            <label class="form-label">Team Size Management</label>
+                            <input type="number" name="team_size_management" class="form-input" placeholder="0">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="form-label">Key Responsibilities <span class="text-red-500">*</span></label>
+                            <textarea name="key_responsibilities" required class="form-textarea" rows="4" placeholder="Briefly describe your core duties"></textarea>
+                        </div>
+                        <div>
+                            <label class="form-label">Budget Responsibility</label>
+                            <input type="text" name="budget_responsibility" class="form-input" placeholder="e.g., $10k/month">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Career Objective -->
+                <section id="career-objective" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 scroll-mt-24">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">Career Objective</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 gap-6">
+                        <div>
+                            <label class="form-label">Career Goals & Aspirations</label>
+                            <textarea name="career_goals_aspirations" class="form-textarea" rows="4" placeholder="Where do you see yourself in 3-5 years?"></textarea>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="form-label">Target Role Type <span class="text-red-500">*</span></label>
+                                <select name="target_role_type" required class="form-select">
+                                    <option value="">Select Role Type</option>
+                                    <option value="Permanent">Permanent</option>
+                                    <option value="Contract">Contract</option>
+                                    <option value="Consultant">Consultant</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label">Target Industries</label>
+                                <div class="multi-select-container" data-name="target_industries">
+                                    <button type="button" class="multi-select-btn">Select Industries</button>
+                                    <div class="multi-select-dropdown hidden">
+                                        <div class="p-2"><input type="checkbox" value="Technology"> Technology</div>
+                                        <div class="p-2"><input type="checkbox" value="Finance"> Finance</div>
+                                        <div class="p-2"><input type="checkbox" value="Healthcare"> Healthcare</div>
+                                        <div class="p-2"><input type="checkbox" value="Education"> Education</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="form-label">Preferred Company Size</label>
+                                <select name="preferred_company_size" class="form-select">
+                                    <option value="">Select Size</option>
+                                    <option value="Startup">Startup (1-50)</option>
+                                    <option value="Mid-size">Mid-size (51-500)</option>
+                                    <option value="Enterprise">Enterprise (500+)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label">Preferred Company Stage</label>
+                                <select name="preferred_company_stage" class="form-select">
+                                    <option value="">Select Stage</option>
+                                    <option value="Pre-seed">Pre-seed / Seed</option>
+                                    <option value="Growth">Growth Mode</option>
+                                    <option value="Established">Established / Public</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Experience and Skills -->
+                <section id="experience-skills" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 scroll-mt-24">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">Experience and Skills</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="form-label">Total Years of Experience <span class="text-red-500">*</span></label>
+                            <input type="number" name="total_years_experience" required class="form-input" min="0" step="0.5" placeholder="e.g., 5.5">
+                        </div>
+                        <div>
+                            <label class="form-label">Years in Executive Roles <span class="text-red-500">*</span></label>
+                            <input type="number" name="years_in_executive_roles" required class="form-input" min="0" step="0.5" placeholder="e.g., 2">
+                        </div>
+                        <div>
+                            <label class="form-label">Core Competencies <span class="text-red-500">*</span></label>
+                            <div class="multi-select-container required" data-name="core_competencies">
+                                <button type="button" class="multi-select-btn">Select Competencies</button>
+                                <div class="multi-select-dropdown hidden">
+                                    <div class="p-2"><input type="checkbox" value="Leadership"> Leadership</div>
+                                    <div class="p-2"><input type="checkbox" value="Strategy"> Strategy</div>
+                                    <div class="p-2"><input type="checkbox" value="Project Management"> Project Management</div>
+                                    <div class="p-2"><input type="checkbox" value="Product Development"> Product Development</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="form-label">Industry Experience <span class="text-red-500">*</span></label>
+                            <div class="multi-select-container required" data-name="industry_experience">
+                                <button type="button" class="multi-select-btn">Select Industries</button>
+                                <div class="multi-select-dropdown hidden">
+                                    <div class="p-2"><input type="checkbox" value="IT"> Information Technology</div>
+                                    <div class="p-2"><input type="checkbox" value="Retail"> Retail</div>
+                                    <div class="p-2"><input type="checkbox" value="Manufacturing"> Manufacturing</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="form-label">Functional Experience <span class="text-red-500">*</span></label>
+                            <div class="multi-select-container required" data-name="functional_experience">
+                                <button type="button" class="multi-select-btn">Select Functions</button>
+                                <div class="multi-select-dropdown hidden">
+                                    <div class="p-2"><input type="checkbox" value="Engineering"> Engineering</div>
+                                    <div class="p-2"><input type="checkbox" value="HR"> Human Resources</div>
+                                    <div class="p-2"><input type="checkbox" value="Sales"> Sales</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="form-label">Languages <span class="text-red-500">*</span></label>
+                            <div class="multi-select-container required" data-name="languages">
+                                <button type="button" class="multi-select-btn">Select Languages</button>
+                                <div class="multi-select-dropdown hidden">
+                                    <div class="p-2"><input type="checkbox" value="English"> English</div>
+                                    <div class="p-2"><input type="checkbox" value="Sinhala"> Sinhala</div>
+                                    <div class="p-2"><input type="checkbox" value="Tamil"> Tamil</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Education -->
+                <section id="education" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 scroll-mt-24">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">Education</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="form-label">Highest Degree <span class="text-red-500">*</span></label>
+                            <select name="highest_degree" required class="form-select">
+                                <option value="">Select Degree</option>
+                                <option value="PhD">PhD</option>
+                                <option value="Master">Master's</option>
+                                <option value="Bachelor">Bachelor's</option>
+                                <option value="Diploma">Diploma</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Field of Study <span class="text-red-500">*</span></label>
+                            <input type="text" name="field_of_study" required class="form-input" placeholder="e.g., Computer Science">
+                        </div>
+                        <div>
+                            <label class="form-label">University <span class="text-red-500">*</span></label>
+                            <input type="text" name="university" required class="form-input" placeholder="e.g., University of Colombo">
+                        </div>
+                        <div>
+                            <label class="form-label">Graduation Year <span class="text-red-500">*</span></label>
+                            <input type="number" name="graduation_year" required class="form-input" min="1900" max="2100" placeholder="YYYY">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="form-label">Additional Certifications <span class="text-red-500">*</span></label>
+                            <textarea name="additional_certifications" required class="form-textarea" rows="2" placeholder="List any relevant certifications (comma separated)"></textarea>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Location and Mobility -->
+                <section id="location-mobility" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 scroll-mt-24">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">Location and Mobility</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="form-label">Preferred Work Location <span class="text-red-500">*</span></label>
+                            <select name="preferred_work_location" required class="form-select">
+                                <option value="">Select Location</option>
+                                <option value="Colombo">Colombo</option>
+                                <option value="Kandy">Kandy</option>
+                                <option value="Remote">Remote</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Travel Willingness <span class="text-red-500">*</span></label>
+                            <select name="travel_willingness" required class="form-select">
+                                <option value="">Select Option</option>
+                                <option value="0%">No Travel (0%)</option>
+                                <option value="25%">Occasional (25%)</option>
+                                <option value="50%">Frequent (50%)</option>
+                                <option value="100%">Road Warrior (100%)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Remote Work Preferences <span class="text-red-500">*</span></label>
+                            <select name="remote_work_preferences" required class="form-select">
+                                <option value="">Select Preference</option>
+                                <option value="Remote Only">Remote Only</option>
+                                <option value="Hybrid">Hybrid</option>
+                                <option value="On-site">On-site Only</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center space-x-3 pt-6">
+                            <input type="checkbox" name="willingness_to_relocate" id="willingness_to_relocate" class="w-5 h-5 text-blue-600 rounded border-gray-300">
+                            <label for="willingness_to_relocate" class="font-medium text-gray-700">Willingness to Relocate <span class="text-red-500">*</span></label>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Compensation Expectation -->
+                <section id="compensation" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 scroll-mt-24">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">Compensation Expectation</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="form-label">Expected Take Home Salary (Min) <span class="text-red-500">*</span></label>
+                            <div class="flex items-center">
+                                <span class="bg-gray-100 border border-r-0 border-gray-300 rounded-l-md px-3 py-2 text-gray-500">LKR</span>
+                                <input type="number" name="target_base_salary_min" required class="form-input rounded-l-none" placeholder="Min Amount">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="form-label">Gross Salary (Max) <span class="text-red-500">*</span></label>
+                            <div class="flex items-center">
+                                <span class="bg-gray-100 border border-r-0 border-gray-300 rounded-l-md px-3 py-2 text-gray-500">LKR</span>
+                                <input type="number" name="target_base_salary_max" required class="form-input rounded-l-none" placeholder="Max Amount">
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="form-label">Additional Allowances</label>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
+                                <div class="flex items-center space-x-2">
+                                    <input type="checkbox" name="allowances[]" value="Medical" id="allowance-medical" class="form-checkbox">
+                                    <label for="allowance-medical" class="text-sm">Medical Insurance</label>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <input type="checkbox" name="allowances[]" value="Transport" id="allowance-transport" class="form-checkbox">
+                                    <label for="allowance-transport" class="text-sm">Transport</label>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <input type="checkbox" name="allowances[]" value="Bonus" id="allowance-bonus" class="form-checkbox">
+                                    <label for="allowance-bonus" class="text-sm">Performance Bonus</label>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <input type="checkbox" name="allowances[]" value="Gym" id="allowance-gym" class="form-checkbox">
+                                    <label for="allowance-gym" class="text-sm">Gym Membership</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Privacy and Consent -->
+                <section id="privacy-consent" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 scroll-mt-24">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">Privacy and Consent (Seeker Guide)</h2>
+                    </div>
+                    
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                        <p class="text-sm text-blue-700">
+                            By submitting this orientation, you agree to our privacy policy and allow us to share your details with prospective employers for the purpose of recruitment.
+                        </p>
+                    </div>
+
+                    <div class="flex items-center space-x-3 mb-4">
+                        <input type="checkbox" name="reference_check_permission" required id="reference_check_permission" class="w-5 h-5 text-blue-600 rounded border-gray-300">
+                        <label for="reference_check_permission" class="font-medium text-gray-700">I grant permission for MSL to conduct reference checks. <span class="text-red-500">*</span></label>
+                    </div>
+                </section>
+
+                <!-- Section: Availability -->
+                <section id="availability" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 scroll-mt-24">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">Availability</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="form-label">Current Employment Status <span class="text-red-500">*</span></label>
+                            <select name="current_employment_status" required class="form-select">
+                                <option value="">Select Status</option>
+                                <option value="Employed">Employed</option>
+                                <option value="Unemployed">Unemployed</option>
+                                <option value="Student">Student</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Search Status <span class="text-red-500">*</span></label>
+                            <select name="search_status" required class="form-select">
+                                <option value="">Select Status</option>
+                                <option value="Actively Looking">Actively Looking</option>
+                                <option value="Open to offers">Open to offers</option>
+                                <option value="Passive">Passive</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Notice Period <span class="text-red-500">*</span></label>
+                            <select name="notice_period" required class="form-select">
+                                <option value="">Select Period</option>
+                                <option value="Immediate">Immediate</option>
+                                <option value="1 Month">1 Month</option>
+                                <option value="2 Months">2 Months</option>
+                                <option value="3 Months">3 Months+</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Additional Information -->
+                <section id="additional-info" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 scroll-mt-24">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">Additional Information</h2>
+                    </div>
+                    
+                    <div>
+                        <label class="form-label">How did you hear about us?</label>
+                        <select name="how_hear_about_us" class="form-select">
+                            <option value="">Select Option</option>
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="Friend">Friend / Referral</option>
+                            <option value="Website">Website</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </section>
+
+                <!-- Submission -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="form-label">Digital Signature</label>
+                            <input type="text" name="digital_signature" required class="form-input italic font-serif" placeholder="Type your full name to sign">
+                            <p class="text-xs text-gray-500 mt-2">By typing your name, you are providing a digital signature.</p>
+                        </div>
+                        <div>
+                            <label class="form-label">Submission Date</label>
+                            <input type="date" name="submission_date" id="submission_date" readonly class="form-input bg-gray-50 cursor-not-allowed">
+                        </div>
+                    </div>
+                    <div class="mt-8 flex flex-col md:flex-row gap-4">
+                        <button type="submit" class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-bold hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            Complete Registration
+                        </button>
+                        <button type="button" class="px-6 py-3 border border-gray-300 rounded-lg text-gray-600 font-semibold hover:bg-gray-50 transition-all">
+                            Save as Draft
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="SeekerSignup.js"></script>
+</body>
+
+</html>

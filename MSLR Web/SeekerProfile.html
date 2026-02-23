@@ -419,7 +419,7 @@
             <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-6 p-6">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="font-semibold text-gray-900">Skills</h3>
-                    <button class="text-gray-500 hover:text-gray-700">
+                    <button class="text-gray-500 hover:text-gray-700" id="edit-skills-btn">
                         <i class="fas fa-pencil-alt"></i>
                     </button>
                 </div>
@@ -584,15 +584,40 @@ Skilled in React, ASP.NET, Oracle and SQL Databases, Angular, Mobile developing,
                             <span class="text-sm text-gray-500">537/2,600</span>
                         </div>
                     </div>
+                </div>
 
+                <!-- Modal Footer -->
+                <div class="flex justify-end p-6 border-t border-gray-200">
+                    <button id="save-about"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Skills Modal -->
+    <div id="edit-skills-modal"
+        class="fixed inset-0 z-50 hidden bg-gray-900/50 backdrop-blur-sm transition-opacity duration-300">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <!-- Modal Header -->
+                <div class="flex justify-between items-center p-6 border-b border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-900">Edit skills</h3>
+                    <button id="close-skills-modal" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="p-6">
                     <div class="mb-6">
-                        <button class="flex items-center space-x-2 text-orange-600 hover:text-orange-700">
+                        <button class="flex items-center space-x-2 text-orange-600 hover:text-orange-700 mb-6">
                             <i class="fas fa-star"></i>
                             <span class="text-sm">Get AI suggestions with Premium</span>
                         </button>
-                    </div>
 
-                    <div class="mb-6">
                         <h4 class="font-semibold text-gray-900 mb-4">Skills</h4>
                         <p class="text-sm text-gray-600 mb-4">Show your top skills — add up to 5 skills you want to be
                             known for. They'll also appear in your Skills section.</p>
@@ -602,7 +627,7 @@ Skilled in React, ASP.NET, Oracle and SQL Databases, Angular, Mobile developing,
                             <span>Add skill</span>
                         </button>
 
-                        <div class="mt-4">
+                        <div class="mt-8">
                             <div class="flex justify-between items-center mb-3">
                                 <h5 class="font-medium text-gray-900">Suggested based on your profile</h5>
                                 <button class="text-gray-400 hover:text-gray-600">
@@ -611,27 +636,27 @@ Skilled in React, ASP.NET, Oracle and SQL Databases, Angular, Mobile developing,
                             </div>
                             <div class="flex flex-wrap gap-2">
                                 <button
-                                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 flex items-center space-x-1">
+                                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 flex items-center space-x-1 suggested-skill">
                                     <span>Python (Programming Language)</span>
                                     <i class="fas fa-plus text-xs"></i>
                                 </button>
                                 <button
-                                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 flex items-center space-x-1">
+                                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 flex items-center space-x-1 suggested-skill">
                                     <span>Java</span>
                                     <i class="fas fa-plus text-xs"></i>
                                 </button>
                                 <button
-                                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 flex items-center space-x-1">
+                                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 flex items-center space-x-1 suggested-skill">
                                     <span>JavaScript</span>
                                     <i class="fas fa-plus text-xs"></i>
                                 </button>
                                 <button
-                                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 flex items-center space-x-1">
+                                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 flex items-center space-x-1 suggested-skill">
                                     <span>C#</span>
                                     <i class="fas fa-plus text-xs"></i>
                                 </button>
                                 <button
-                                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 flex items-center space-x-1">
+                                    class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 flex items-center space-x-1 suggested-skill">
                                     <span>Spring Framework</span>
                                     <i class="fas fa-plus text-xs"></i>
                                 </button>
@@ -642,7 +667,7 @@ Skilled in React, ASP.NET, Oracle and SQL Databases, Angular, Mobile developing,
 
                 <!-- Modal Footer -->
                 <div class="flex justify-end p-6 border-t border-gray-200">
-                    <button id="save-about"
+                    <button id="save-skills"
                         class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
                         Save
                     </button>

@@ -1,0 +1,139 @@
+/* SeekerSignup.css */
+
+/* Custom Form Styles */
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+    /* gray-700 */
+    margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    /* gray-300 */
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    transition: all 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    /* blue-600 */
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-checkbox {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #2563eb;
+    border-radius: 0.25rem;
+    border: 1px solid #d1d5db;
+    /* corrected property name */
+}
+
+/* Multi-select Dropdown Styles */
+.multi-select-container {
+    position: relative;
+    width: 100%;
+}
+
+.multi-select-btn {
+    width: 100%;
+    text-align: left;
+    padding: 0.625rem 0.875rem;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    color: #6b7280;
+    /* gray-500 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.multi-select-btn::after {
+    content: '\f107';
+    /* font-awesome chevron down */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 0.875rem;
+}
+
+.multi-select-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    margin-top: 0.25rem;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.multi-select-dropdown div {
+    display: flex;
+    align-items: center;
+    /* corrected property name */
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.multi-select-dropdown div:hover {
+    background-color: #f3f4f6;
+}
+
+.multi-select-dropdown input[type="checkbox"] {
+    margin-right: 0.75rem;
+    width: 1rem;
+    height: 1rem;
+    color: #2563eb;
+}
+
+/* Sidebar Navigation Active State */
+aside nav a.active {
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-weight: 600;
+    border-left: 4px solid #2563eb;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Utilities */
+.scroll-mt-24 {
+    scroll-margin-top: 6rem;
+}
+
+/* Signature Styling */
+.italic {
+    font-style: italic;
+}
+
+.font-serif {
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .h-fit {
+        height: auto;
+    }
+}

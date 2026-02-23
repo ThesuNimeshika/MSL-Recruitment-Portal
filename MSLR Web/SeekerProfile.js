@@ -113,6 +113,32 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Edit Skills Modal
+    const editSkillsBtn = document.getElementById('edit-skills-btn');
+    const editSkillsModal = document.getElementById('edit-skills-modal');
+    const closeSkillsModal = document.getElementById('close-skills-modal');
+    const saveSkills = document.getElementById('save-skills');
+
+    if (editSkillsBtn && editSkillsModal) {
+        editSkillsBtn.addEventListener('click', function () {
+            openModal(editSkillsModal);
+        });
+    }
+
+    if (closeSkillsModal) {
+        closeSkillsModal.addEventListener('click', function () {
+            closeModal(editSkillsModal);
+        });
+    }
+
+    if (saveSkills) {
+        saveSkills.addEventListener('click', function () {
+            // Logic to save skills if needed
+            closeModal(editSkillsModal);
+            showNotification('Skills updated successfully!');
+        });
+    }
+
     // Save Personal Details (including Bio)
     const savePersonalDetailsBtn = document.getElementById('save-personal-details');
 
