@@ -270,6 +270,33 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Add Education Modal
+    const addEducationBtn = document.getElementById('add-education-btn');
+    const addEducationModal = document.getElementById('add-education-modal');
+    const closeAddEducationModal = document.getElementById('close-add-education-modal');
+    const saveEducation = document.getElementById('save-education');
+
+    if (addEducationBtn && addEducationModal) {
+        addEducationBtn.addEventListener('click', function () {
+            openModal(addEducationModal);
+        });
+    }
+
+    if (closeAddEducationModal) {
+        closeAddEducationModal.addEventListener('click', function () {
+            closeModal(addEducationModal);
+        });
+    }
+
+    if (saveEducation) {
+        saveEducation.addEventListener('click', function () {
+            // Here you would typically save the education
+            console.log('Education saved');
+            closeModal(addEducationModal);
+            showNotification('Education added successfully!');
+        });
+    }
+
     // Add hover effects to experience cards
     const experienceCards = document.querySelectorAll('.flex.items-start.space-x-4.mb-6, .flex.items-start.space-x-4');
     experienceCards.forEach(card => {
