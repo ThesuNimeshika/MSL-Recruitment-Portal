@@ -396,6 +396,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Dynamic education placeholder logic
+    const educationHighest = document.getElementById('education-highest');
+    const educationDegree = document.getElementById('education-degree');
+
+    if (educationHighest && educationDegree) {
+        educationHighest.addEventListener('change', function () {
+            const selectedValue = this.value;
+            if (selectedValue) {
+                educationDegree.placeholder = `Ex: ${selectedValue} Name`;
+            } else {
+                educationDegree.placeholder = "Ex: Bachelor's Name";
+            }
+        });
+    }
+
     // Add hover effects to experience cards
     const experienceCards = document.querySelectorAll('.flex.items-start.space-x-4.mb-6, .flex.items-start.space-x-4');
     experienceCards.forEach(card => {
