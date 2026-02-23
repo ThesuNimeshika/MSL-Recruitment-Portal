@@ -251,6 +251,21 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Contact Info Section -->
+                    <div class="mt-8 border-t pt-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-medium text-gray-900">Contact info</h4>
+                                <p class="text-sm text-gray-600 mt-1">Add or edit your profile URL, email, and more</p>
+                            </div>
+                            <button id="edit-contact-info-btn"
+                                class="text-blue-600 hover:underline text-sm font-medium">
+                                Edit contact info
+                            </button>
+                        </div>
+                    </div>
+
                     <div class="flex justify-end pt-2">
                         <button id="save-personal-details"
                             class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
@@ -417,68 +432,98 @@
         </div>
     </div>
 
-    <!-- Contact Info Modal -->
+    <!-- Edit Contact Info Modal -->
     <div id="contact-modal"
-        class="fixed inset-0 z-50 hidden bg-gray-900/50 backdrop-blur-sm transition-opacity duration-300">
+        class="fixed inset-0 z-50 hidden bg-gray-900/50 backdrop-blur-sm transition-opacity duration-300 overflow-y-auto">
         <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white rounded-lg shadow-xl max-w-md w-full">
+            <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full my-8">
                 <!-- Modal Header -->
                 <div class="flex justify-between items-center p-6 border-b border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-900">Thesara Kariyawasam</h3>
+                    <h3 class="text-lg font-semibold text-gray-900">Edit contact info</h3>
                     <button id="close-contact-modal" class="text-gray-400 hover:text-gray-600">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
 
                 <!-- Modal Body -->
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <h4 class="font-semibold text-gray-900">Contact info</h4>
-                        <button class="text-gray-500 hover:text-gray-700">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
+                <div class="p-6 space-y-6">
+                    <!-- Profile URL -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Profile URL</label>
+                        <div
+                            class="flex items-center text-sm text-gray-600 bg-gray-50 px-3 py-2 rounded-md border border-gray-200">
+                            <i class="fas fa-link mr-2"></i>
+                            <span>linkedin.com/in/thesara-kariyawasam</span>
+                        </div>
                     </div>
 
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-link text-gray-500 w-5"></i>
-                            <div>
-                                <p class="text-sm font-medium text-gray-900">Your Profile</p>
-                                <a href="https://linkedin.com/in/thesara-kariyawasam"
-                                    class="text-sm text-blue-600 hover:underline">linkedin.com/in/thesara-kariyawasam</a>
-                            </div>
+                    <!-- Email -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email address</label>
+                        <div
+                            class="flex items-center text-sm text-gray-600 bg-gray-50 px-3 py-2 rounded-md border border-gray-200">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>thesaranimeshika@gmail.com</span>
                         </div>
+                    </div>
 
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-phone text-gray-500 w-5"></i>
-                            <div>
-                                <p class="text-sm font-medium text-gray-900">Phone</p>
-                                <p class="text-sm text-gray-600">+94 71 234 5678</p>
-                            </div>
+                    <!-- Phone -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Phone number</label>
+                            <input type="tel" id="contact-phone" placeholder="+94 77 123 4567"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                         </div>
-
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-map-marker-alt text-gray-500 w-5"></i>
-                            <div>
-                                <p class="text-sm font-medium text-gray-900">Address</p>
-                                <p class="text-sm text-gray-600">123 Main Street, Matara, Southern Province, Sri Lanka
-                                </p>
-                            </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Phone type</label>
+                            <select id="contact-phone-type"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="Mobile">Mobile</option>
+                                <option value="Home">Home</option>
+                                <option value="Work">Work</option>
+                            </select>
                         </div>
+                    </div>
 
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-envelope text-gray-500 w-5"></i>
-                            <div>
-                                <p class="text-sm font-medium text-gray-900">Email</p>
-                                <p class="text-sm text-gray-600">thesara.kariyawasam@email.com</p>
-                            </div>
+                    <!-- Address -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                        <input type="text" id="contact-address" placeholder="No. 123, Galle Road, Matara"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <!-- Birthday -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Birthday</label>
+                        <div class="flex items-center space-x-2">
+                            <input type="date" id="contact-birthday"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                         </div>
+                    </div>
 
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-birthday-cake text-gray-500 w-5"></i>
-                            <div>
-                                <p class="text-sm font-medium text-gray-900">Birthday</p>
-                                <p class="text-sm text-gray-600">January 15, 1998</p>
+                    <!-- Website Section -->
+                    <div class="border-t pt-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h4 class="text-sm font-semibold text-gray-900">Website</h4>
+                        </div>
+                        <div id="website-container" class="space-y-4">
+                            <!-- Website entries will go here -->
+                        </div>
+                        <div id="add-website-container" class="mt-4">
+                            <button id="add-website-trigger"
+                                class="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
+                                <i class="fas fa-plus mr-1"></i> Add website
+                            </button>
+                            <div id="website-input-group" class="hidden space-y-3 mt-3">
+                                <input type="url" id="new-website-url" placeholder="URL (e.g. https://portfolio.com)"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <div class="flex justify-end space-x-2">
+                                    <button id="cancel-website"
+                                        class="text-gray-600 hover:text-gray-800 text-sm px-3 py-1">Cancel</button>
+                                    <button id="save-website-btn"
+                                        class="bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700 text-sm">Save
+                                        link</button>
+                                </div>
                             </div>
                         </div>
                     </div>

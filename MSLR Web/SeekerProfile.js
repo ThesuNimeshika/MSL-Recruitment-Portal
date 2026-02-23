@@ -21,14 +21,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Contact Info Modal
     const contactInfoLink = document.getElementById('contact-info-link');
+    const editContactInfoBtn = document.getElementById('edit-contact-info-btn');
     const contactModal = document.getElementById('contact-modal');
     const closeContactModal = document.getElementById('close-contact-modal');
     const saveContact = document.getElementById('save-contact');
 
-    if (contactInfoLink && contactModal) {
-        contactInfoLink.addEventListener('click', function (e) {
-            e.preventDefault();
-            openModal(contactModal);
+    // Website logic
+    const addWebsiteTrigger = document.getElementById('add-website-trigger');
+    const websiteInputGroup = document.getElementById('website-input-group');
+    const websiteContainer = document.getElementById('website-container');
+    const saveWebsiteBtn = document.getElementById('save-website-btn');
+    const cancelWebsite = document.getElementById('cancel-website');
+    const newWebsiteUrl = document.getElementById('new-website-url');
+
+    if ((contactInfoLink || editContactInfoBtn) && contactModal) {
+        const triggers = [contactInfoLink, editContactInfoBtn];
+        triggers.forEach(trigger => {
+            if (trigger) {
+                trigger.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    openModal(contactModal);
+                });
+            }
         });
     }
 
@@ -44,6 +58,52 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Contact info saved');
             closeModal(contactModal);
             showNotification('Contact information saved successfully!');
+        });
+    }
+
+    if (addWebsiteTrigger && websiteInputGroup) {
+        addWebsiteTrigger.addEventListener('click', function () {
+            addWebsiteTrigger.classList.add('hidden');
+            websiteInputGroup.classList.remove('hidden');
+            if (newWebsiteUrl) newWebsiteUrl.focus();
+        });
+    }
+
+    if (cancelWebsite) {
+        cancelWebsite.addEventListener('click', function () {
+            websiteInputGroup.classList.add('hidden');
+            addWebsiteTrigger.classList.remove('hidden');
+            if (newWebsiteUrl) newWebsiteUrl.value = '';
+        });
+    }
+
+    if (saveWebsiteBtn && websiteContainer) {
+        saveWebsiteBtn.addEventListener('click', function () {
+            const url = newWebsiteUrl ? newWebsiteUrl.value.trim() : '';
+            if (url) {
+                const websiteDiv = document.createElement('div');
+                websiteDiv.className = 'flex items-center justify-between text-sm text-gray-700 bg-gray-50 px-3 py-2 rounded-md border border-gray-200';
+                websiteDiv.innerHTML = `
+                    <div class="flex items-center">
+                        <i class="fas fa-globe mr-2 text-gray-500"></i>
+                        <a href="${url}" target="_blank" class="text-blue-600 hover:underline break-all">${url}</a>
+                    </div>
+                    <button class="text-gray-400 hover:text-red-500 remove-website">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                `;
+                websiteContainer.appendChild(websiteDiv);
+
+                // Add remove listener
+                websiteDiv.querySelector('.remove-website').addEventListener('click', function () {
+                    websiteDiv.remove();
+                });
+
+                // Reset
+                websiteInputGroup.classList.add('hidden');
+                addWebsiteTrigger.classList.remove('hidden');
+                if (newWebsiteUrl) newWebsiteUrl.value = '';
+            }
         });
     }
 
