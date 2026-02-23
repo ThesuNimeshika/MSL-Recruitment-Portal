@@ -139,6 +139,45 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Add Skill Input Transformation
+    const addSkillBtn = document.getElementById('add-skill-btn');
+    const addSkillInput = document.getElementById('add-skill-input');
+
+    if (addSkillBtn && addSkillInput) {
+        addSkillBtn.addEventListener('click', function () {
+            addSkillBtn.classList.add('hidden');
+            addSkillInput.classList.remove('hidden');
+            addSkillInput.focus();
+        });
+
+        addSkillInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ',') {
+                e.preventDefault(); // Prevent comma from appearing or Enter from submitting
+                const value = this.value.trim();
+                if (value) {
+                    // Split by comma in case the user pasted/typed multiple
+                    const skills = value.split(',').map(s => s.trim()).filter(s => s !== '');
+                    skills.forEach(skill => {
+                        addSkillToProfile(skill);
+                    });
+                    this.value = '';
+                }
+            } else if (e.key === 'Escape') {
+                this.classList.add('hidden');
+                addSkillBtn.classList.remove('hidden');
+                this.value = '';
+            }
+        });
+
+        // Optional: Hide input if it loses focus and is empty
+        addSkillInput.addEventListener('blur', function () {
+            if (this.value.trim() === '') {
+                this.classList.add('hidden');
+                addSkillBtn.classList.remove('hidden');
+            }
+        });
+    }
+
     // Save Personal Details (including Bio)
     const savePersonalDetailsBtn = document.getElementById('save-personal-details');
 
