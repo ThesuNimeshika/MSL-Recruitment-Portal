@@ -82,6 +82,16 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
+                            <label class="form-label">Title <span class="text-red-500">*</span></label>
+                            <select name="title" required class="form-select">
+                                <option value="">Select Title</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Miss">Miss</option>
+                                <option value="Mrs">Mrs</option>
+                                <option value="Dr">Dr</option>
+                            </select>
+                        </div>
+                        <div>
                             <label class="form-label">First Name <span class="text-red-500">*</span></label>
                             <input type="text" name="first_name" required class="form-input" placeholder="John">
                         </div>
@@ -93,6 +103,10 @@
                             <label class="form-label">Full Name with Initials <span
                                     class="text-red-500">*</span></label>
                             <input type="text" name="full_name" required class="form-input" placeholder="J. Doe">
+                        </div>
+                        <div>
+                            <label class="form-label">Date of Birth <span class="text-red-500">*</span></label>
+                            <input type="date" name="date_of_birth" required class="form-input">
                         </div>
                         <div>
                             <label class="form-label">Email <span class="text-red-500">*</span></label>
@@ -123,19 +137,59 @@
                             <input type="url" name="linkedin_url" required class="form-input"
                                 placeholder="https://linkedin.com/in/username">
                         </div>
-                        <div class="md:col-span-2">
-                            <label class="form-label">Current Address <span class="text-red-500">*</span></label>
-                            <textarea name="current_address" required class="form-textarea" rows="3"
-                                placeholder="Enter your full address"></textarea>
+                        <div>
+                            <label class="form-label">House or Building No <span class="text-red-500">*</span></label>
+                            <input type="text" name="house_no" required class="form-input" placeholder="No. 123">
                         </div>
                         <div>
-                            <label class="form-label">Nationality <span class="text-red-500">*</span></label>
-                            <select name="nationality" required class="form-select">
-                                <option value="">Select Nationality</option>
-                                <option value="Sri Lankan">Sri Lankan</option>
-                                <option value="Indian">Indian</option>
-                                <option value="Other">Other</option>
+                            <label class="form-label">Street Name <span class="text-red-500">*</span></label>
+                            <input type="text" name="street_name" required class="form-input" placeholder="Main Street">
+                        </div>
+                        <div>
+                            <label class="form-label">City <span class="text-red-500">*</span></label>
+                            <input type="text" name="city" required class="form-input" placeholder="Colombo">
+                        </div>
+                        <div>
+                            <label class="form-label">District <span class="text-red-500">*</span></label>
+                            <select name="district" required class="form-select">
+                                <option value="">Select District</option>
+                                <option value="Ampara">Ampara</option>
+                                <option value="Anuradhapura">Anuradhapura</option>
+                                <option value="Badulla">Badulla</option>
+                                <option value="Batticaloa">Batticaloa</option>
+                                <option value="Colombo">Colombo</option>
+                                <option value="Galle">Galle</option>
+                                <option value="Gampaha">Gampaha</option>
+                                <option value="Hambantota">Hambantota</option>
+                                <option value="Jaffna">Jaffna</option>
+                                <option value="Kalutara">Kalutara</option>
+                                <option value="Kandy">Kandy</option>
+                                <option value="Kegalle">Kegalle</option>
+                                <option value="Kilinochchi">Kilinochchi</option>
+                                <option value="Kurunegala">Kurunegala</option>
+                                <option value="Mannar">Mannar</option>
+                                <option value="Matale">Matale</option>
+                                <option value="Matara">Matara</option>
+                                <option value="Moneragala">Moneragala</option>
+                                <option value="Mullaitivu">Mullaitivu</option>
+                                <option value="Nuwara Eliya">Nuwara Eliya</option>
+                                <option value="Polonnaruwa">Polonnaruwa</option>
+                                <option value="Puttalam">Puttalam</option>
+                                <option value="Ratnapura">Ratnapura</option>
+                                <option value="Trincomalee">Trincomalee</option>
+                                <option value="Vavuniya">Vavuniya</option>
                             </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Languages <span class="text-red-500">*</span></label>
+                            <div class="multi-select-container required" data-name="languages">
+                                <button type="button" class="multi-select-btn">Select Languages</button>
+                                <div class="multi-select-dropdown hidden">
+                                    <div class="p-2"><input type="checkbox" value="English"> English</div>
+                                    <div class="p-2"><input type="checkbox" value="Sinhala"> Sinhala</div>
+                                    <div class="p-2"><input type="checkbox" value="Tamil"> Tamil</div>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <label class="form-label">Work Authorization Status <span
@@ -185,11 +239,6 @@
                         <div>
                             <label class="form-label">Start Date <span class="text-red-500">*</span></label>
                             <input type="date" name="start_date" required class="form-input">
-                        </div>
-                        <div>
-                            <label class="form-label">Current Total Compensation Range</label>
-                            <input type="number" name="current_total_compensation" class="form-input"
-                                placeholder="######-######">
                         </div>
 
                         <div class="md:col-span-2">
@@ -247,88 +296,6 @@
                                     <option value="Mid-size">Mid-size (51-500)</option>
                                     <option value="Enterprise">Enterprise (500+)</option>
                                 </select>
-                            </div>
-                            <div>
-                                <label class="form-label">Preferred Company Stage</label>
-                                <select name="preferred_company_stage" class="form-select">
-                                    <option value="">Select Stage</option>
-                                    <option value="Pre-seed">Pre-seed / Seed</option>
-                                    <option value="Growth">Growth Mode</option>
-                                    <option value="Established">Established / Public</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Section: Experience and Skills -->
-                <section id="experience-skills"
-                    class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 scroll-mt-24">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h2 class="text-2xl font-bold">Experience and Skills</h2>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="form-label">Total Years of Experience <span
-                                    class="text-red-500">*</span></label>
-                            <input type="number" name="total_years_experience" required class="form-input" min="0"
-                                step="0.5" placeholder="e.g., 5.5">
-                        </div>
-                        <div>
-                            <label class="form-label">Years in Executive Roles <span
-                                    class="text-red-500">*</span></label>
-                            <input type="number" name="years_in_executive_roles" required class="form-input" min="0"
-                                step="0.5" placeholder="e.g., 2">
-                        </div>
-                        <div>
-                            <label class="form-label">Core Competencies <span class="text-red-500">*</span></label>
-                            <div class="multi-select-container required" data-name="core_competencies">
-                                <button type="button" class="multi-select-btn">Select Competencies</button>
-                                <div class="multi-select-dropdown hidden">
-                                    <div class="p-2"><input type="checkbox" value="Leadership"> Leadership</div>
-                                    <div class="p-2"><input type="checkbox" value="Strategy"> Strategy</div>
-                                    <div class="p-2"><input type="checkbox" value="Project Management"> Project
-                                        Management</div>
-                                    <div class="p-2"><input type="checkbox" value="Product Development"> Product
-                                        Development</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="form-label">Industry Experience <span class="text-red-500">*</span></label>
-                            <div class="multi-select-container required" data-name="industry_experience">
-                                <button type="button" class="multi-select-btn">Select Industries</button>
-                                <div class="multi-select-dropdown hidden">
-                                    <div class="p-2"><input type="checkbox" value="IT"> Information Technology</div>
-                                    <div class="p-2"><input type="checkbox" value="Retail"> Retail</div>
-                                    <div class="p-2"><input type="checkbox" value="Manufacturing"> Manufacturing</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="form-label">Functional Experience <span class="text-red-500">*</span></label>
-                            <div class="multi-select-container required" data-name="functional_experience">
-                                <button type="button" class="multi-select-btn">Select Functions</button>
-                                <div class="multi-select-dropdown hidden">
-                                    <div class="p-2"><input type="checkbox" value="Engineering"> Engineering</div>
-                                    <div class="p-2"><input type="checkbox" value="HR"> Human Resources</div>
-                                    <div class="p-2"><input type="checkbox" value="Sales"> Sales</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="form-label">Languages <span class="text-red-500">*</span></label>
-                            <div class="multi-select-container required" data-name="languages">
-                                <button type="button" class="multi-select-btn">Select Languages</button>
-                                <div class="multi-select-dropdown hidden">
-                                    <div class="p-2"><input type="checkbox" value="English"> English</div>
-                                    <div class="p-2"><input type="checkbox" value="Sinhala"> Sinhala</div>
-                                    <div class="p-2"><input type="checkbox" value="Tamil"> Tamil</div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -410,9 +377,8 @@
                             </select>
                         </div>
                         <div>
-                            <label class="form-label">Remote Work Preferences <span
-                                    class="text-red-500">*</span></label>
-                            <select name="remote_work_preferences" required class="form-select">
+                            <label class="form-label">Preferred Work Type <span class="text-red-500">*</span></label>
+                            <select name="preferred_work_type" required class="form-select">
                                 <option value="">Select Preference</option>
                                 <option value="Remote Only">Remote Only</option>
                                 <option value="Hybrid">Hybrid</option>
