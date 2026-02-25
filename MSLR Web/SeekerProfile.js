@@ -1,4 +1,15 @@
-// Profile Page JavaScript
+// Utility Functions for Modals
+window.openModal = function (modal) {
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+};
+
+window.closeModal = function (modal) {
+    if (!modal) return;
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+};
 
 document.addEventListener('DOMContentLoaded', function () {
     // Profile dropdown functionality
@@ -385,190 +396,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Add Experience Modal
-    const addExperienceBtn = document.getElementById('add-experience-btn');
-    const addExperienceModal = document.getElementById('add-experience-modal');
-    const closeAddExperienceModal = document.getElementById('close-add-experience-modal');
-    const saveExperience = document.getElementById('save-experience');
-    const currentlyWorkingCheckbox = document.getElementById('currently-working');
-    const endDateContainer = document.getElementById('end-date-container');
-    const endCurrentPositionContainer = document.getElementById('end-current-position-container');
 
-    if (addExperienceBtn && addExperienceModal) {
-        addExperienceBtn.addEventListener('click', function () {
-            // Reset skills state in the modal
-            const expSkillsContainer = document.getElementById('exp-skills-container');
-            const expAddSkillBtn = document.getElementById('exp-add-skill-btn');
-            const expAddSkillInput = document.getElementById('exp-add-skill-input');
+    // --- NEW MODAL LOGIC (RESTORED) ---
 
-            if (expSkillsContainer) expSkillsContainer.innerHTML = '';
-            if (expAddSkillInput) expAddSkillInput.classList.add('hidden');
-            if (expAddSkillBtn) expAddSkillBtn.classList.remove('hidden');
-
-            // Reset pickers
-            document.querySelectorAll('#add-experience-modal .month-year-input span').forEach(s => s.textContent = 'Select Month');
-            document.querySelectorAll('#add-experience-modal input[type="hidden"][id*="exp-"]').forEach(i => i.value = '');
-
-            openModal(addExperienceModal);
-        });
-    }
-
-    if (closeAddExperienceModal) {
-        closeAddExperienceModal.addEventListener('click', function () {
-            closeModal(addExperienceModal);
-        });
-    }
-
-    if (currentlyWorkingCheckbox) {
-        currentlyWorkingCheckbox.addEventListener('change', function () {
-            if (this.checked) {
-                if (endDateContainer) endDateContainer.classList.add('hidden');
-                if (endCurrentPositionContainer) endCurrentPositionContainer.classList.remove('hidden');
-            } else {
-                if (endDateContainer) endDateContainer.classList.remove('hidden');
-                if (endCurrentPositionContainer) endCurrentPositionContainer.classList.add('hidden');
-            }
-        });
-    }
-
-    // Experience Skills Logic
-    const expAddSkillBtn = document.getElementById('exp-add-skill-btn');
-    const expAddSkillInput = document.getElementById('exp-add-skill-input');
-    const expSkillsContainer = document.getElementById('exp-skills-container');
-
-    if (expAddSkillBtn && expAddSkillInput && expSkillsContainer) {
-        expAddSkillBtn.addEventListener('click', function () {
-            expAddSkillBtn.classList.add('hidden');
-            expAddSkillInput.classList.remove('hidden');
-            expAddSkillInput.focus();
-        });
-
-        expAddSkillInput.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ',') {
-                e.preventDefault();
-                const value = this.value.trim().replace(/,$/, '');
-                if (value) {
-                    addSkillToExperience(value);
-                    this.value = '';
-                    // Keep focus and keep input visible for more entries
-                }
-            } else if (e.key === 'Escape') {
-                this.classList.add('hidden');
-                expAddSkillBtn.classList.remove('hidden');
-                this.value = '';
-            }
-        });
-
-        // Only hide on blur if it's empty, allowing user to click away to finish
-        expAddSkillInput.addEventListener('blur', function () {
-            if (this.value.trim() === '') {
-                // Check if we have any skills added, if not maybe show the button back
-                // For now, let's just show the button back if the input is left empty
-                this.classList.add('hidden');
-                expAddSkillBtn.classList.remove('hidden');
-            }
-        });
-    }
-
-    function addSkillToExperience(skillName) {
-        if (!expSkillsContainer) return;
-
-        // Check if skill already added by checking text content
-        const currentSkills = Array.from(expSkillsContainer.children)
-            .filter(el => el.tagName === 'SPAN' && !el.classList.contains('comma-separator'))
-            .map(el => el.textContent.trim());
-
-        if (currentSkills.includes(skillName)) return;
-
-        // Add comma if this isn't the first skill
-        if (expSkillsContainer.children.length > 0) {
-            const separator = document.createElement('span');
-            separator.className = 'text-gray-400 mr-2 comma-separator';
-            separator.textContent = ',';
-            expSkillsContainer.appendChild(separator);
-        }
-
-        const skillTag = document.createElement('span');
-        skillTag.className = 'bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-100 transition-colors cursor-pointer group relative';
-        skillTag.innerHTML = `
-            ${skillName}
-            <button class="ml-1 text-blue-400 hover:text-blue-600 hidden group-hover:inline-block remove-exp-skill-tag" title="Remove">
-                &times;
-            </button>
-        `;
-
-        expSkillsContainer.appendChild(skillTag);
-
-        // Add remove listener
-        skillTag.querySelector('.remove-exp-skill-tag').addEventListener('click', function (e) {
-            e.stopPropagation();
-            // Remove the tag and the preceding comma if it exists
-            const prev = skillTag.previousElementSibling;
-            if (prev && prev.classList.contains('comma-separator')) {
-                prev.remove();
-            } else {
-                // If it's the first tag and has a comma after it, remove that
-                const next = skillTag.nextElementSibling;
-                if (next && next.classList.contains('comma-separator')) {
-                    next.remove();
-                }
-            }
-            skillTag.remove();
-        });
-    }
-
-    if (saveExperience) {
-        saveExperience.addEventListener('click', function () {
-            // Get form values
-            const title = document.querySelector('#add-experience-modal input[placeholder*="Ex: Retail"]').value;
-            const company = document.querySelector('#add-experience-modal input[placeholder*="Ex: Microsoft"]').value;
-            const startDate = document.getElementById('exp-start-date').value;
-            const endDate = document.getElementById('exp-end-date').value;
-            const isCurrent = document.getElementById('currently-working').checked;
-
-            const skills = [];
-            if (expSkillsContainer) {
-                expSkillsContainer.querySelectorAll('span').forEach(span => {
-                    if (!span.classList.contains('comma-separator')) {
-                        skills.push(span.textContent.trim().replace('×', '').trim());
-                    }
-                });
-            }
-
-            console.log('Experience saved:', {
-                title,
-                company,
-                startDate,
-                endDate: isCurrent ? 'Present' : endDate,
-                skills
-            });
-            closeModal(addExperienceModal);
-            showNotification('Experience added successfully!');
-
-            // Reset skills for next time
-            if (expSkillsContainer) expSkillsContainer.innerHTML = '';
-        });
-    }
-
-    // Add Education Modal
-    const addEducationBtn = document.getElementById('add-education-btn');
-    const addEducationModal = document.getElementById('add-education-modal');
-    const closeAddEducationModal = document.getElementById('close-add-education-modal');
-    const saveEducation = document.getElementById('save-education');
-
-    if (addEducationBtn && addEducationModal) {
-        addEducationBtn.addEventListener('click', function () {
-            openModal(addEducationModal);
-        });
-    }
-
-    if (closeAddEducationModal) {
-        closeAddEducationModal.addEventListener('click', function () {
-            closeModal(addEducationModal);
-        });
-    }
-
-    // Custom Month/Year Picker Logic
+    // Initialize Month/Year Pickers
     function initMonthYearPicker(pickerId, hiddenInputId) {
         const picker = document.getElementById(pickerId);
         if (!picker) return;
@@ -584,7 +415,6 @@ document.addEventListener('DOMContentLoaded', function () {
         let displayYear = new Date().getFullYear();
         let selectedMonth = null;
         let selectedYear = null;
-        let viewMode = 'months'; // 'months' or 'years'
 
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -597,195 +427,191 @@ document.addEventListener('DOMContentLoaded', function () {
                     item.classList.add('selected');
                 }
                 item.textContent = month;
-                item.addEventListener('click', () => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
                     selectedMonth = index + 1;
                     selectedYear = displayYear;
-                    updateInput();
+                    const monthStr = selectedMonth.toString().padStart(2, '0');
+                    input.querySelector('span').textContent = `${months[index]} ${selectedYear}`;
+                    hiddenInput.value = `${selectedYear}-${monthStr}`;
                     popover.classList.remove('active');
                 });
                 grid.appendChild(item);
             });
             currentYearSpan.textContent = displayYear;
-            viewMode = 'months';
-        }
-
-        function renderYears() {
-            grid.innerHTML = '';
-            const startYear = displayYear - 5;
-            for (let i = 0; i < 12; i++) {
-                const year = startYear + i;
-                const item = document.createElement('div');
-                item.className = 'picker-item';
-                if (selectedYear === year) {
-                    item.classList.add('selected');
-                }
-                item.textContent = year;
-                item.addEventListener('click', () => {
-                    displayYear = year;
-                    renderMonths();
-                });
-                grid.appendChild(item);
-            }
-            currentYearSpan.textContent = `${startYear} - ${startYear + 11}`;
-            viewMode = 'years';
-        }
-
-        function updateInput() {
-            if (selectedMonth && selectedYear) {
-                const monthStr = selectedMonth.toString().padStart(2, '0');
-                input.querySelector('span').textContent = `${months[selectedMonth - 1]} ${selectedYear}`;
-                hiddenInput.value = `${selectedYear}-${monthStr}`;
-            }
         }
 
         input.addEventListener('click', (e) => {
             e.stopPropagation();
+            // Close other pickers
             document.querySelectorAll('.month-year-popover').forEach(p => {
                 if (p !== popover) p.classList.remove('active');
             });
             popover.classList.toggle('active');
-            if (popover.classList.contains('active')) {
-                renderMonths();
-            }
-        });
-
-        currentYearSpan.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (viewMode === 'months') {
-                renderYears();
-            } else {
-                renderMonths();
-            }
+            if (popover.classList.contains('active')) renderMonths();
         });
 
         prevBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            if (viewMode === 'months') {
-                displayYear--;
-                renderMonths();
-            } else {
-                displayYear -= 12;
-                renderYears();
-            }
+            displayYear--;
+            renderMonths();
         });
 
         nextBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            if (viewMode === 'months') {
-                displayYear++;
-                renderMonths();
-            } else {
-                displayYear += 12;
-                renderYears();
-            }
+            displayYear++;
+            renderMonths();
         });
-
-        document.addEventListener('click', () => {
-            popover.classList.remove('active');
-        });
-
-        popover.addEventListener('click', (e) => e.stopPropagation());
     }
 
-    initMonthYearPicker('edu-start-picker', 'edu-start-date');
-    initMonthYearPicker('edu-end-picker', 'edu-end-date');
+    // Initialize all pickers
     initMonthYearPicker('exp-start-picker', 'exp-start-date');
     initMonthYearPicker('exp-end-picker', 'exp-end-date');
+    initMonthYearPicker('edu-start-picker', 'edu-start-date');
+    initMonthYearPicker('edu-end-picker', 'edu-end-date');
 
-    if (saveEducation) {
-        saveEducation.addEventListener('click', function () {
-            const school = document.querySelector('#add-education-modal input[placeholder*="Ex: Boston"]').value;
-            const highest = document.getElementById('education-highest').value;
-            const degree = document.getElementById('education-degree').value;
-            const startDate = document.getElementById('edu-start-date').value;
-            const endDate = document.getElementById('edu-end-date').value;
+    // Experience Modal Triggers
+    const addExperienceBtn = document.getElementById('add-experience-btn');
+    const expModal = document.getElementById('add-experience-modal');
+    const closeExpModal = document.getElementById('close-add-experience-modal');
+    const cancelExp = document.getElementById('cancel-experience');
+    const saveExpBtn = document.getElementById('save-experience-btn');
 
-            // Here you would typically save the education
-            console.log('Education saved:', {
-                school,
-                highest,
-                degree,
-                startDate,
-                endDate
-            });
-            closeModal(addEducationModal);
-            showNotification('Education added successfully!');
-
-            // Reset pickers
-            document.querySelectorAll('.month-year-input span').forEach(s => s.textContent = 'Select Month');
-            document.querySelectorAll('input[type="hidden"][id*="edu-"]').forEach(i => i.value = '');
-        });
+    if (addExperienceBtn && expModal) {
+        addExperienceBtn.addEventListener('click', () => openModal(expModal));
     }
 
-    // Dynamic education placeholder logic
-    const educationHighest = document.getElementById('education-highest');
-    const educationDegree = document.getElementById('education-degree');
+    [closeExpModal, cancelExp].forEach(btn => {
+        if (btn) btn.addEventListener('click', () => closeModal(expModal));
+    });
 
-    if (educationHighest && educationDegree) {
-        educationHighest.addEventListener('change', function () {
-            const selectedValue = this.value;
-            if (selectedValue) {
-                educationDegree.placeholder = `Ex: ${selectedValue} Name`;
+    // Currently Working Toggle
+    const currentlyWorking = document.getElementById('currently-working');
+    const endDateContainer = document.getElementById('end-date-container');
+    const endPrevPosContainer = document.getElementById('end-previous-pos-container');
+    const prevPosTitle = document.getElementById('prev-pos-title');
+
+    if (currentlyWorking && endDateContainer && endPrevPosContainer) {
+        currentlyWorking.addEventListener('change', function () {
+            if (this.checked) {
+                endDateContainer.style.opacity = '0.5';
+                endDateContainer.style.pointerEvents = 'none';
+
+                // Show "End current position" checkbox
+                endPrevPosContainer.classList.remove('hidden');
+
+                // Try to find the previous position title that is "Present"
+                let currentPos = "Previous marked position";
+                // Find the Experience card specifically
+                const headers = document.querySelectorAll('h3');
+                let expCard = null;
+                for (const h of headers) {
+                    if (h.textContent.trim() === 'Experience') {
+                        expCard = h.closest('.bg-white');
+                        break;
+                    }
+                }
+
+                if (expCard) {
+                    const entries = expCard.querySelectorAll('.flex.items-start.space-x-4');
+                    for (const entry of entries) {
+                        const dateText = entry.querySelector('.text-gray-500')?.textContent || '';
+                        if (dateText.includes('Present')) {
+                            const title = entry.querySelector('h4')?.textContent;
+                            if (title) {
+                                currentPos = title;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (prevPosTitle) prevPosTitle.textContent = currentPos;
+
             } else {
-                educationDegree.placeholder = "Ex: Bachelor's Name";
+                endDateContainer.style.opacity = '1';
+                endDateContainer.style.pointerEvents = 'auto';
+
+                // Hide and uncheck
+                endPrevPosContainer.classList.add('hidden');
+                const endPrevCheck = document.getElementById('end-previous-pos');
+                if (endPrevCheck) endPrevCheck.checked = false;
             }
         });
     }
 
-    // Add hover effects to experience cards
-    const experienceCards = document.querySelectorAll('.flex.items-start.space-x-4.mb-6, .flex.items-start.space-x-4');
-    experienceCards.forEach(card => {
-        card.classList.add('experience-card');
+    // Experience Skills Logic
+    const expAddSkillBtn = document.getElementById('exp-add-skill-btn');
+    const expAddSkillInput = document.getElementById('exp-add-skill-input');
+    const expSkillsContainer = document.getElementById('exp-skills-container');
+
+    if (expAddSkillBtn && expAddSkillInput && expSkillsContainer) {
+        expAddSkillBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            expAddSkillBtn.classList.add('hidden');
+            expAddSkillInput.classList.remove('hidden');
+            expAddSkillInput.focus();
+        });
+
+        expAddSkillInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const skill = this.value.trim();
+                if (skill) {
+                    const skillTag = document.createElement('span');
+                    skillTag.className = 'bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium flex items-center group';
+                    skillTag.innerHTML = `
+                        ${skill}
+                        <button class="ml-2 text-blue-400 hover:text-blue-600 focus:outline-none">&times;</button>
+                    `;
+                    skillTag.querySelector('button').addEventListener('click', () => skillTag.remove());
+                    expSkillsContainer.appendChild(skillTag);
+                    this.value = '';
+                }
+            } else if (e.key === 'Escape') {
+                this.classList.add('hidden');
+                expAddSkillBtn.classList.remove('hidden');
+            }
+        });
+    }
+
+    // Education Modal Triggers
+    const addEducationBtn = document.getElementById('add-education-btn');
+    const eduModal = document.getElementById('add-education-modal');
+    const closeEduModal = document.getElementById('close-add-education-modal');
+    const cancelEdu = document.getElementById('cancel-education');
+    const saveEduBtn = document.getElementById('save-education-btn');
+
+    if (addEducationBtn && eduModal) {
+        addEducationBtn.addEventListener('click', () => openModal(eduModal));
+    }
+
+    [closeEduModal, cancelEdu].forEach(btn => {
+        if (btn) btn.addEventListener('click', () => closeModal(eduModal));
     });
 
-    // Add hover effects to skill tags
-    const skillTags = document.querySelectorAll('.bg-blue-100.text-blue-700.px-3.py-2.rounded-full.text-sm');
-    skillTags.forEach(tag => {
-        tag.classList.add('skill-tag');
-    });
+    // Save Handlers
+    if (saveExpBtn) {
+        saveExpBtn.addEventListener('click', () => {
+            showNotification('Experience added successfully!');
+            closeModal(expModal);
+        });
+    }
 
-    // Add hover effects to edit buttons
-    const editButtons = document.querySelectorAll('[id*="edit"]');
-    editButtons.forEach(button => {
-        button.classList.add('edit-button');
-    });
+    if (saveEduBtn) {
+        saveEduBtn.addEventListener('click', () => {
+            showNotification('Education added successfully!');
+            closeModal(eduModal);
+        });
+    }
 
-    // Add hover effects to profile action buttons
-    const actionButtons = document.querySelectorAll('.bg-blue-600.text-white.px-4.py-2.rounded-md, .bg-white.border.border-gray-300.text-gray-700.px-4.py-2.rounded-md');
-    actionButtons.forEach(button => {
-        button.classList.add('profile-action-btn');
-    });
-
-    // Initialize profile sections with fade-in animation
-    const profileSections = document.querySelectorAll('.bg-white.rounded-lg.shadow-sm.border.border-gray-200.mb-6');
-    profileSections.forEach((section, index) => {
-        section.classList.add('profile-section', 'fade-out');
-        setTimeout(() => {
-            section.classList.remove('fade-out');
-            section.classList.add('fade-in');
-        }, index * 100);
+    // Global click to close popovers
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.month-year-popover').forEach(p => p.classList.remove('active'));
     });
 });
 
 // Utility Functions
 
-function openModal(modal) {
-    if (modal) {
-        modal.classList.remove('hidden');
-
-        // Prevent body scroll
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-function closeModal(modal) {
-    if (modal) {
-        modal.classList.add('hidden');
-
-        // Restore body scroll
-        document.body.style.overflow = 'auto';
-    }
-}
 
 function showNotification(message) {
     // Create notification element

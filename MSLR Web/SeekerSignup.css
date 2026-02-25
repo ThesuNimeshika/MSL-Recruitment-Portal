@@ -137,3 +137,106 @@ html {
         height: auto;
     }
 }
+
+/* Modal Styles */
+.modal {
+    transition: opacity 0.3s ease;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+}
+
+/* Custom Month/Year Picker */
+.month-year-picker-container {
+    position: relative;
+    width: 100%;
+}
+
+.month-year-input {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    background-color: white;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+.month-year-popover {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 110;
+    margin-top: 0.5rem;
+    width: 250px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    padding: 1rem;
+    display: none;
+}
+
+.month-year-popover.active {
+    display: block;
+}
+
+.picker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.picker-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.picker-item {
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.8125rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.picker-item:hover {
+    background-color: #eff6ff;
+    color: #2563eb;
+}
+
+.picker-item.selected {
+    background-color: #2563eb;
+    color: white;
+}
+
+/* Custom scrollbar for modal */
+.modal::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.modal::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}

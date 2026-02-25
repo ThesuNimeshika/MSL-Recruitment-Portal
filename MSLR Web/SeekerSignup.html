@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="SeekerSignup.css">
+    <link rel="stylesheet" href="common/modals.css">
 </head>
 
 <body class="bg-gray-50 text-gray-900 font-sans">
@@ -44,9 +45,6 @@
                         <li><a href="#career-objective"
                                 class="flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all"><i
                                     class="fas fa-bullseye"></i><span>Career Objective</span></a></li>
-                        <li><a href="#experience-skills"
-                                class="flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all"><i
-                                    class="fas fa-tools"></i><span>Experience & Skills</span></a></li>
                         <li><a href="#education"
                                 class="flex items-center space-x-3 p-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all"><i
                                     class="fas fa-graduation-cap"></i><span>Education</span></a></li>
@@ -146,6 +144,10 @@
                             <input type="text" name="street_name" required class="form-input" placeholder="Main Street">
                         </div>
                         <div>
+                            <label class="form-label">Town <span class="text-red-500">*</span></label>
+                            <input type="text" name="town" required class="form-input" placeholder="Town Name">
+                        </div>
+                        <div>
                             <label class="form-label">City <span class="text-red-500">*</span></label>
                             <input type="text" name="city" required class="form-input" placeholder="Colombo">
                         </div>
@@ -183,7 +185,8 @@
                         <div>
                             <label class="form-label">Languages <span class="text-red-500">*</span></label>
                             <div class="multi-select-container required" data-name="languages">
-                                <button type="button" class="multi-select-btn">Select Languages</button>
+                                <button type="button" class="multi-select-btn"
+                                    data-placeholder="Select Languages">Select Languages</button>
                                 <div class="multi-select-dropdown hidden">
                                     <div class="p-2"><input type="checkbox" value="English"> English</div>
                                     <div class="p-2"><input type="checkbox" value="Sinhala"> Sinhala</div>
@@ -215,6 +218,22 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="md:col-span-2">
+                            <label class="form-label">Field <span class="text-red-500">*</span></label>
+                            <select name="field" required class="form-select">
+                                <option value="">Select Field</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Finance & Accounting">Finance & Accounting</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Marketing & Sales">Marketing & Sales</option>
+                                <option value="Healthcare & Medical">Healthcare & Medical</option>
+                                <option value="Human Resources">Human Resources</option>
+                                <option value="Education & Training">Education & Training</option>
+                                <option value="Customer Service">Customer Service</option>
+                                <option value="Hospitality & Tourism">Hospitality & Tourism</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
                         <div>
                             <label class="form-label">Current Company <span class="text-red-500">*</span></label>
                             <input type="text" name="current_company" required class="form-input"
@@ -246,7 +265,14 @@
                             <textarea name="key_responsibilities" required class="form-textarea" rows="4"
                                 placeholder="Briefly describe your core duties"></textarea>
                         </div>
+                    </div>
 
+                    <div class="mt-6 flex justify-start">
+                        <button type="button" id="add-experience-btn"
+                            class="text-blue-600 font-semibold flex items-center space-x-2 hover:text-blue-700 transition-colors">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Add Experience</span>
+                        </button>
                     </div>
                 </section>
 
@@ -269,17 +295,21 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label class="form-label">Target Role Type <span class="text-red-500">*</span></label>
-                                <select name="target_role_type" required class="form-select">
-                                    <option value="">Select Role Type</option>
-                                    <option value="Permanent">Permanent</option>
-                                    <option value="Contract">Contract</option>
-                                    <option value="Consultant">Consultant</option>
-                                </select>
+                                <div class="multi-select-container required" data-name="target_role_type">
+                                    <button type="button" class="multi-select-btn"
+                                        data-placeholder="Select Role Type">Select Role Type</button>
+                                    <div class="multi-select-dropdown hidden">
+                                        <div class="p-2"><input type="checkbox" value="Permanent"> Permanent</div>
+                                        <div class="p-2"><input type="checkbox" value="Contract"> Contract</div>
+                                        <div class="p-2"><input type="checkbox" value="Consultant"> Consultant</div>
+                                    </div>
+                                </div>
                             </div>
                             <div>
                                 <label class="form-label">Target Industries</label>
                                 <div class="multi-select-container" data-name="target_industries">
-                                    <button type="button" class="multi-select-btn">Select Industries</button>
+                                    <button type="button" class="multi-select-btn"
+                                        data-placeholder="Select Industries">Select Industries</button>
                                     <div class="multi-select-dropdown hidden">
                                         <div class="p-2"><input type="checkbox" value="Technology"> Technology</div>
                                         <div class="p-2"><input type="checkbox" value="Finance"> Finance</div>
@@ -333,15 +363,39 @@
                         </div>
                         <div>
                             <label class="form-label">Graduation Year <span class="text-red-500">*</span></label>
-                            <input type="number" name="graduation_year" required class="form-input" min="1900"
-                                max="2100" placeholder="YYYY">
+                            <div class="month-year-picker-container" id="signup-grad-picker">
+                                <div class="month-year-input" id="signup-grad-input">
+                                    <span>Select Month</span>
+                                    <i class="fas fa-calendar-alt text-gray-400"></i>
+                                </div>
+                                <input type="hidden" name="graduation_year" id="signup-grad-date" required>
+                                <div class="month-year-popover" id="signup-grad-popover">
+                                    <div class="picker-header">
+                                        <button type="button" class="picker-nav-btn prev-year"><i
+                                                class="fas fa-chevron-left"></i></button>
+                                        <span class="current-year">2024</span>
+                                        <button type="button" class="picker-nav-btn next-year"><i
+                                                class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="picker-grid">
+                                        <!-- Months will be injected here -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="md:col-span-2">
-                            <label class="form-label">Additional Certifications <span
-                                    class="text-red-500">*</span></label>
-                            <textarea name="additional_certifications" required class="form-textarea" rows="2"
-                                placeholder="List any relevant certifications (comma separated)"></textarea>
+                            <label class="form-label">Description <span class="text-red-500">*</span></label>
+                            <textarea name="description" required class="form-textarea" rows="2"
+                                placeholder="Description"></textarea>
                         </div>
+                    </div>
+
+                    <div class="mt-6 flex justify-start">
+                        <button type="button" id="add-education-btn"
+                            class="text-blue-600 font-semibold flex items-center space-x-2 hover:text-blue-700 transition-colors">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Add Education</span>
+                        </button>
                     </div>
                 </section>
 
@@ -359,12 +413,15 @@
                         <div>
                             <label class="form-label">Preferred Work Location <span
                                     class="text-red-500">*</span></label>
-                            <select name="preferred_work_location" required class="form-select">
-                                <option value="">Select Location</option>
-                                <option value="Colombo">Colombo</option>
-                                <option value="Kandy">Kandy</option>
-                                <option value="Remote">Remote</option>
-                            </select>
+                            <div class="multi-select-container required" data-name="preferred_work_location">
+                                <button type="button" class="multi-select-btn" data-placeholder="Select Location">Select
+                                    Location</button>
+                                <div class="multi-select-dropdown hidden">
+                                    <div class="p-2"><input type="checkbox" value="Colombo"> Colombo</div>
+                                    <div class="p-2"><input type="checkbox" value="Kandy"> Kandy</div>
+                                    <div class="p-2"><input type="checkbox" value="Remote"> Remote</div>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <label class="form-label">Travel Willingness <span class="text-red-500">*</span></label>
@@ -378,12 +435,15 @@
                         </div>
                         <div>
                             <label class="form-label">Preferred Work Type <span class="text-red-500">*</span></label>
-                            <select name="preferred_work_type" required class="form-select">
-                                <option value="">Select Preference</option>
-                                <option value="Remote Only">Remote Only</option>
-                                <option value="Hybrid">Hybrid</option>
-                                <option value="On-site">On-site Only</option>
-                            </select>
+                            <div class="multi-select-container required" data-name="preferred_work_type">
+                                <button type="button" class="multi-select-btn"
+                                    data-placeholder="Select Preference">Select Preference</button>
+                                <div class="multi-select-dropdown hidden">
+                                    <div class="p-2"><input type="checkbox" value="Remote Only"> Remote Only</div>
+                                    <div class="p-2"><input type="checkbox" value="Hybrid"> Hybrid</div>
+                                    <div class="p-2"><input type="checkbox" value="On-site Only"> On-site Only</div>
+                                </div>
+                            </div>
                         </div>
                         <div class="flex items-center space-x-3 pt-6">
                             <input type="checkbox" name="willingness_to_relocate" id="willingness_to_relocate"
@@ -571,6 +631,156 @@
                 </div>
             </form>
         </main>
+    </div>
+
+
+    <!-- Add Experience Modal -->
+    <div id="add-experience-modal"
+        class="modal fixed inset-0 z-[100] hidden bg-gray-900/50 backdrop-blur-sm transition-opacity duration-300 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full my-8 transform transition-all">
+                <!-- Header -->
+                <div class="flex justify-between items-center p-6 border-b border-gray-100">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-briefcase text-sm"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Add Experience</h3>
+                    </div>
+                    <button id="close-add-experience-modal" class="text-gray-400 hover:text-gray-600 transition-colors">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Body -->
+                <div class="p-6 space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Title -->
+                        <div class="md:col-span-2">
+                            <label class="form-label">Job Title*</label>
+                            <input type="text" id="exp-job-title" class="form-input"
+                                placeholder="Ex: Retail Sales Manager">
+                        </div>
+
+                        <!-- Company name -->
+                        <div>
+                            <label class="form-label">Company name*</label>
+                            <input type="text" id="exp-company" class="form-input" placeholder="Ex: Microsoft">
+                        </div>
+
+                        <!-- Employment Type -->
+                        <div>
+                            <label class="form-label">Employment type</label>
+                            <select id="exp-employment-type" class="form-select">
+                                <option value="">Please select</option>
+                                <option value="full-time">Full-time</option>
+                                <option value="part-time">Part-time</option>
+                                <option value="self-employed">Self-employed</option>
+                                <option value="freelance">Freelance</option>
+                                <option value="contract">Contract</option>
+                                <option value="internship">Internship</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Active Role Checkbox -->
+                    <div class="flex items-center p-3 bg-blue-50 rounded-lg">
+                        <input type="checkbox" id="currently-working"
+                            class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="currently-working" class="ml-3 text-sm font-medium text-blue-900">I am currently
+                            working
+                            in this role</label>
+                    </div>
+
+                    <!-- Dates -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Start Date -->
+                        <div class="relative">
+                            <label class="form-label">Start date*</label>
+                            <div class="month-year-picker-container" id="exp-start-picker">
+                                <div class="month-year-input">
+                                    <span>Select Month</span>
+                                    <i class="fas fa-calendar-alt text-gray-400"></i>
+                                </div>
+                                <input type="hidden" id="exp-start-date">
+                                <div class="month-year-popover">
+                                    <div class="picker-header">
+                                        <button type="button" class="picker-nav-btn prev-year"><i
+                                                class="fas fa-chevron-left"></i></button>
+                                        <span class="current-year">2024</span>
+                                        <button type="button" class="picker-nav-btn next-year"><i
+                                                class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="picker-grid"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End Date -->
+                        <div class="relative" id="end-date-container">
+                            <label class="form-label">End date*</label>
+                            <div class="month-year-picker-container" id="exp-end-picker">
+                                <div class="month-year-input">
+                                    <span>Select Month</span>
+                                    <i class="fas fa-calendar-alt text-gray-400"></i>
+                                </div>
+                                <input type="hidden" id="exp-end-date">
+                                <div class="month-year-popover">
+                                    <div class="picker-header">
+                                        <button type="button" class="picker-nav-btn prev-year"><i
+                                                class="fas fa-chevron-left"></i></button>
+                                        <span class="current-year">2024</span>
+                                        <button type="button" class="picker-nav-btn next-year"><i
+                                                class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="picker-grid"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div>
+                        <label class="form-label">Location</label>
+                        <input type="text" id="exp-location" class="form-input" placeholder="Ex: Colombo, Sri Lanka">
+                    </div>
+
+                    <!-- Key Responsibilities -->
+                    <div>
+                        <label class="form-label">Key Responsibilities</label>
+                        <textarea id="exp-description" rows="4" class="form-textarea"
+                            placeholder="Describe your core duties and accomplishments..."></textarea>
+                    </div>
+
+                    <!-- Skills -->
+                    <div>
+                        <label class="form-label">Skills Used</label>
+                        <div id="exp-skills-container" class="flex flex-wrap gap-2 mb-3"></div>
+                        <div class="relative">
+                            <button type="button" id="exp-add-skill-btn"
+                                class="text-sm text-blue-600 font-semibold hover:text-blue-700 flex items-center space-x-1">
+                                <i class="fas fa-plus"></i>
+                                <span>Add Skill</span>
+                            </button>
+                            <input type="text" id="exp-add-skill-input" class="hidden form-input mt-2"
+                                placeholder="Type skill and press Enter">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="flex justify-end items-center p-6 border-t border-gray-100 space-x-3">
+                    <button type="button" id="cancel-experience"
+                        class="px-6 py-2 border border-gray-300 rounded-lg text-gray-600 font-semibold hover:bg-gray-50 transition-colors">
+                        Cancel
+                    </button>
+                    <button type="button" id="save-experience"
+                        class="px-6 py-2 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition-colors shadow-lg">
+                        Save Experience
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="SeekerSignup.js"></script>
